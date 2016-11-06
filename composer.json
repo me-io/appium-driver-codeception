@@ -19,6 +19,7 @@
   ],
   "version": "0.0.1",
   "require": {
+    "php": ">=5.5",
     "facebook/webdriver": "^1.2",
     "codeception/codeception": "^2.2"
   },
