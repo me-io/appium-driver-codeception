@@ -1,5 +1,5 @@
 <?php
-namespace Appium\Driver\Remote;
+namespace Appium\Remote;
 
 class Dummy
 {
