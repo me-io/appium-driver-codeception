@@ -1,7 +1,7 @@
 <?php
-namespace AppiumDriver;
+namespace Appium;
 
-use AppiumDriver\Remote\DummyRemote;
+use Appium\Remote\Dummy;
 use Codeception\Exception\ConnectionException;
 use Codeception\Lib\Interfaces\ConflictsWithModule;
 use Codeception\Lib\Interfaces\MultiSession as MultiSessionInterface;
@@ -27,7 +27,7 @@ use Facebook\WebDriver\Remote\WebDriverCapabilityType;
  * $this->getModule('AppiumDriver')->AppiumDriver->getKeyboard()->sendKeys('hello, AppiumDriver');
  * ```
  */
-class AppiumDriver extends CodeceptionModule implements
+class Driver extends CodeceptionModule implements
     MultiSessionInterface,
     ScreenshotSaver,
     ConflictsWithModule,
@@ -92,7 +92,7 @@ class AppiumDriver extends CodeceptionModule implements
         $this->requestTimeoutInMs    = $this->config['request_timeout'] * 1000;
         try {
             if (!empty($this->config['dummyRemote'])) {
-                $this->AppiumDriver = new DummyRemote();
+                $this->AppiumDriver = new Dummy();
 
             } else {
                 $this->AppiumDriver = RemoteWebDriver::create(

@@ -1,7 +1,7 @@
 <?php
-namespace AppiumDriver\Remote;
+namespace Appium\Remote;
 
-class DummyRemote
+class Dummy
 {
 
     public function quit()

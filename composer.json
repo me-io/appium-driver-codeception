@@ -1,6 +1,30 @@
 {
-    "require": {
-        "facebook/webdriver": "^1.2",
-        "codeception/codeception": "^2.2"
+  "name": "meabed/codeception-appium",
+  "description": "Codeception appium driver model",
+  "keywords": [
+    "BDD",
+    "acceptance testing",
+    "functional testing",
+    "unit testing",
+    "tdd",
+    "appium",
+    "codeception"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mohamed Meabed"
     }
+  ],
+  "version": "0.0.1",
+  "require": {
+    "facebook/webdriver": "^1.2",
+    "codeception/codeception": "^2.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Appium\\": "src"
+    }
+  }
 }
