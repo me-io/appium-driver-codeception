@@ -1,7 +1,7 @@
 <?php
-namespace Appium;
+namespace Appium\Driver;
 
-use Appium\Remote\Dummy;
+use Appium\Driver\Remote\Dummy;
 use Codeception\Exception\ConnectionException;
 use Codeception\Lib\Interfaces\ConflictsWithModule;
 use Codeception\Lib\Interfaces\MultiSession as MultiSessionInterface;
