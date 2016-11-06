@@ -27,7 +27,7 @@ use Facebook\WebDriver\Remote\WebDriverCapabilityType;
  * $this->getModule('AppiumDriver')->AppiumDriver->getKeyboard()->sendKeys('hello, AppiumDriver');
  * ```
  */
-class Driver extends CodeceptionModule implements
+class AppiumDriver extends CodeceptionModule implements
     MultiSessionInterface,
     ScreenshotSaver,
     ConflictsWithModule,
