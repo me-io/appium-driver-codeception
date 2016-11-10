@@ -20,8 +20,9 @@
   "version": "0.0.2",
   "require": {
     "php": ">=5.5",
-    "facebook/webdriver": "^1.2",
-    "codeception/codeception": "^2.2"
+    "phpunit/phpunit": "~5",
+    "codeception/codeception": "~2",
+    "phpunit/phpunit-selenium": "~3"
   },
   "autoload": {
     "psr-4": {
