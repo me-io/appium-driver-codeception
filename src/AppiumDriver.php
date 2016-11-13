@@ -80,8 +80,6 @@ class AppiumDriver extends CodeceptionModule implements
      */
     protected $classes = [];
 
-    const SCREENSHOT = 'screenshot';
-
     public function _requires()
     {
         return [];
@@ -320,42 +318,6 @@ class AppiumDriver extends CodeceptionModule implements
     }
 
     /**
-     * @param $method
-     * @param $command
-     * @param $data
-     *
-     * @return mixed
-     */
-    public function driverCommand($method = 'POST', $command, $data = [])
-    {
-
-        $url = $this->getSession()->getSessionUrl()->descend($command);
-
-        /** @var \PHPUnit_Extensions_Selenium2TestCase_Response $response */
-        $response = $this->getDriver()->curl($method, $url, $data);
-
-        return $response->getValue();
-    }
-
-    /**
-     * Take a screenshot of the current page.
-     *
-     * @param string $save_as The path of the screenshot to be saved.
-     *
-     * @return string The screenshot in PNG format.
-     */
-    public function takeScreenshot($save_as = null)
-    {
-        $data       = $this->driverCommand('GET', static::SCREENSHOT);
-        $screenshot = base64_decode($data);
-        if ($save_as) {
-            file_put_contents($save_as, $screenshot);
-        }
-
-        return $screenshot;
-    }
-
-    /**
      * get class names from php file
      *
      * @param $file
@@ -533,5 +495,58 @@ class AppiumDriver extends CodeceptionModule implements
         return $this->TestCaseElement()->by('xpath', $value);
     }
 
+    ////
+    ////
+    ////
+    ////
+    ////
+    ////
+    ////
 
+    const SCREENSHOT    = 'screenshot';
+    const HIDE_KEYBOARD = 'appium/device/hide_keyboard';
+
+    /**
+     * @param $method
+     * @param $command
+     * @param $data
+     *
+     * @return mixed
+     */
+    public function driverCommand($method = 'POST', $command, $data = [])
+    {
+
+        $url = $this->getSession()->getSessionUrl()->descend($command);
+
+        /** @var \PHPUnit_Extensions_Selenium2TestCase_Response $response */
+        $response = $this->getDriver()->curl($method, $url, $data);
+
+        return $response->getValue();
+    }
+
+    /**
+     * Take a screenshot of the current page.
+     *
+     * @param string $save_as The path of the screenshot to be saved.
+     *
+     * @return string The screenshot in PNG format.
+     */
+    public function takeScreenshot($save_as = null)
+    {
+        $data       = $this->driverCommand('GET', static::SCREENSHOT);
+        $screenshot = base64_decode($data);
+        if ($save_as) {
+            file_put_contents($save_as, $screenshot);
+        }
+
+        return $screenshot;
+    }
+
+    /**
+     * @param $data
+     */
+    public function hideKeyboard($data)
+    {
+        $rs = $this->driverCommand('POST', static::HIDE_KEYBOARD, $data);
+    }
 }
