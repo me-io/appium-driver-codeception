@@ -302,12 +302,18 @@ class AppiumDriver extends CodeceptionModule implements
         unset($this->sessions[$key]);
     }
 
+    /**
+     * @return \Appium\Remote\AppiumRemoteDriver
+     */
     public function getDriver()
     {
         return $this->AppiumDriver;
     }
 
 
+    /**
+     * @return \Appium\TestCase\Session
+     */
     public function getSession()
     {
         return $this->AppiumSession;
