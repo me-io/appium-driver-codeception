@@ -1,7 +1,10 @@
 <?php
 namespace Appium;
 
+use Appium\Remote\AppiumRemoteDriver;
 use Appium\Remote\Dummy;
+use Appium\TestCase\Element;
+use Appium\TestCase\Session;
 use Codeception\Exception\ConnectionException;
 use Codeception\Lib\Interfaces\ConflictsWithModule;
 use Codeception\Lib\Interfaces\MultiSession as MultiSessionInterface;
@@ -11,10 +14,6 @@ use Codeception\Module as CodeceptionModule;
 use Codeception\Step;
 use Codeception\Test\Descriptor;
 use Codeception\TestInterface;
-use Facebook\WebDriver\Exception\UnknownServerException;
-use Facebook\WebDriver\Exception\WebDriverCurlException;
-use Facebook\WebDriver\Remote\RemoteWebDriver;
-use Facebook\WebDriver\Remote\WebDriverCapabilityType;
 
 /**
  * ## Public Properties
@@ -53,6 +52,8 @@ class AppiumDriver extends CodeceptionModule implements
         ];
 
     protected $wd_host;
+    /** @var \PHPUnit_Extensions_Selenium2TestCase_URL */
+    protected $selenium_url;
     protected $capabilities;
     protected $connectionTimeoutInMs;
     protected $requestTimeoutInMs;
@@ -64,15 +65,22 @@ class AppiumDriver extends CodeceptionModule implements
     protected $sslProxy;
     protected $sslProxyPort;
 
+
     /**
-     * @var RemoteWebDriver
+     * @var AppiumRemoteDriver
      */
     public $AppiumDriver;
+    /**
+     * @var Session
+     */
+    public $AppiumSession;
 
     /**
      * @var array
      */
     protected $classes = [];
+
+    const SCREENSHOT = 'screenshot';
 
     public function _requires()
     {
@@ -82,10 +90,8 @@ class AppiumDriver extends CodeceptionModule implements
     public function _initialize()
     {
         $this->wd_host      = sprintf('http://%s:%s/wd/hub', $this->config['host'], $this->config['port']);
+        $this->selenium_url = new \PHPUnit_Extensions_Selenium2TestCase_URL(sprintf('http://%s:%s', $this->config['host'], $this->config['port']));
         $this->capabilities = $this->config['capabilities'];
-        if ($proxy = $this->getProxy()) {
-            $this->capabilities[WebDriverCapabilityType::PROXY] = $proxy;
-        }
         $this->outputCli("Snapshot Saved session snapshot");
 
         $this->connectionTimeoutInMs = $this->config['connection_timeout'] * 1000;
@@ -95,18 +101,12 @@ class AppiumDriver extends CodeceptionModule implements
                 $this->AppiumDriver = new Dummy();
 
             } else {
-                $this->AppiumDriver = RemoteWebDriver::create(
-                    $this->wd_host,
-                    $this->capabilities,
-                    $this->connectionTimeoutInMs,
-                    $this->requestTimeoutInMs,
-                    $this->httpProxy,
-                    $this->httpProxyPort
-                );
+                $this->AppiumDriver  = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
+                $this->AppiumSession = $this->AppiumDriver->startSession($this->capabilities, $this->selenium_url);
             }
 
             $this->sessions[] = $this->_backupSession();
-        } catch (WebDriverCurlException $e) {
+        } catch (\Exception $e) {
             throw new ConnectionException(
                 $e->getMessage() . "\n \nPlease make sure that Selenium Server or PhantomJS is running."
             );
@@ -134,7 +134,7 @@ class AppiumDriver extends CodeceptionModule implements
 
         }
 
-        if (!isset($this->AppiumDriver)) {
+        if (!isset($this->AppiumSession)) {
             $this->_initialize();
         }
         $test->getMetadata()->setCurrent([
@@ -222,11 +222,11 @@ class AppiumDriver extends CodeceptionModule implements
         foreach ($this->sessions as $session) {
             $this->_loadSession($session);
             try {
-                $this->AppiumDriver->quit();
-            } catch (UnknownServerException $e) {
+                $this->AppiumSession->stop();
+            } catch (\Exception $e) {
                 // Session already closed so nothing to do
             }
-            unset($this->AppiumDriver);
+            unset($this->AppiumSession);
         }
         $this->sessions = [];
     }
@@ -261,47 +261,92 @@ class AppiumDriver extends CodeceptionModule implements
 
     public function _initializeSession()
     {
-        $this->AppiumDriver = RemoteWebDriver::create($this->wd_host, $this->capabilities);
-        $this->sessions[]   = $this->_backupSession();
-        $this->AppiumDriver->manage()->timeouts()->implicitlyWait($this->config['wait']);
+        $this->AppiumDriver  = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
+        $this->AppiumSession = $this->AppiumDriver->startSession($this->capabilities, $this->selenium_url);
+        $this->sessions[]    = $this->_backupSession();
     }
 
     public function _loadSession($session)
     {
-        $this->AppiumDriver = $session;
+        $this->AppiumSession = $session;
     }
 
     public function _saveScreenshot($filename)
     {
-        if ($this->AppiumDriver !== null) {
-            $this->AppiumDriver->takeScreenshot($filename);
+        if ($this->AppiumSession !== null) {
+            $this->takeScreenshot($filename);
         } else {
             codecept_debug('AppiumDriver::_saveScreenshot method has been called when AppiumDriver is not set');
             codecept_debug(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
         }
     }
 
-    /**
-     * @return RemoteWebDriver
-     */
     public function _backupSession()
+    {
+        return $this->AppiumSession;
+    }
+
+    /**
+     * @param Session $AppiumSession
+     */
+    public function _closeSession($AppiumSession)
+    {
+        $keys = array_keys($this->sessions, $AppiumSession, true);
+        $key  = array_shift($keys);
+        try {
+            $AppiumSession->stop();
+
+        } catch (\Exception $e) {
+            // Session already closed so nothing to do
+        }
+        unset($this->sessions[$key]);
+    }
+
+    public function getDriver()
     {
         return $this->AppiumDriver;
     }
 
-    /**
-     * @param $AppiumDriver
-     */
-    public function _closeSession($AppiumDriver)
+
+    public function getSession()
     {
-        $keys = array_keys($this->sessions, $AppiumDriver, true);
-        $key  = array_shift($keys);
-        try {
-            $AppiumDriver->quit();
-        } catch (UnknownServerException $e) {
-            // Session already closed so nothing to do
+        return $this->AppiumSession;
+    }
+
+    /**
+     * @param $method
+     * @param $command
+     * @param $data
+     *
+     * @return mixed
+     */
+    public function driverCommand($method = 'POST', $command, $data = [])
+    {
+
+        $url = $this->getSession()->getSessionUrl()->descend($command);
+
+        /** @var \PHPUnit_Extensions_Selenium2TestCase_Response $response */
+        $response = $this->getDriver()->curl($method, $url, $data);
+
+        return $response->getValue();
+    }
+
+    /**
+     * Take a screenshot of the current page.
+     *
+     * @param string $save_as The path of the screenshot to be saved.
+     *
+     * @return string The screenshot in PNG format.
+     */
+    public function takeScreenshot($save_as = null)
+    {
+        $data       = $this->driverCommand('GET', static::SCREENSHOT);
+        $screenshot = base64_decode($data);
+        if ($save_as) {
+            file_put_contents($save_as, $screenshot);
         }
-        unset($this->sessions[$key]);
+
+        return $screenshot;
     }
 
     /**
@@ -352,5 +397,126 @@ class AppiumDriver extends CodeceptionModule implements
         $output->writeln('');
 
     }
+
+
+    /**
+     * @return \Appium\TestCase\Element
+     */
+    public function TestCaseElement()
+    {
+        return new Element($this->AppiumDriver, $this->getSession()->getSessionUrl());
+    }
+
+    /**
+     * @param $value
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byIOSUIAutomation($value)
+    {
+        return $this->TestCaseElement()->by('-ios predicate string', $value);
+        //return $this->TestCaseElement()->by('-ios uiautomation', $value);
+    }
+
+    /**
+     * @param $value
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byAndroidUIAutomator($value)
+    {
+        return $this->TestCaseElement()->by('-android uiautomator', $value);
+    }
+
+    /**
+     * @param $value
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byAccessibilityId($value)
+    {
+        return $this->TestCaseElement()->by('accessibility id', $value);
+    }
+
+    /**
+     * @param string $value e.g. 'container'
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byClassName($value)
+    {
+        return $this->TestCaseElement()->by('class name', $value);
+    }
+
+    /**
+     * @param string $value e.g. 'div.container'
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byCssSelector($value)
+    {
+        return $this->TestCaseElement()->by('css selector', $value);
+    }
+
+    /**
+     * @param string $value e.g. 'uniqueId'
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byId($value)
+    {
+        return $this->TestCaseElement()->by('id', $value);
+    }
+
+    /**
+     * @param string $value e.g. 'Link text'
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byLinkText($value)
+    {
+        return $this->TestCaseElement()->by('link text', $value);
+    }
+
+    /**
+     * @param string $value e.g. 'Link te'
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byPartialLinkText($value)
+    {
+        return $this->TestCaseElement()->by('partial link text', $value);
+    }
+
+    /**
+     * @param string $value e.g. 'email_address'
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byName($value)
+    {
+        return $this->TestCaseElement()->by('name', $value);
+    }
+
+    /**
+     * @param string $value e.g. 'body'
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byTag($value)
+    {
+        return $this->TestCaseElement()->by('tag name', $value);
+    }
+
+    /**
+     * @param string $value e.g. '/div[@attribute="value"]'
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byXPath($value)
+    {
+        return $this->TestCaseElement()->by('xpath', $value);
+    }
+
 
 }
