@@ -62,7 +62,7 @@ class Element
             'id'    => $this->getId(),
             'value' => $value,
         ];
-        $url  = $this->getSessionUrl()->descend('appium')->descend('element')->descend($this->getId())->descend('value');
+        $url  = $this->getSessionUrl()->ascend()->ascend()->descend('appium')->descend('element')->descend($this->getId())->descend('value');
         $this->driver->curl('POST', $url, $data);
     }
 
@@ -72,7 +72,7 @@ class Element
             'id'    => $this->getId(),
             'value' => [$keys],
         ];
-        $url  = $this->getSessionUrl()->descend('appium')->descend('element')->descend($this->getId())->descend('replace_value');
+        $url  = $this->getSessionUrl()->ascend()->ascend()->descend('appium')->descend('element')->descend($this->getId())->descend('replace_value');
         $this->driver->curl('POST', $url, $data);
     }
 
