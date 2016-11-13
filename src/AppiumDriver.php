@@ -414,8 +414,17 @@ class AppiumDriver extends CodeceptionModule implements
      */
     public function byIOSUIAutomation($value)
     {
+        return $this->TestCaseElement()->by('-ios uiautomation', $value);
+    }
+
+    /**
+     * @param $value
+     *
+     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
+     */
+    public function byIOSPredicateString($value)
+    {
         return $this->TestCaseElement()->by('-ios predicate string', $value);
-        //return $this->TestCaseElement()->by('-ios uiautomation', $value);
     }
 
     /**
