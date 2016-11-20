@@ -4,10 +4,6 @@ namespace Appium\TestCase;
 class Element
     extends \PHPUnit_Extensions_Selenium2TestCase_Element
 {
-    protected function getSessionUrl()
-    {
-        return $this->url;
-    }
 
     /**
      * @param array                                        $value
@@ -56,24 +52,45 @@ class Element
         return $el;
     }
 
-    public function setImmediateValue($value)
+    /**
+     * @return \PHPUnit_Extensions_Selenium2TestCase_URL|string
+     */
+    protected function getSessionUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param $value
+     *
+     * @return \PHPUnit_Extensions_Selenium2TestCase_Response
+     */
+    public function setValueImmediate($value)
     {
         $data = [
             'id'    => $this->getId(),
             'value' => $value,
         ];
         $url  = $this->getSessionUrl()->ascend()->ascend()->descend('appium')->descend('element')->descend($this->getId())->descend('value');
-        $this->driver->curl('POST', $url, $data);
+
+        return $this->driver->curl('POST', $url, $data);
     }
 
-    public function setText($keys)
+
+    /**
+     * @param $keys
+     *
+     * @return \PHPUnit_Extensions_Selenium2TestCase_Response
+     */
+    public function replaceValue($keys)
     {
         $data = [
             'id'    => $this->getId(),
             'value' => [$keys],
         ];
         $url  = $this->getSessionUrl()->ascend()->ascend()->descend('appium')->descend('element')->descend($this->getId())->descend('replace_value');
-        $this->driver->curl('POST', $url, $data);
+
+        return $this->driver->curl('POST', $url, $data);
     }
 
 }

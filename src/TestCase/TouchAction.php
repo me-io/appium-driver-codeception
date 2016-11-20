@@ -9,15 +9,27 @@ class TouchAction
     private $driver;
     private $actions;
 
-
+    /**
+     * TouchAction constructor.
+     *
+     * @param \PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl
+     * @param \Appium\Remote\AppiumRemoteDriver         $driver
+     */
     public function __construct(\PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl,
                                 AppiumRemoteDriver $driver)
     {
         $this->sessionUrl = $sessionUrl;
         $this->driver     = $driver;
         $this->actions    = [];
+
+        return $this;
     }
 
+    /**
+     * @param $params
+     *
+     * @return $this
+     */
     public function tap($params)
     {
         $options = $this->getOptions($params);
@@ -33,6 +45,11 @@ class TouchAction
         return $this;
     }
 
+    /**
+     * @param $params
+     *
+     * @return $this
+     */
     public function press($params)
     {
         $options = $this->getOptions($params);
@@ -42,6 +59,11 @@ class TouchAction
         return $this;
     }
 
+    /**
+     * @param $params
+     *
+     * @return $this
+     */
     public function longPress($params)
     {
         $options = $this->getOptions($params);
@@ -57,6 +79,11 @@ class TouchAction
         return $this;
     }
 
+    /**
+     * @param $params
+     *
+     * @return $this
+     */
     public function moveTo($params)
     {
         $options = $this->getOptions($params);
@@ -66,6 +93,11 @@ class TouchAction
         return $this;
     }
 
+    /**
+     * @param $params
+     *
+     * @return $this
+     */
     public function wait($params)
     {
         $options = [];
@@ -85,6 +117,9 @@ class TouchAction
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function release()
     {
         $this->addAction('release', []);
@@ -92,15 +127,22 @@ class TouchAction
         return $this;
     }
 
+    /**
+     * @return \PHPUnit_Extensions_Selenium2TestCase_Response
+     */
     public function perform()
     {
         $params = [
             'actions' => $this->actions,
         ];
         $url    = $this->sessionUrl->descend('touch')->descend('perform');
-        $this->driver->curl('POST', $url, $params);
+
+        return $this->driver->curl('POST', $url, $params);
     }
 
+    /**
+     * @return array
+     */
     public function getJSONWireGestures()
     {
         $actions = [];
@@ -111,8 +153,12 @@ class TouchAction
         return $actions;
     }
 
-
-    protected function getOptions($params)
+    /**
+     * @param $params
+     *
+     * @return array
+     */
+    public function getOptions($params)
     {
         $opts = [];
 
@@ -129,7 +175,13 @@ class TouchAction
         return $opts;
     }
 
-    protected function addAction($action, $options)
+    /**
+     * @param $action
+     * @param $options
+     *
+     * @return array
+     */
+    public function addAction($action, $options)
     {
         $gesture = [
             'action'  => $action,
@@ -137,5 +189,7 @@ class TouchAction
         ];
 
         $this->actions[] = $gesture;
+
+        return $this->actions;
     }
 }

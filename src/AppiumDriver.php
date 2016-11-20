@@ -4,7 +4,9 @@ namespace Appium;
 use Appium\Remote\AppiumRemoteDriver;
 use Appium\Remote\Dummy;
 use Appium\TestCase\Element;
+use Appium\TestCase\MultiAction;
 use Appium\TestCase\Session;
+use Appium\TestCase\TouchAction;
 use Codeception\Exception\ConnectionException;
 use Codeception\Lib\Interfaces\ConflictsWithModule;
 use Codeception\Lib\Interfaces\MultiSession as MultiSessionInterface;
@@ -259,8 +261,8 @@ class AppiumDriver extends CodeceptionModule implements
 
     public function _initializeSession()
     {
-        $this->AppiumDriver  = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
-        $this->AppiumSession = $this->AppiumDriver->startSession($this->capabilities, $this->selenium_url);
+        $this->AppiumDriver  = new AppiumRemoteDriver($this->getSessionUrl(), $this->connectionTimeoutInMs);
+        $this->AppiumSession = $this->AppiumDriver->startSession($this->capabilities, $this->getSessionUrl());
         $this->sessions[]    = $this->_backupSession();
     }
 
@@ -308,6 +310,13 @@ class AppiumDriver extends CodeceptionModule implements
         return $this->AppiumDriver;
     }
 
+    /**
+     * @return \PHPUnit_Extensions_Selenium2TestCase_URL
+     */
+    public function getSessionUrl()
+    {
+        return $this->selenium_url;
+    }
 
     /**
      * @return \Appium\TestCase\Session
@@ -366,6 +375,11 @@ class AppiumDriver extends CodeceptionModule implements
 
     }
 
+    ////     ___ _    ___ __  __ ___ _  _ _____ ___
+    ////    | __| |  | __|  \/  | __| \| |_   _/ __|
+    ////    | _|| |__| _|| |\/| | _|| .` | | | \__ \
+    ////    |___|____|___|_|  |_|___|_|\_| |_| |___/
+    ////
 
     /**
      * @return \Appium\TestCase\Element
@@ -495,16 +509,45 @@ class AppiumDriver extends CodeceptionModule implements
         return $this->TestCaseElement()->by('xpath', $value);
     }
 
-    ////
-    ////
-    ////
-    ////
-    ////
-    ////
+
+    ////  _____ ___  _   _  ___ _  _     _   ___ _____ ___ ___  _  _
+    //// |_   _/ _ \| | | |/ __| || |   /_\ / __|_   _|_ _/ _ \| \| |
+    ////   | || (_) | |_| | (__| __ |  / _ \ (__  | |  | | (_) | .` |
+    ////   |_| \___/ \___/ \___|_||_| /_/ \_\___| |_| |___\___/|_|\_|
+
+    /**
+     * @return \Appium\TestCase\TouchAction
+     */
+    public function getTouchAction()
+    {
+        return new TouchAction($this->getSessionUrl(), $this->getDriver());
+    }
+
+    ////     __  __ _   _ _  _____ ___   _____ ___  _   _  ___ _  _     _   ___ _____ ___ ___  _  _
+    ////    |  \/  | | | | ||_   _|_ _| |_   _/ _ \| | | |/ __| || |   /_\ / __|_   _|_ _/ _ \| \| |
+    ////    | |\/| | |_| | |__| |  | |    | || (_) | |_| | (__| __ |  / _ \ (__  | |  | | (_) | .` |
+    ////    |_|  |_|\___/|____|_| |___|   |_| \___/ \___/ \___|_||_| /_/ \_\___| |_| |___\___/|_|\_|
+
+    /**
+     * @return \Appium\TestCase\MultiAction
+     */
+    public function getMultiAction()
+    {
+        return new MultiAction($this->getSessionUrl(), $this->getDriver());
+    }
+
+    ////       ___ ___  __  __ __  __   _   _  _ ___  ___
+    ////      / __/ _ \|  \/  |  \/  | /_\ | \| |   \/ __|
+    ////     | (_| (_) | |\/| | |\/| |/ _ \| .` | |) \__ \
+    ////      \___\___/|_|  |_|_|  |_/_/ \_\_|\_|___/|___/
     ////
 
+    const POST          = 'POST';
+    const GET           = 'GET';
+    const DEL           = 'DELETE';
     const SCREENSHOT    = 'screenshot';
     const HIDE_KEYBOARD = 'appium/device/hide_keyboard';
+    const GET_STRINGS   = 'appium/app/strings';
 
     /**
      * @param $method
@@ -533,7 +576,7 @@ class AppiumDriver extends CodeceptionModule implements
      */
     public function takeScreenshot($save_as = null)
     {
-        $data       = $this->driverCommand('GET', static::SCREENSHOT);
+        $data       = $this->driverCommand(static::GET, static::SCREENSHOT);
         $screenshot = base64_decode($data);
         if ($save_as) {
             file_put_contents($save_as, $screenshot);
@@ -544,9 +587,22 @@ class AppiumDriver extends CodeceptionModule implements
 
     /**
      * @param $data
+     *
+     * @return mixed
      */
     public function hideKeyboard($data)
     {
-        $rs = $this->driverCommand('POST', static::HIDE_KEYBOARD, $data);
+        return $this->driverCommand(static::POST, static::HIDE_KEYBOARD, $data);
+    }
+
+    /**
+     * @param array $data ['language', 'stringFile']
+     *
+     * @see https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+     * @return mixed
+     */
+    public function getStrings($data = [])
+    {
+        return $this->driverCommand(static::POST, static::GET_STRINGS, $data);
     }
 }

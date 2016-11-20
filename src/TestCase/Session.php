@@ -30,12 +30,21 @@ class Session
         return \PHPUnit_Extensions_Selenium2TestCase_Element::fromResponseValue($value, $this->getSessionUrl()->descend('element'), $this->driver);
     }
 
+    /**
+     * @return \PHPUnit_Extensions_Selenium2TestCase_Response
+     */
     public function reset()
     {
         $url = $this->getSessionUrl()->addCommand('appium/app/reset');
-        $this->driver->curl('POST', $url);
+
+        return $this->driver->curl('POST', $url);
     }
 
+    /**
+     * @param null $language
+     *
+     * @return mixed
+     */
     public function appStrings($language = null)
     {
         $url  = $this->getSessionUrl()->addCommand('appium/app/strings');
@@ -47,6 +56,13 @@ class Session
         return $this->driver->curl('POST', $url, $data)->getValue();
     }
 
+
+    /**
+     * @param      $keycode
+     * @param null $metastate
+     *
+     * @return \PHPUnit_Extensions_Selenium2TestCase_Response
+     */
     public function keyEvent($keycode, $metastate = null)
     {
         $url  = $this->getSessionUrl()->addCommand('appium/device/keyevent');
@@ -54,9 +70,13 @@ class Session
             'keycode'   => $keycode,
             'metastate' => $metastate,
         ];
-        $this->driver->curl('POST', $url, $data);
+
+        return $this->driver->curl('POST', $url, $data);
     }
 
+    /**
+     * @return mixed
+     */
     public function currentActivity()
     {
         $url = $this->getSessionUrl()->addCommand('appium/device/current_activity');
@@ -64,6 +84,9 @@ class Session
         return $this->driver->curl('GET', $url)->getValue();
     }
 
+    /**
+     * @return array
+     */
     protected function initCommands()
     {
         $baseUrl  = $this->baseUrl;
@@ -75,6 +98,9 @@ class Session
         return $commands;
     }
 
+    /**
+     * @return \PHPUnit_Extensions_Selenium2TestCase_Driver
+     */
     public function getDriver()
     {
         return $this->driver;
