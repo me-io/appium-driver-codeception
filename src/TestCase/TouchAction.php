@@ -26,6 +26,14 @@ class TouchAction
     }
 
     /**
+     * @return \Appium\TestCase\Element
+     */
+    public function TestCaseElement()
+    {
+        return new Element($this->driver, $this->sessionUrl);
+    }
+
+    /**
      * @param $params
      *
      * @return $this
@@ -163,7 +171,7 @@ class TouchAction
         $opts = [];
 
         if (array_key_exists('element', $params) && $params['element'] != null) {
-            $opts['element'] = $params['element']->getId();
+            $opts['element'] = $this->TestCaseElement()->byXPath($params['element'])->getId();
         }
 
         # it makes no sense to have x but no y, or vice versa.
