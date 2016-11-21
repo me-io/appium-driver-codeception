@@ -261,8 +261,8 @@ class AppiumDriver extends CodeceptionModule implements
 
     public function _initializeSession()
     {
-        $this->AppiumDriver  = new AppiumRemoteDriver($this->getSessionUrl(), $this->connectionTimeoutInMs);
-        $this->AppiumSession = $this->AppiumDriver->startSession($this->capabilities, $this->getSessionUrl());
+        $this->AppiumDriver  = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
+        $this->AppiumSession = $this->AppiumDriver->startSession($this->capabilities, $this->selenium_url);
         $this->sessions[]    = $this->_backupSession();
     }
 
@@ -315,7 +315,7 @@ class AppiumDriver extends CodeceptionModule implements
      */
     public function getSessionUrl()
     {
-        return $this->selenium_url;
+        return $this->getSession()->getSessionUrl();
     }
 
     /**
@@ -386,7 +386,7 @@ class AppiumDriver extends CodeceptionModule implements
      */
     public function TestCaseElement()
     {
-        return new Element($this->AppiumDriver, $this->getSession()->getSessionUrl());
+        return new Element($this->AppiumDriver, $this->getSessionUrl());
     }
 
     /**
