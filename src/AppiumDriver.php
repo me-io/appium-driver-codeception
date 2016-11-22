@@ -7,6 +7,7 @@ use Appium\TestCase\Element;
 use Appium\TestCase\MultiAction;
 use Appium\TestCase\Session;
 use Appium\TestCase\TouchAction;
+use Appium\Tools\Output\AppiumCommands;
 use Codeception\Exception\ConnectionException;
 use Codeception\Lib\Interfaces\ConflictsWithModule;
 use Codeception\Lib\Interfaces\MultiSession as MultiSessionInterface;
@@ -34,6 +35,8 @@ class AppiumDriver extends CodeceptionModule implements
     ConflictsWithModule,
     RequiresPackage
 {
+    use AppiumCommands;
+
     protected $requiredFields = ['host'];
     protected $config
                               = [

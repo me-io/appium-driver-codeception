@@ -234,7 +234,6 @@ class JsonParser
         $urlString         = $this->constantsOutputFileName . "::$" . $url;
         if ($routeParams) {
             $urlString = "\$url";
-            $routeParamsString .= "\t\$url = " . $this->constantsOutputFileName . "::$" . $url . ";\n";
             foreach ($routeParams as $param) {
                 $routeParamsString .= "\t\$url = str_replace('" . $param['replace'] . "', $" . $param['parameterName'] . ", " . $this->constantsOutputFileName . "::$" . $url . ");\n\t";
             }

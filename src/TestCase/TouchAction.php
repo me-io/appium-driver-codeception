@@ -177,26 +177,7 @@ class TouchAction
                 /*
                  * Select the type of the selector sent in the options: ['element' => ['type' => 'xpath', 'value' => '//your_xpath']]
                  */
-                switch ($params['element']['type']){
-                    case 'xpath':
-                        $opts['element'] = $this->TestCaseElement()->byXPath($params['element']['value'])->getId();
-                        break;
-                    case 'name':
-                        $opts['element'] = $this->TestCaseElement()->byName($params['element']['value'])->getId();
-                        break;
-                    case 'id':
-                        $opts['element'] = $this->TestCaseElement()->byId($params['element']['value'])->getId();
-                        break;
-                    case 'className':
-                        $opts['element'] = $this->TestCaseElement()->byClassName($params['element']['value'])->getId();
-                        break;
-                    case 'css':
-                        $opts['element'] = $this->TestCaseElement()->byCssSelector($params['element']['value'])->getId();
-                        break;
-                }
-            }else{
-                // Default method is XPath and parameter can be sent like: ['element' => '//your_xpath']
-                $opts['element'] = $this->TestCaseElement()->byXPath($params['element'])->getId();
+                $opts['element'] = $this->TestCaseElement()->by($params['element']['type'], $params['element']['value'])->getId();
             }
 
         }
