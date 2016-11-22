@@ -162,6 +162,8 @@ class TouchAction
     }
 
     /**
+     * Get options and create element depending on the selector type sent in the options.
+     *
      * @param $params
      *
      * @return array
@@ -171,7 +173,32 @@ class TouchAction
         $opts = [];
 
         if (array_key_exists('element', $params) && $params['element'] != null) {
-            $opts['element'] = $this->TestCaseElement()->byXPath($params['element'])->getId();
+            if(is_array($params['element']) && isset($params['element']['type']) && isset($params['element']['value'])){
+                /*
+                 * Select the type of the selector sent in the options: ['element' => ['type' => 'xpath', 'value' => '//your_xpath']]
+                 */
+                switch ($params['element']['type']){
+                    case 'xpath':
+                        $opts['element'] = $this->TestCaseElement()->byXPath($params['element']['value'])->getId();
+                        break;
+                    case 'name':
+                        $opts['element'] = $this->TestCaseElement()->byName($params['element']['value'])->getId();
+                        break;
+                    case 'id':
+                        $opts['element'] = $this->TestCaseElement()->byId($params['element']['value'])->getId();
+                        break;
+                    case 'className':
+                        $opts['element'] = $this->TestCaseElement()->byClassName($params['element']['value'])->getId();
+                        break;
+                    case 'css':
+                        $opts['element'] = $this->TestCaseElement()->byCssSelector($params['element']['value'])->getId();
+                        break;
+                }
+            }else{
+                // Default method is XPath and parameter can be sent like: ['element' => '//your_xpath']
+                $opts['element'] = $this->TestCaseElement()->byXPath($params['element'])->getId();
+            }
+
         }
 
         # it makes no sense to have x but no y, or vice versa.
