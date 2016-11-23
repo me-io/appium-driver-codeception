@@ -32,7 +32,7 @@ class MultiAction
     /**
      * @param \Appium\TestCase\TouchAction $action
      *
-     * @return array
+     * @return $this
      */
     public function add(TouchAction $action)
     {
@@ -42,7 +42,7 @@ class MultiAction
 
         $this->actions[] = $action;
 
-        return $this->actions;
+        return $this;
     }
 
     /**
