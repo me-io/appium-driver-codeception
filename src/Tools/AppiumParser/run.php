@@ -1,7 +1,9 @@
 <?php
-
 include __DIR__ . '/../../../../../autoload.php';
 
-use Appium\Tools\AppiumParser\JsonParser;
+use Symfony\Component\Console\Application;
+use Appium\Tools\AppiumParser\JsonParserCommand;
 
-(new JsonParser())->generate();
+$application = new Application();
+$application->add(new JsonParserCommand());
+$application->run();

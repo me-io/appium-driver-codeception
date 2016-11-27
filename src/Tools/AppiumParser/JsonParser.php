@@ -47,6 +47,9 @@ class JsonParser
                                     \n\t/** @var string */\n\tstatic public \$DELETE = 'DELETE';
                                     {{constants}}\n}\n";
 
+    /** @var \Symfony\Component\Console\Output\OutputInterface Console output */
+    protected $consoleOutput;
+
     /** @var string */
     protected $constants = "";
 
@@ -58,10 +61,11 @@ class JsonParser
      *
      * @param string $jsonFile
      */
-    public function __construct($jsonFile = '')
+    public function __construct(\Symfony\Component\Console\Output\OutputInterface $console, $jsonFile = '')
     {
-        $jsonFile         = ($jsonFile) ? $jsonFile : $this->defaultJsonFile;
-        $this->jsonObject = json_decode(file_get_contents($jsonFile), true);
+        $this->consoleOutput = $console;
+        $jsonFile            = ($jsonFile) ? $jsonFile : $this->defaultJsonFile;
+        $this->jsonObject    = json_decode(file_get_contents($jsonFile), true);
     }
 
     /**
@@ -81,6 +85,8 @@ class JsonParser
              ->createConstants()
              ->createConstantsFile()
              ->createClassFile();
+
+        $this->consoleOutput->writeln("<info>Finished \nYou will find output files in /Tools/AppiumParser/output</info>");
     }
 
     /**
@@ -235,7 +241,7 @@ class JsonParser
         if ($routeParams) {
             $urlString = "\$url";
             foreach ($routeParams as $param) {
-                $routeParamsString .= "\t\$url = str_replace('" . $param['replace'] . "', $" . $param['parameterName'] . ", " . $this->constantsOutputFileName . "::$" . $url . ");\n\t";
+                $routeParamsString .= "\t\$url = str_replace('" . $param['replace'] . "', $" . $param['parameterName'] . ", " . $this->constantsOutputFileName . "::$" . $url . ");\n\t\t";
             }
         }
         $command = $routeParamsString . "\treturn \$this->driverCommand(" . $this->constantsOutputFileName . "::$" . $type . ", " . $urlString . $data . ");";
