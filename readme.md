@@ -4,29 +4,33 @@
 
 Include codeception appium driver in the composer.json file:
 
-```
-"tajawal/codeception-appium": "dev-master"
+```json
+{
+    "require": {
+        "tajawal/codeception-appium": "dev-master"
+    }
+}
 ```
 
 Run composer update:
 
-```
+```bash
 composer update
 ```
 
-This will install codeception appium driver and install all dependencies. 
-Now enable it in your suite yml file:
+This will install codeception appium driver and all dependencies. 
+Enable module in your suite yml file:
 
-```
+```yaml
 modules:
   enabled:
     ...
     - \Appium\AppiumDriver
 ```
 
-Now run build codeception command and you are good to go:
+Run build codeception command and you are good to go:
 
-```
+```bash
 codecept build
 ```
 
@@ -34,7 +38,7 @@ codecept build
 
 Add next configuration in the yml file to configure your driver:
 
-```
+```yaml
 config:
     \Appium\AppiumDriver:
       host: 10.0.2.2
