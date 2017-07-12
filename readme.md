@@ -7,7 +7,7 @@ Include codeception appium driver in the composer.json file:
 ```json
 {
     "require": {
-        "tajawal/codeception-appium": "dev-master"
+        "tajawal/codeception-appium": "~1"
     }
 }
 ```
