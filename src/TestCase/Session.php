@@ -67,7 +67,7 @@ class Session
     {
         $url  = $this->getSessionUrl()->addCommand('appium/device/keyevent');
         $data = [
-            'keycode'   => $keycode,
+            'keycode' => $keycode,
             'metastate' => $metastate,
         ];
 

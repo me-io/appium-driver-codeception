@@ -1,4 +1,5 @@
 <?php
+
 namespace Appium;
 
 use Appium\Remote\AppiumRemoteDriver;
@@ -7,7 +8,7 @@ use Appium\TestCase\Element;
 use Appium\TestCase\MultiAction;
 use Appium\TestCase\Session;
 use Appium\TestCase\TouchAction;
-use Appium\Tools\Output\AppiumCommands;
+use Appium\Tools\AppiumParser\Output\AppiumCommands;
 use Codeception\Exception\ConnectionException;
 use Codeception\Lib\Interfaces\ConflictsWithModule;
 use Codeception\Lib\Interfaces\MultiSession as MultiSessionInterface;
@@ -40,20 +41,20 @@ class AppiumDriver extends CodeceptionModule implements
     protected $requiredFields = ['host'];
     protected $config
                               = [
-            'host'               => '127.0.0.1',
-            'port'               => '4723',
-            'resetAfterSuite'    => true,
-            'resetAfterCest'     => true,
-            'resetAfterStep'     => false,
-            'resetAfterTest'     => false,
-            'capabilities'       => [],
+            'host' => '127.0.0.1',
+            'port' => '4723',
+            'resetAfterSuite' => true,
+            'resetAfterCest' => true,
+            'resetAfterStep' => false,
+            'resetAfterTest' => false,
+            'capabilities' => [],
             'connection_timeout' => null,
-            'request_timeout'    => null,
-            'http_proxy'         => null,
-            'http_proxy_port'    => null,
-            'ssl_proxy'          => null,
-            'ssl_proxy_port'     => null,
-            'debug_log_entries'  => 15,
+            'request_timeout' => null,
+            'http_proxy' => null,
+            'http_proxy_port' => null,
+            'ssl_proxy' => null,
+            'ssl_proxy_port' => null,
+            'debug_log_entries' => 15,
         ];
 
     protected $wd_host;
@@ -208,7 +209,7 @@ class AppiumDriver extends CodeceptionModule implements
 
         foreach ($logEntries as $logEntry) {
             // Timestamp is in milliseconds, but date() requires seconds.
-            $time = date('H:i:s', $logEntry['timestamp'] / 1000) .
+            $time          = date('H:i:s', $logEntry['timestamp'] / 1000) .
                 // Append the milliseconds to the end of the time string
                 '.' . ($logEntry['timestamp'] % 1000);
             $formattedLogs .= "{$time} {$logEntry['level']} - {$logEntry['message']}\n";
@@ -292,7 +293,7 @@ class AppiumDriver extends CodeceptionModule implements
     /**
      * @param Session $AppiumSession
      */
-    public function _closeSession($AppiumSession)
+    public function _closeSession($AppiumSession = null)
     {
         $keys = array_keys($this->sessions, $AppiumSession, true);
         $key  = array_shift($keys);

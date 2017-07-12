@@ -1,4 +1,5 @@
 <?php
+
 namespace Appium\TestCase;
 
 use Appium\Remote\AppiumRemoteDriver;

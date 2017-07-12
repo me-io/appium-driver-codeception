@@ -1,4 +1,5 @@
 <?php
+
 namespace Appium\TestCase;
 
 class Element
@@ -68,7 +69,7 @@ class Element
     public function setValueImmediate($value)
     {
         $data = [
-            'id'    => $this->getId(),
+            'id' => $this->getId(),
             'value' => $value,
         ];
         $url  = $this->getSessionUrl()->ascend()->ascend()->descend('appium')->descend('element')->descend($this->getId())->descend('value');
@@ -85,7 +86,7 @@ class Element
     public function replaceValue($keys)
     {
         $data = [
-            'id'    => $this->getId(),
+            'id' => $this->getId(),
             'value' => [$keys],
         ];
         $url  = $this->getSessionUrl()->ascend()->ascend()->descend('appium')->descend('element')->descend($this->getId())->descend('replace_value');

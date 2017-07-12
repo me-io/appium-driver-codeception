@@ -1,4 +1,5 @@
 <?php
+
 namespace Appium\TestCase;
 
 use Appium\Remote\AppiumRemoteDriver;
@@ -173,7 +174,7 @@ class TouchAction
         $opts = [];
 
         if (array_key_exists('element', $params) && $params['element'] != null) {
-            if(is_array($params['element']) && isset($params['element']['type']) && isset($params['element']['value'])){
+            if (is_array($params['element']) && isset($params['element']['type']) && isset($params['element']['value'])) {
                 /*
                  * Select the type of the selector sent in the options: ['element' => ['type' => 'xpath', 'value' => '//your_xpath']]
                  */
@@ -200,7 +201,7 @@ class TouchAction
     public function addAction($action, $options)
     {
         $gesture = [
-            'action'  => $action,
+            'action' => $action,
             'options' => $options,
         ];
 

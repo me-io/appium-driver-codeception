@@ -1,4 +1,5 @@
 <?php
+
 namespace Appium\Tools\AppiumParser;
 
 use Appium\Tools\AppiumParser\Helper\Helper;
@@ -11,7 +12,7 @@ use Appium\Tools\AppiumParser\Helper\Helper;
 class JsonParser
 {
     /** @var string */
-    public $defaultJsonFile = __DIR__ . '/json/appiumCommand.json';
+    public $defaultJsonFile = __DIR__ . '/Json/AppiumCommand.json';
 
     /** @var mixed */
     public $jsonObject;
@@ -76,7 +77,7 @@ class JsonParser
     {
         foreach ($this->jsonObject as $key => $item) {
             $this->functionsArray[] = [
-                'url'     => $key,
+                'url' => $key,
                 'details' => $this->getDetails($item),
             ];
         }
@@ -103,7 +104,7 @@ class JsonParser
 
         foreach ($data as $key => $item) {
             $details[] = [
-                'type'    => $key,
+                'type' => $key,
                 'options' => $item,
             ];
         }
@@ -211,12 +212,12 @@ class JsonParser
         $optionsAnnotations .= ($allOptions) ? "\t* @param array \$data\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @options " . json_encode($allOptions) . "\n\t*\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @return mixed\n" : "";
-        $options_          = ($allOptions) ? "\$data" : "";
-        $routeParamsString = ($allOptions && $routeParamsString) ? ", " . $routeParamsString : $routeParamsString;
-        $this->classOutput .= $optionsAnnotations . "\t*\n\t**/\n";
-        $this->classOutput .= "\tpublic function " . $options['command'] . "(" . $options_ . "" . $routeParamsString . "){\n";
+        $options_           = ($allOptions) ? "\$data" : "";
+        $routeParamsString  = ($allOptions && $routeParamsString) ? ", " . $routeParamsString : $routeParamsString;
+        $this->classOutput  .= $optionsAnnotations . "\t*\n\t**/\n";
+        $this->classOutput  .= "\tpublic function " . $options['command'] . "(" . $options_ . "" . $routeParamsString . "){\n";
 
-        $this->classOutput .= "\t\t" . $this->getCommand($url, $type, $options_, $routeParams) . "\n\t}";
+        $this->classOutput                     .= "\t\t" . $this->getCommand($url, $type, $options_, $routeParams) . "\n\t}";
         $this->classArray[$options['command']] = $options['command'];
 
         return $options['command'];

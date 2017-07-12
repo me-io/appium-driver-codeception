@@ -1,4 +1,5 @@
 <?php
+
 namespace Appium\Remote;
 
 class Dummy

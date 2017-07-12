@@ -1,4 +1,5 @@
 <?php
+
 namespace Appium\Remote;
 
 use Appium\TestCase\Session;

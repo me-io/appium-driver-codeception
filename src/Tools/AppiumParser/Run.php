@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/../../../../../autoload.php';
+include __DIR__ . '/../../../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 use Appium\Tools\AppiumParser\JsonParserCommand;

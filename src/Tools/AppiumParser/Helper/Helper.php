@@ -1,4 +1,5 @@
 <?php
+
 namespace Appium\Tools\AppiumParser\Helper;
 
 /**
@@ -19,20 +20,20 @@ class Helper
     static public function getBetweenAll($data)
     {
         $results = [];
-        $endsAt = 0;
+        $endsAt  = 0;
 
-        do{
+        do {
             $startsAt = (!$endsAt) ? strpos($data, ":") : strpos($data, ":", $endsAt);
-            if($startsAt !== false){
+            if ($startsAt !== false) {
                 $endsAt = strpos($data, "/", $startsAt);
-                if($endsAt === false){
+                if ($endsAt === false) {
                     $endsAt = strlen($data);
                 }
                 $results[] = [
                     'replace' => substr($data, $startsAt, $endsAt - $startsAt),
                     'parameterName' => substr($data, ($startsAt + 1), $endsAt - ($startsAt + 1))];
             }
-        }while($startsAt);
+        } while ($startsAt);
 
 
         return $results;
