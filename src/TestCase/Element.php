@@ -94,4 +94,17 @@ class Element
         return $this->driver->curl('POST', $url, $data);
     }
 
+    /**
+     * @return string content of this element
+     */
+    public function getText()
+    {
+        $data = array(
+            'id' => $this->getId()
+        );
+        $url = $this->getSessionUrl()->ascend()->ascend()->descend('element')->descend($this->getId())->descend('text');
+        $response =  $this->driver->curl('GET', $url, $data);
+        return $response->getValue();
+    }
+
 }
