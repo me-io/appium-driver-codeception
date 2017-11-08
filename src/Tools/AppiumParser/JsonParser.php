@@ -36,13 +36,13 @@ class JsonParser
     protected $classOutput = "";
 
     /** @var string */
-    protected $classTemplate = "<?php \nnamespace Appium\\Tools\\Output;\n\n trait AppiumCommands \n{\n {{functions}}  \n}\n";
+    protected $classTemplate = "<?php \nnamespace Appium\\Tools\\AppiumParser\\Output;\n\n trait AppiumCommands \n{\n {{functions}}  \n}\n";
 
     /** @var string */
     protected $constantsOutput = "";
 
     /** @var string */
-    protected $constantsTemplate = "<?php\nnamespace Appium\\Tools\\Output;\n\n class Constants\n{
+    protected $constantsTemplate = "<?php\nnamespace Appium\\Tools\\AppiumParser\\Output;\n\n class Constants\n{
                                     \n\t/** @var string */\n\tstatic public \$POST = 'POST';
                                     \n\t/** @var string */\n\tstatic public \$GET = 'GET';
                                     \n\t/** @var string */\n\tstatic public \$DELETE = 'DELETE';
