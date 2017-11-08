@@ -23,7 +23,7 @@ class JsonParserCommand extends Command
             ->setName('generate:all')
             ->setDescription('Generate all commands from the json routs.')
             ->setHelp("With this command you will generate all commands located in json found here: 
-            https://github.com/appium/appium-base-driver/blob/5ccc17437c4654478f4f4cbe9e7dce0e24e31095/lib/mjsonwp/routes.js ");
+            https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js ");
     }
 
     /**
