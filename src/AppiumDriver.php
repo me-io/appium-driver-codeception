@@ -262,6 +262,14 @@ class AppiumDriver extends CodeceptionModule implements
         return null;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getDeviceName()
+    {
+        $cap = $this->config['capabilities'];
+        return isset($cap['deviceName']) ? $cap['deviceName'] : '';
+    }
 
     public function _initializeSession()
     {
@@ -552,6 +560,7 @@ class AppiumDriver extends CodeceptionModule implements
     const SCREENSHOT    = 'screenshot';
     const HIDE_KEYBOARD = 'appium/device/hide_keyboard';
     const GET_STRINGS   = 'appium/app/strings';
+    const NETWORK       = 'network_connection';
 
     /**
      * @param $method
@@ -608,5 +617,130 @@ class AppiumDriver extends CodeceptionModule implements
     public function getStrings($data = [])
     {
         return $this->driverCommand(static::POST, static::GET_STRINGS, $data);
+    }
+
+    /**
+     * @param $element that accepts a string
+     * @param string to send to $element
+     */
+    public function sendKeys($element, $keys)
+    {
+        $element->setValueImmediate($keys);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNetworkConnection()
+    {
+        return $this->driverCommand(static::GET, static::NETWORK);
+    }
+
+    /**
+     * @param array of booleans $data 
+     * ['data'=>true|false , 'wifi'=>true|false, 'airplanemode'=>true|false]
+     *
+     * @return mixed
+     */
+    public function setNetworkConnection($dataArr)
+    {
+	// Note: this does not work due to security exception, 
+	// Android no longer allows this
+
+        $mode = 0;
+        $data = 4;
+        $wifi = 2;
+        $airplane = 1;
+        if (in_array('data', $dataArr) && $dataArr['data'] === true)
+            $mode = $mode | $data;
+        if (in_array('wifi', $dataArr) && $dataArr['wifi'] == true)
+            $mode = $mode | $wifi;
+        if (in_array('airplanemode', $dataArr) && $dataArr['airplanemode'] == true)
+            $mode = $mode | $airplane;
+        return $this->driverCommand(static::POST, static::NETWORK, ['type' => $mode]);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function toggleAirplaneMode()
+    {
+	// Note: this does not work due to security exception, 
+	// Android no longer allows this
+        return $this->driverCommand(static::POST, '/appium/device/toggle_airplane_mode', '');
+    }
+
+    /**
+     * @param startX x-percent at which to start
+     * @param startY y-percent at which to start
+     * @param endX x-percent at which to end
+     * @param endY y-percent at which to end
+     * @param duration (optional) time to take the swipe in ms
+     *
+     * @return mixed
+     */
+    public function swipe($startX, $startY, $endX, $endY, $duration = 800)
+    {
+        $action = $this->initiateTouchAction();
+        $action->press(array('x' => $startX, 'y' => $startY))
+            ->wait($duration)
+            ->moveTo(array('x' => $endX, 'y' => $endY))
+            ->wait($duration)
+            ->release()
+            ->perform();
+        return $this;
+    }
+
+    /**
+     * @return TouchAction
+     */
+    public function initiateTouchAction()
+    {
+        $session = $this->getSession();
+        return new TouchAction($session->getSessionUrl(), $session->getDriver());
+    }
+
+    /**
+     * @return mixed
+     */
+    public function launchApp()
+    {
+        // /appium/app/launch
+        $session = $this->getSession();
+        $url = $this->getSessionUrl()->descend('appium')->descend('app')->descend('launch');
+        $response = $this->getDriver()->curl('POST', $url, null);
+    }
+
+    /**
+     * @param $seconds time during which the application will be put to the
+     * background
+     */
+    public function backgroundApp($seconds)
+    {
+        $session = $this->getSession();
+        $data = array(
+            'seconds' => $seconds
+        );
+        $url = $this->getSessionUrl()->descend('appium')->descend('app')->descend('background');
+        $response = $this->getDriver()->curl('POST', $url, $data);
+    }
+
+    /**
+     * @param $appPackage package of application to start
+     * @param $appActivity activity to start
+     * @param $intentAction
+     * @param $intentCategory
+     */
+    public function startActivity($appPackage, $appActivity, $intentAction, $intentCategory)
+    {
+        $session = $this->getSession();
+        $data = array(
+            'appPackage' => $appPackage,
+            'appActivity' => $appActivity,
+            'intentAction' => $intentAction,
+            'intentCategory' => $intentCategory
+        );
+        $url = $this->getSessionUrl()->descend('appium')->descend('device')->descend('start_activity');
+        $response = $session->getDriver()->curl('POST', $url, $data);
     }
 }
