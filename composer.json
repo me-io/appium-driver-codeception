@@ -14,10 +14,11 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Mohamed Meabed"
+      "name": "Mohamed Meabed",
+      "email": "mo.meabed@gmail.com"
     }
   ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "require": {
     "php": ">=5.5",
     "phpunit/phpunit": "~5",
@@ -27,7 +28,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Appium\\": "src/"
+      "Appium\\": "src/",
+      "Parser\\": "misc/Parser/"
     }
   }
 }

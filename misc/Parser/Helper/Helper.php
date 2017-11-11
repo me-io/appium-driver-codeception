@@ -1,6 +1,6 @@
 <?php
 
-namespace Appium\Tools\AppiumParser\Helper;
+namespace Parser\Helper;
 
 /**
  * Class Helper
@@ -20,7 +20,7 @@ class Helper
     static public function getBetweenAll($data)
     {
         $results = [];
-        $endsAt  = 0;
+        $endsAt = 0;
 
         do {
             $startsAt = (!$endsAt) ? strpos($data, ":") : strpos($data, ":", $endsAt);

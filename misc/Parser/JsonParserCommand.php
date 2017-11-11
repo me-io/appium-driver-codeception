@@ -1,6 +1,6 @@
 <?php
 
-namespace Appium\Tools\AppiumParser;
+namespace Parser;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class JsonParserCommand
  *
- * @package Appium\Tools\AppiumParser
+ * @package Parser
  */
 class JsonParserCommand extends Command
 {

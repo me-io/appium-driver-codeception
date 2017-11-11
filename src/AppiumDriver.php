@@ -8,7 +8,7 @@ use Appium\TestCase\Element;
 use Appium\TestCase\MultiAction;
 use Appium\TestCase\Session;
 use Appium\TestCase\TouchAction;
-use Appium\Tools\AppiumParser\Output\AppiumCommands;
+use Appium\Traits\BaseCommands;
 use Codeception\Exception\ConnectionException;
 use Codeception\Lib\Interfaces\ConflictsWithModule;
 use Codeception\Lib\Interfaces\MultiSession as MultiSessionInterface;
@@ -36,11 +36,11 @@ class AppiumDriver extends CodeceptionModule implements
     ConflictsWithModule,
     RequiresPackage
 {
-    use AppiumCommands;
+    use BaseCommands;
 
     protected $requiredFields = ['host'];
     protected $config
-                              = [
+        = [
             'host' => '127.0.0.1',
             'port' => '4723',
             'resetAfterSuite' => true,
@@ -65,7 +65,7 @@ class AppiumDriver extends CodeceptionModule implements
     protected $requestTimeoutInMs;
     protected $test;
     protected $sessionSnapshots = [];
-    protected $sessions         = [];
+    protected $sessions = [];
     protected $httpProxy;
     protected $httpProxyPort;
     protected $sslProxy;
@@ -93,19 +93,19 @@ class AppiumDriver extends CodeceptionModule implements
 
     public function _initialize()
     {
-        $this->wd_host      = sprintf('http://%s:%s/wd/hub', $this->config['host'], $this->config['port']);
+        $this->wd_host = sprintf('http://%s:%s/wd/hub', $this->config['host'], $this->config['port']);
         $this->selenium_url = new \PHPUnit_Extensions_Selenium2TestCase_URL(sprintf('http://%s:%s', $this->config['host'], $this->config['port']));
         $this->capabilities = $this->config['capabilities'];
         $this->outputCli("Snapshot Saved session snapshot");
 
         $this->connectionTimeoutInMs = $this->config['connection_timeout'] * 1000;
-        $this->requestTimeoutInMs    = $this->config['request_timeout'] * 1000;
+        $this->requestTimeoutInMs = $this->config['request_timeout'] * 1000;
         try {
             if (!empty($this->config['dummyRemote'])) {
                 $this->AppiumDriver = new Dummy();
 
             } else {
-                $this->AppiumDriver  = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
+                $this->AppiumDriver = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
                 $this->AppiumSession = $this->AppiumDriver->startSession($this->capabilities, $this->selenium_url);
             }
 
@@ -124,8 +124,8 @@ class AppiumDriver extends CodeceptionModule implements
 
     public function _before(TestInterface $test)
     {
-        $file     = $test->getMetadata()->getFilename();
-        $class    = $this->getClassNames($file)[0];
+        $file = $test->getMetadata()->getFilename();
+        $class = $this->getClassNames($file)[0];
         $classMd5 = $class;
 
         if ($this->config['resetAfterCest'] && !key_exists($classMd5, $this->classes)) {
@@ -180,7 +180,7 @@ class AppiumDriver extends CodeceptionModule implements
     {
         // todo from appium logs
         //$this->debugAppiumDriverLogs();
-        $filename  = preg_replace('~\W~', '.', Descriptor::getTestSignature($test));
+        $filename = preg_replace('~\W~', '.', Descriptor::getTestSignature($test));
         $outputDir = codecept_output_dir();
         $this->_saveScreenshot($outputDir . mb_strcut($filename, 0, 245, 'utf-8') . '.fail.png');
         $this->debug("Screenshot is saved into '$outputDir' dir");
@@ -209,7 +209,7 @@ class AppiumDriver extends CodeceptionModule implements
 
         foreach ($logEntries as $logEntry) {
             // Timestamp is in milliseconds, but date() requires seconds.
-            $time          = date('H:i:s', $logEntry['timestamp'] / 1000) .
+            $time = date('H:i:s', $logEntry['timestamp'] / 1000) .
                 // Append the milliseconds to the end of the time string
                 '.' . ($logEntry['timestamp'] % 1000);
             $formattedLogs .= "{$time} {$logEntry['level']} - {$logEntry['message']}\n";
@@ -273,9 +273,9 @@ class AppiumDriver extends CodeceptionModule implements
 
     public function _initializeSession()
     {
-        $this->AppiumDriver  = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
+        $this->AppiumDriver = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
         $this->AppiumSession = $this->AppiumDriver->startSession($this->capabilities, $this->selenium_url);
-        $this->sessions[]    = $this->_backupSession();
+        $this->sessions[] = $this->_backupSession();
     }
 
     public function _loadSession($session)
@@ -304,7 +304,7 @@ class AppiumDriver extends CodeceptionModule implements
     public function _closeSession($AppiumSession = null)
     {
         $keys = array_keys($this->sessions, $AppiumSession, true);
-        $key  = array_shift($keys);
+        $key = array_shift($keys);
         try {
             $AppiumSession->stop();
 
@@ -347,11 +347,11 @@ class AppiumDriver extends CodeceptionModule implements
      */
     protected function getClassNames($file)
     {
-        $php_code  = file_get_contents($file);
-        $classes   = [];
+        $php_code = file_get_contents($file);
+        $classes = [];
         $namespace = "";
-        $tokens    = token_get_all($php_code);
-        $count     = count($tokens);
+        $tokens = token_get_all($php_code);
+        $count = count($tokens);
 
         for ($i = 0; $i < $count; $i++) {
             if ($tokens[$i][0] === T_NAMESPACE) {
@@ -554,13 +554,13 @@ class AppiumDriver extends CodeceptionModule implements
     ////      \___\___/|_|  |_|_|  |_/_/ \_\_|\_|___/|___/
     ////
 
-    const POST          = 'POST';
-    const GET           = 'GET';
-    const DEL           = 'DELETE';
-    const SCREENSHOT    = 'screenshot';
+    const POST = 'POST';
+    const GET = 'GET';
+    const DEL = 'DELETE';
+    const SCREENSHOT = 'screenshot';
     const HIDE_KEYBOARD = 'appium/device/hide_keyboard';
-    const GET_STRINGS   = 'appium/app/strings';
-    const NETWORK       = 'network_connection';
+    const GET_STRINGS = 'appium/app/strings';
+    const NETWORK = 'network_connection';
 
     /**
      * @param $method
@@ -589,7 +589,7 @@ class AppiumDriver extends CodeceptionModule implements
      */
     public function takeScreenshot($save_as = null)
     {
-        $data       = $this->driverCommand(static::GET, static::SCREENSHOT);
+        $data = $this->driverCommand(static::GET, static::SCREENSHOT);
         $screenshot = base64_decode($data);
         if ($save_as) {
             file_put_contents($save_as, $screenshot);
@@ -636,39 +636,6 @@ class AppiumDriver extends CodeceptionModule implements
         return $this->driverCommand(static::GET, static::NETWORK);
     }
 
-    /**
-     * @param array of booleans $data 
-     * ['data'=>true|false , 'wifi'=>true|false, 'airplanemode'=>true|false]
-     *
-     * @return mixed
-     */
-    public function setNetworkConnection($dataArr)
-    {
-	// Note: this does not work due to security exception, 
-	// Android no longer allows this
-
-        $mode = 0;
-        $data = 4;
-        $wifi = 2;
-        $airplane = 1;
-        if (in_array('data', $dataArr) && $dataArr['data'] === true)
-            $mode = $mode | $data;
-        if (in_array('wifi', $dataArr) && $dataArr['wifi'] == true)
-            $mode = $mode | $wifi;
-        if (in_array('airplanemode', $dataArr) && $dataArr['airplanemode'] == true)
-            $mode = $mode | $airplane;
-        return $this->driverCommand(static::POST, static::NETWORK, ['type' => $mode]);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function toggleAirplaneMode()
-    {
-	// Note: this does not work due to security exception, 
-	// Android no longer allows this
-        return $this->driverCommand(static::POST, '/appium/device/toggle_airplane_mode', '');
-    }
 
     /**
      * @param startX x-percent at which to start
@@ -711,36 +678,4 @@ class AppiumDriver extends CodeceptionModule implements
         $response = $this->getDriver()->curl('POST', $url, null);
     }
 
-    /**
-     * @param $seconds time during which the application will be put to the
-     * background
-     */
-    public function backgroundApp($seconds)
-    {
-        $session = $this->getSession();
-        $data = array(
-            'seconds' => $seconds
-        );
-        $url = $this->getSessionUrl()->descend('appium')->descend('app')->descend('background');
-        $response = $this->getDriver()->curl('POST', $url, $data);
-    }
-
-    /**
-     * @param $appPackage package of application to start
-     * @param $appActivity activity to start
-     * @param $intentAction
-     * @param $intentCategory
-     */
-    public function startActivity($appPackage, $appActivity, $intentAction, $intentCategory)
-    {
-        $session = $this->getSession();
-        $data = array(
-            'appPackage' => $appPackage,
-            'appActivity' => $appActivity,
-            'intentAction' => $intentAction,
-            'intentCategory' => $intentCategory
-        );
-        $url = $this->getSessionUrl()->descend('appium')->descend('device')->descend('start_activity');
-        $response = $session->getDriver()->curl('POST', $url, $data);
-    }
 }

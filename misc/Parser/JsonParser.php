@@ -1,8 +1,8 @@
 <?php
 
-namespace Appium\Tools\AppiumParser;
+namespace Parser;
 
-use Appium\Tools\AppiumParser\Helper\Helper;
+use Parser\Helper\Helper;
 
 /**
  * Class JsonParser
@@ -21,13 +21,13 @@ class JsonParser
     protected $functionsArray = [];
 
     /** @var string */
-    protected $classFileLocation = 'output/';
+    protected $classFileLocation = __DIR__ . '/../../src/Traits';
 
     /** @var string */
-    protected $outputFileName = 'AppiumCommands';
+    protected $outputFileName = 'BaseCommands';
 
     /** @var string */
-    protected $constantsOutputFileName = 'Constants';
+    protected $constantsOutputFileName = 'BaseConstants';
 
     /** @var array */
     protected $classArray = [];
@@ -36,13 +36,13 @@ class JsonParser
     protected $classOutput = "";
 
     /** @var string */
-    protected $classTemplate = "<?php \nnamespace Appium\\Tools\\AppiumParser\\Output;\n\n trait AppiumCommands \n{\n {{functions}}  \n}\n";
+    protected $classTemplate = "<?php \nnamespace Appium\\Traits;\n\ntrait BaseCommands \n{\n {{functions}}  \n}\n";
 
     /** @var string */
     protected $constantsOutput = "";
 
     /** @var string */
-    protected $constantsTemplate = "<?php\nnamespace Appium\\Tools\\AppiumParser\\Output;\n\n class Constants\n{
+    protected $constantsTemplate = "<?php\nnamespace Appium\\Traits;\n\nclass BaseConstants\n{
                                     \n\t/** @var string */\n\tstatic public \$POST = 'POST';
                                     \n\t/** @var string */\n\tstatic public \$GET = 'GET';
                                     \n\t/** @var string */\n\tstatic public \$DELETE = 'DELETE';
@@ -65,8 +65,8 @@ class JsonParser
     public function __construct(\Symfony\Component\Console\Output\OutputInterface $console, $jsonFile = '')
     {
         $this->consoleOutput = $console;
-        $jsonFile            = ($jsonFile) ? $jsonFile : $this->defaultJsonFile;
-        $this->jsonObject    = json_decode(file_get_contents($jsonFile), true);
+        $jsonFile = ($jsonFile) ? $jsonFile : $this->defaultJsonFile;
+        $this->jsonObject = json_decode(file_get_contents($jsonFile), true);
     }
 
     /**
@@ -83,11 +83,11 @@ class JsonParser
         }
 
         $this->createFunctions()
-             ->createConstants()
-             ->createConstantsFile()
-             ->createClassFile();
+            ->createConstants()
+            ->createConstantsFile()
+            ->createClassFile();
 
-        $this->consoleOutput->writeln("<info>Finished \nYou will find output files in /Tools/AppiumParser/output</info>");
+        $this->consoleOutput->writeln("<info>Finished \nYou will find output files in /Tools/Parser/output</info>");
     }
 
     /**
@@ -128,7 +128,7 @@ class JsonParser
         foreach ($this->functionsArray as $key => $function) {
             list($inspectedUrl, $url) = $this->inspectUrl($function['url']);
             $this->functionsArray[$key]['urlConst'] = $inspectedUrl;
-            $this->functionsArray[$key]['url']      = $url;
+            $this->functionsArray[$key]['url'] = $url;
         }
 
         return $this;
@@ -167,9 +167,7 @@ class JsonParser
 
         $this->classOutput = str_replace('{{functions}}', $this->classOutput, $this->classTemplate);
 
-        $fileHandle = fopen(__DIR__ . "/" . $this->classFileLocation . $this->outputFileName . ".php", 'w');
-        fwrite($fileHandle, $this->classOutput);
-        fclose($fileHandle);
+        file_put_contents($this->classFileLocation . '/' . $this->outputFileName . '.php', $this->classOutput);
 
         return $this;
     }
@@ -196,11 +194,11 @@ class JsonParser
             return "";
         }
 
-        $routeParamsString  = '';
+        $routeParamsString = '';
         $optionsAnnotations = "\n\t/**\n";
         $optionsAnnotations .= "\t* " . $options['command'] . "\n\t*\n";
 
-        $allOptions  = $this->addOptions($options);
+        $allOptions = $this->addOptions($options);
         $routeParams = $this->getUrlOptions($urlReal);
         if ($routeParams) {
             foreach ($routeParams as $key => $param) {
@@ -212,12 +210,12 @@ class JsonParser
         $optionsAnnotations .= ($allOptions) ? "\t* @param array \$data\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @options " . json_encode($allOptions) . "\n\t*\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @return mixed\n" : "";
-        $options_           = ($allOptions) ? "\$data" : "";
-        $routeParamsString  = ($allOptions && $routeParamsString) ? ", " . $routeParamsString : $routeParamsString;
-        $this->classOutput  .= $optionsAnnotations . "\t*\n\t**/\n";
-        $this->classOutput  .= "\tpublic function " . $options['command'] . "(" . $options_ . "" . $routeParamsString . "){\n";
+        $options_ = ($allOptions) ? "\$data" : "";
+        $routeParamsString = ($allOptions && $routeParamsString) ? ", " . $routeParamsString : $routeParamsString;
+        $this->classOutput .= $optionsAnnotations . "\t*\n\t**/\n";
+        $this->classOutput .= "\tpublic function " . $options['command'] . "(" . $options_ . "" . $routeParamsString . "){\n";
 
-        $this->classOutput                     .= "\t\t" . $this->getCommand($url, $type, $options_, $routeParams) . "\n\t}";
+        $this->classOutput .= "\t\t" . $this->getCommand($url, $type, $options_, $routeParams) . "\n\t}";
         $this->classArray[$options['command']] = $options['command'];
 
         return $options['command'];
@@ -237,8 +235,8 @@ class JsonParser
     protected function getCommand($url, $type, $data, $routeParams)
     {
         $routeParamsString = "";
-        $data              = ($data) ? ", \$data" : '';
-        $urlString         = $this->constantsOutputFileName . "::$" . $url;
+        $data = ($data) ? ", \$data" : '';
+        $urlString = $this->constantsOutputFileName . "::$" . $url;
         if ($routeParams) {
             $urlString = "\$url";
             foreach ($routeParams as $param) {
@@ -280,9 +278,7 @@ class JsonParser
      */
     protected function createConstantsFile()
     {
-        $fileHandle = fopen(__DIR__ . "/" . $this->classFileLocation . $this->constantsOutputFileName . ".php", 'w');
-        fwrite($fileHandle, $this->constantsOutput);
-        fclose($fileHandle);
+        file_put_contents($this->classFileLocation . '/' . $this->constantsOutputFileName . '.php', $this->constantsOutput);
 
         return $this;
     }
@@ -302,8 +298,8 @@ class JsonParser
             return '';
         }
 
-        $urlArray     = explode(':sessionId/', $url);
-        $urlParts     = explode('/', $urlArray[1]);
+        $urlArray = explode(':sessionId/', $url);
+        $urlParts = explode('/', $urlArray[1]);
         $constantName = $this->generateUnqConstant($urlParts);
 
         $this->constants .= "\n\t/** @var string */\n\t static public \$" . $constantName . " = '" . $urlArray[1] . "';\n";
@@ -357,7 +353,7 @@ class JsonParser
         $constantName = (strpos($constantName, ':') === false) ? $constantName : strtoupper($urlParts[count($urlParts) - 2]) . str_replace(':', '_', $constantName);
         $uniqConstant = (count($urlParts) > 1) ? str_replace(':', '_', strtoupper($urlParts[count($urlParts) - 2])) : '';
         // Check if we already have the same constant and add uniqConstant if we have
-        $constantName                        = (!isset($this->constantsArray[$constantName])) ? $constantName : $constantName . "_" . $uniqConstant;
+        $constantName = (!isset($this->constantsArray[$constantName])) ? $constantName : $constantName . "_" . $uniqConstant;
         $this->constantsArray[$constantName] = $constantName;
 
         return $constantName;
