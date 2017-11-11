@@ -5,12 +5,13 @@ namespace Appium;
 use Appium\Remote\AppiumRemoteDriver;
 use Appium\Remote\Dummy;
 use Appium\TestCase\Element;
-use Appium\TestCase\MultiAction;
 use Appium\TestCase\Session;
-use Appium\TestCase\TouchAction;
+use Appium\Traits\Key;
+use Appium\Traits\Touch;
+use Appium\Traits\Elm;
 use Appium\Traits\BaseCommands;
+use Appium\Traits\Util;
 use Codeception\Exception\ConnectionException;
-use Codeception\Lib\Interfaces\ConflictsWithModule;
 use Codeception\Lib\Interfaces\MultiSession as MultiSessionInterface;
 use Codeception\Lib\Interfaces\RequiresPackage;
 use Codeception\Lib\Interfaces\ScreenshotSaver;
@@ -18,11 +19,12 @@ use Codeception\Module as CodeceptionModule;
 use Codeception\Step;
 use Codeception\Test\Descriptor;
 use Codeception\TestInterface;
+use Codeception\Lib\Console\Output;
 
 /**
  * ## Public Properties
  *
- * * `AppiumDriver` - instance of `\Meabed\AppiumDriver\Remote\RemoteAppiumDriver`. Can be accessed from Helper classes
+ * * `AppiumDriver` - instance of `\AppiumDriver\Remote\RemoteAppiumDriver`. Can be accessed from Helper classes
  * for complex AppiumDriver interactions.
  *
  * ```php
@@ -33,10 +35,13 @@ use Codeception\TestInterface;
 class AppiumDriver extends CodeceptionModule implements
     MultiSessionInterface,
     ScreenshotSaver,
-    ConflictsWithModule,
     RequiresPackage
 {
     use BaseCommands;
+    use Touch;
+    use Key;
+    use Elm;
+    use Util;
 
     protected $requiredFields = ['host'];
     protected $config
@@ -86,11 +91,17 @@ class AppiumDriver extends CodeceptionModule implements
      */
     protected $classes = [];
 
+    /**
+     * @return array
+     */
     public function _requires()
     {
         return [];
     }
 
+    /**
+     *
+     */
     public function _initialize()
     {
         $this->wd_host = sprintf('http://%s:%s/wd/hub', $this->config['host'], $this->config['port']);
@@ -117,11 +128,9 @@ class AppiumDriver extends CodeceptionModule implements
         }
     }
 
-    public function _conflicts()
-    {
-        return 'Codeception\Lib\Interfaces\Web';
-    }
-
+    /**
+     * @param TestInterface $test
+     */
     public function _before(TestInterface $test)
     {
         $file = $test->getMetadata()->getFilename();
@@ -147,6 +156,9 @@ class AppiumDriver extends CodeceptionModule implements
 
     }
 
+    /**
+     * @param TestInterface $test
+     */
     public function _after(TestInterface $test)
     {
 
@@ -158,6 +170,9 @@ class AppiumDriver extends CodeceptionModule implements
         }
     }
 
+    /**
+     * @param Step $step
+     */
     public function _afterStep(Step $step)
     {
         // this is just to make sure AppiumDriver is cleared after suite
@@ -167,6 +182,9 @@ class AppiumDriver extends CodeceptionModule implements
         }
     }
 
+    /**
+     *
+     */
     public function _afterSuite()
     {
         // this is just to make sure AppiumDriver is cleared after suite
@@ -176,6 +194,10 @@ class AppiumDriver extends CodeceptionModule implements
         }
     }
 
+    /**
+     * @param TestInterface $test
+     * @param \Exception $fail
+     */
     public function _failed(TestInterface $test, $fail)
     {
         // todo from appium logs
@@ -271,6 +293,9 @@ class AppiumDriver extends CodeceptionModule implements
         return isset($cap['deviceName']) ? $cap['deviceName'] : '';
     }
 
+    /**
+     *
+     */
     public function _initializeSession()
     {
         $this->AppiumDriver = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
@@ -278,11 +303,17 @@ class AppiumDriver extends CodeceptionModule implements
         $this->sessions[] = $this->_backupSession();
     }
 
+    /**
+     * @param $session
+     */
     public function _loadSession($session)
     {
         $this->AppiumSession = $session;
     }
 
+    /**
+     * @param $filename
+     */
     public function _saveScreenshot($filename)
     {
         if ($this->AppiumSession !== null) {
@@ -293,6 +324,9 @@ class AppiumDriver extends CodeceptionModule implements
         }
     }
 
+    /**
+     * @return Session
+     */
     public function _backupSession()
     {
         return $this->AppiumSession;
@@ -380,7 +414,7 @@ class AppiumDriver extends CodeceptionModule implements
      */
     public function outputCli($msg)
     {
-        $output = new \Codeception\Lib\Console\Output([]);
+        $output = new Output([]);
         $output->writeln('');
         $output->writeln($msg);
         $output->writeln('');
@@ -401,152 +435,6 @@ class AppiumDriver extends CodeceptionModule implements
         return new Element($this->AppiumDriver, $this->getSessionUrl());
     }
 
-    /**
-     * @param $value
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byIOSUIAutomation($value)
-    {
-        return $this->TestCaseElement()->by('-ios uiautomation', $value);
-    }
-
-    /**
-     * @param $value
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byIOSPredicateString($value)
-    {
-        return $this->TestCaseElement()->by('-ios predicate string', $value);
-    }
-
-    /**
-     * @param $value
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byAndroidUIAutomator($value)
-    {
-        return $this->TestCaseElement()->by('-android uiautomator', $value);
-    }
-
-    /**
-     * @param $value
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byAccessibilityId($value)
-    {
-        return $this->TestCaseElement()->by('accessibility id', $value);
-    }
-
-    /**
-     * @param string $value e.g. 'container'
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byClassName($value)
-    {
-        return $this->TestCaseElement()->by('class name', $value);
-    }
-
-    /**
-     * @param string $value e.g. 'div.container'
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byCssSelector($value)
-    {
-        return $this->TestCaseElement()->by('css selector', $value);
-    }
-
-    /**
-     * @param string $value e.g. 'uniqueId'
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byId($value)
-    {
-        return $this->TestCaseElement()->by('id', $value);
-    }
-
-    /**
-     * @param string $value e.g. 'Link text'
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byLinkText($value)
-    {
-        return $this->TestCaseElement()->by('link text', $value);
-    }
-
-    /**
-     * @param string $value e.g. 'Link te'
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byPartialLinkText($value)
-    {
-        return $this->TestCaseElement()->by('partial link text', $value);
-    }
-
-    /**
-     * @param string $value e.g. 'email_address'
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byName($value)
-    {
-        return $this->TestCaseElement()->by('name', $value);
-    }
-
-    /**
-     * @param string $value e.g. 'body'
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byTag($value)
-    {
-        return $this->TestCaseElement()->by('tag name', $value);
-    }
-
-    /**
-     * @param string $value e.g. '/div[@attribute="value"]'
-     *
-     * @return \Appium\TestCase\Element|\PHPUnit_Extensions_Selenium2TestCase_Element
-     */
-    public function byXPath($value)
-    {
-        return $this->TestCaseElement()->by('xpath', $value);
-    }
-
-
-    ////  _____ ___  _   _  ___ _  _     _   ___ _____ ___ ___  _  _
-    //// |_   _/ _ \| | | |/ __| || |   /_\ / __|_   _|_ _/ _ \| \| |
-    ////   | || (_) | |_| | (__| __ |  / _ \ (__  | |  | | (_) | .` |
-    ////   |_| \___/ \___/ \___|_||_| /_/ \_\___| |_| |___\___/|_|\_|
-
-    /**
-     * @return \Appium\TestCase\TouchAction
-     */
-    public function getTouchAction()
-    {
-        return new TouchAction($this->getSessionUrl(), $this->getDriver());
-    }
-
-    ////     __  __ _   _ _  _____ ___   _____ ___  _   _  ___ _  _     _   ___ _____ ___ ___  _  _
-    ////    |  \/  | | | | ||_   _|_ _| |_   _/ _ \| | | |/ __| || |   /_\ / __|_   _|_ _/ _ \| \| |
-    ////    | |\/| | |_| | |__| |  | |    | || (_) | |_| | (__| __ |  / _ \ (__  | |  | | (_) | .` |
-    ////    |_|  |_|\___/|____|_| |___|   |_| \___/ \___/ \___|_||_| /_/ \_\___| |_| |___\___/|_|\_|
-
-    /**
-     * @return \Appium\TestCase\MultiAction
-     */
-    public function getMultiAction()
-    {
-        return new MultiAction($this->getSessionUrl(), $this->getDriver());
-    }
 
     ////       ___ ___  __  __ __  __   _   _  _ ___  ___
     ////      / __/ _ \|  \/  |  \/  | /_\ | \| |   \/ __|
@@ -557,10 +445,6 @@ class AppiumDriver extends CodeceptionModule implements
     const POST = 'POST';
     const GET = 'GET';
     const DEL = 'DELETE';
-    const SCREENSHOT = 'screenshot';
-    const HIDE_KEYBOARD = 'appium/device/hide_keyboard';
-    const GET_STRINGS = 'appium/app/strings';
-    const NETWORK = 'network_connection';
 
     /**
      * @param $method
@@ -578,104 +462,6 @@ class AppiumDriver extends CodeceptionModule implements
         $response = $this->getDriver()->curl($method, $url, $data);
 
         return $response->getValue();
-    }
-
-    /**
-     * Take a screenshot of the current page.
-     *
-     * @param string $save_as The path of the screenshot to be saved.
-     *
-     * @return string The screenshot in PNG format.
-     */
-    public function takeScreenshot($save_as = null)
-    {
-        $data = $this->driverCommand(static::GET, static::SCREENSHOT);
-        $screenshot = base64_decode($data);
-        if ($save_as) {
-            file_put_contents($save_as, $screenshot);
-        }
-
-        return $screenshot;
-    }
-
-    /**
-     * @param $data
-     *
-     * @return mixed
-     */
-    public function hideKeyboard($data)
-    {
-        return $this->driverCommand(static::POST, static::HIDE_KEYBOARD, $data);
-    }
-
-    /**
-     * @param array $data ['language', 'stringFile']
-     *
-     * @see https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
-     * @return mixed
-     */
-    public function getStrings($data = [])
-    {
-        return $this->driverCommand(static::POST, static::GET_STRINGS, $data);
-    }
-
-    /**
-     * @param $element that accepts a string
-     * @param string to send to $element
-     */
-    public function sendKeys($element, $keys)
-    {
-        $element->setValueImmediate($keys);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNetworkConnection()
-    {
-        return $this->driverCommand(static::GET, static::NETWORK);
-    }
-
-
-    /**
-     * @param startX x-percent at which to start
-     * @param startY y-percent at which to start
-     * @param endX x-percent at which to end
-     * @param endY y-percent at which to end
-     * @param duration (optional) time to take the swipe in ms
-     *
-     * @return mixed
-     */
-    public function swipe($startX, $startY, $endX, $endY, $duration = 800)
-    {
-        $action = $this->initiateTouchAction();
-        $action->press(array('x' => $startX, 'y' => $startY))
-            ->wait($duration)
-            ->moveTo(array('x' => $endX, 'y' => $endY))
-            ->wait($duration)
-            ->release()
-            ->perform();
-        return $this;
-    }
-
-    /**
-     * @return TouchAction
-     */
-    public function initiateTouchAction()
-    {
-        $session = $this->getSession();
-        return new TouchAction($session->getSessionUrl(), $session->getDriver());
-    }
-
-    /**
-     * @return mixed
-     */
-    public function launchApp()
-    {
-        // /appium/app/launch
-        $session = $this->getSession();
-        $url = $this->getSessionUrl()->descend('appium')->descend('app')->descend('launch');
-        $response = $this->getDriver()->curl('POST', $url, null);
     }
 
 }

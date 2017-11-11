@@ -14,14 +14,14 @@ class TouchAction
      * TouchAction constructor.
      *
      * @param \PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl
-     * @param \Appium\Remote\AppiumRemoteDriver         $driver
+     * @param \Appium\Remote\AppiumRemoteDriver $driver
      */
     public function __construct(\PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl,
                                 AppiumRemoteDriver $driver)
     {
         $this->sessionUrl = $sessionUrl;
-        $this->driver     = $driver;
-        $this->actions    = [];
+        $this->driver = $driver;
+        $this->actions = [];
 
         return $this;
     }
@@ -144,7 +144,7 @@ class TouchAction
         $params = [
             'actions' => $this->actions,
         ];
-        $url    = $this->sessionUrl->descend('touch')->descend('perform');
+        $url = $this->sessionUrl->descend('touch')->descend('perform');
 
         return $this->driver->curl('POST', $url, $params);
     }

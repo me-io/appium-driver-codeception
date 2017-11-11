@@ -2,8 +2,12 @@
 
 namespace Appium\TestCase;
 
-class Session
-    extends \PHPUnit_Extensions_Selenium2TestCase_Session
+use Appium\Remote\AppiumRemoteDriver;
+
+/**
+ * Class Session
+ */
+class Session extends \PHPUnit_Extensions_Selenium2TestCase_Session
 {
     /**
      * @var string  the base URL for this session,
@@ -47,7 +51,7 @@ class Session
      */
     public function appStrings($language = null)
     {
-        $url  = $this->getSessionUrl()->addCommand('appium/app/strings');
+        $url = $this->getSessionUrl()->addCommand('appium/app/strings');
         $data = [];
         if (!is_null($language)) {
             $data['language'] = $language;
@@ -65,7 +69,7 @@ class Session
      */
     public function keyEvent($keycode, $metastate = null)
     {
-        $url  = $this->getSessionUrl()->addCommand('appium/device/keyevent');
+        $url = $this->getSessionUrl()->addCommand('appium/device/keyevent');
         $data = [
             'keycode' => $keycode,
             'metastate' => $metastate,
@@ -89,17 +93,17 @@ class Session
      */
     protected function initCommands()
     {
-        $baseUrl  = $this->baseUrl;
+        $baseUrl = $this->baseUrl;
         $commands = parent::initCommands();
 
         $commands['contexts'] = 'PHPUnit_Extensions_Selenium2TestCase_SessionCommand_GenericAccessor';
-        $commands['context']  = 'PHPUnit_Extensions_AppiumTestCase_SessionCommand_Context';
+        $commands['context'] = 'PHPUnit_Extensions_AppiumTestCase_SessionCommand_Context';
 
         return $commands;
     }
 
     /**
-     * @return \PHPUnit_Extensions_Selenium2TestCase_Driver
+     * @return \PHPUnit_Extensions_Selenium2TestCase_Driver|AppiumRemoteDriver
      */
     public function getDriver()
     {

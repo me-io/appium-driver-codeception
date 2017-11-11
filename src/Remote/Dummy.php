@@ -14,4 +14,9 @@ class Dummy
     {
 
     }
+
+    public function testDriver()
+    {
+
+    }
 }
