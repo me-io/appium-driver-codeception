@@ -2,7 +2,8 @@
 
 namespace Parser;
 
-use Parser\Helper\Helper;
+use Parser\Helper\TextTable;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class JsonParser
@@ -12,7 +13,18 @@ use Parser\Helper\Helper;
 class JsonParser
 {
     /** @var string */
-    public $defaultJsonFile = __DIR__ . '/Json/AppiumCommand.json';
+    public $defaultJsonFile = __DIR__ . '/Json/AppiumCommandFull.json';
+
+    /** @var string */
+    public $defaultJsonExtraFile = __DIR__ . '/Json/AppiumCommandExtra.json';
+
+    /** @var string */
+    public $defaultJsonRouteFile = __DIR__ . '/Json/AppiumCommandRoute.json';
+    /** @var string */
+    public $defaultJsonRouteOverrideFile = __DIR__ . '/Json/AppiumCommandOverride.json';
+
+    /** @var string */
+    public $defaultJsonWireFile = __DIR__ . '/Json/jsonwire-full.json';
 
     /** @var mixed */
     public $jsonObject;
@@ -59,10 +71,10 @@ class JsonParser
 
     /**
      * JsonParser constructor.
-     *
+     * @param OutputInterface $console
      * @param string $jsonFile
      */
-    public function __construct(\Symfony\Component\Console\Output\OutputInterface $console, $jsonFile = '')
+    public function __construct(OutputInterface $console, $jsonFile = '')
     {
         $this->consoleOutput = $console;
         $jsonFile = ($jsonFile) ? $jsonFile : $this->defaultJsonFile;
@@ -75,41 +87,253 @@ class JsonParser
      */
     public function generate()
     {
-        foreach ($this->jsonObject as $key => $item) {
-            $this->functionsArray[] = [
-                'url' => $key,
-                'details' => $this->getDetails($item),
-            ];
-        }
-
-        $this->createFunctions()
+        $this
+            ->generateFullFile()
+            ->createFunctions()
             ->createConstants()
             ->createConstantsFile()
-            ->createClassFile();
+            ->createClassFile()
+            ->generateDocMd();
 
-        $this->consoleOutput->writeln("<info>Finished \nYou will find output files in /Tools/Parser/output</info>");
+        $this->consoleOutput->writeln("<info>Finished \nYou will find output files in {$this->classFileLocation}</info>");
     }
 
-    /**
-     * Get details for the function
-     *
-     * @param $data
-     *
-     * @return array
-     *
-     */
-    protected function getDetails($data)
+    public function itemList($arr)
     {
-        $details = [];
+        $list = '';
+        foreach ($arr as $value) {
+            $listItem = (is_array($value) ? $this->itemList($value) : $value);
+            $list .= "- $listItem";
+        }
+        $list .= '';
+        return $list;
+    }
 
-        foreach ($data as $key => $item) {
-            $details[] = [
-                'type' => $key,
-                'options' => $item,
+    public function generateDocMd()
+    {
+        $columns = ['MethodName', 'Method', 'Url', 'Description', 'Payload'];
+        $rows = [];
+        foreach ($this->functionsArray as $function) {
+            $params = '';
+            if ($function['payloadParams']) {
+                $params = json_encode($function['payloadParams'], JSON_ERROR_UNSUPPORTED_TYPE);
+            }
+
+
+            $rows[] = [
+                $function['name'],
+                $function['http_method'],
+                $function['url'],
+                $function['desc'],
+                $params,
             ];
         }
+        $t = new TextTable($columns, $rows);
 
-        return $details;
+        //$t->setAlgin(['L', 'C', 'R']);
+
+        $mdTable = $t->render();
+
+        $readMeFile = __DIR__ . '/../../readme.md';
+        $txt = file_get_contents($readMeFile);
+        $txtNew = $this->replaceInStrWithDel($txt, '[comment]: # (core-function-comment)', $mdTable);
+        file_put_contents($readMeFile, $txtNew);
+    }
+
+    public function replaceInStrWithDel($str, $del, $replace)
+    {
+        $txtArr = explode($del, $str);
+
+        $newStr = join("\n",
+            [
+                trim($txtArr[0]),
+                "$del\n\n" . $replace . "\n\n$del",
+                trim($txtArr['2']),
+            ]
+        );
+
+        return $newStr;
+    }
+
+    public function httpMethod($str)
+    {
+        $isPost = stristr($str, 'POST /');
+        if ($isPost) {
+            return 'POST';
+        }
+        $isGET = stristr($str, 'GET /');
+        if ($isGET) {
+            return 'GET';
+        }
+
+        $isDELETE = stristr($str, 'DELETE /');
+        if ($isDELETE) {
+            return 'DELETE';
+        }
+        return 'NA';
+    }
+
+    public function getCommandNameOfUrl($url, $verb = '')
+    {
+        $urlExt = str_ireplace(['get', 'post', 'delete'], '', $url);
+        $urlExt = str_ireplace('/wd/hub/session', '', $urlExt);
+        $urlExt = preg_replace('#(:\w+)#', '', $urlExt);
+        $urlExt = preg_replace('#\/\/#', '/', $urlExt);
+        $urlExt = trim($urlExt, '/');
+        $urlExt = trim($urlExt);
+
+        $urlExtArr = explode('/', $urlExt);
+        $urlExtArr = array_unique($urlExtArr);
+        $urlExtArrLast = array_slice($urlExtArr, -2, 2);
+
+
+        $urlStr = join('_', $urlExtArrLast);
+        $urlStr = strtolower($verb) . '_' . $urlStr;
+
+
+        return $urlStr;
+    }
+
+    public function toCamelCase($string, $del, $capitalizeFirstCharacter = false)
+    {
+
+        $str = str_replace($del, '', ucwords($string, $del));
+
+        if (!$capitalizeFirstCharacter) {
+            $str = lcfirst($str);
+        }
+
+        return $str;
+    }
+
+
+    protected function generateFullFile()
+    {
+        $arrCommands = [];
+
+        $jsonWireObject = json_decode(file_get_contents($this->defaultJsonWireFile), true);
+        $jsonRouteObject = json_decode(file_get_contents($this->defaultJsonRouteFile), true);
+        $jsonRouteObjectOverRide = json_decode(file_get_contents($this->defaultJsonRouteOverrideFile), true);
+        $extraRouteObject = json_decode(file_get_contents($this->defaultJsonExtraFile), true);
+
+        $jsonRouteObjectSm = [];
+        $jsonWireObjectSm = [];
+
+        foreach ($jsonRouteObject as $key => $value) {
+            $jsonRouteObjectSm[strtolower($key)] = $value;
+        }
+
+        foreach ($extraRouteObject as $key => $value) {
+            $jsonRouteObjectSm[strtolower($key)] = $value;
+        }
+
+        // convert route file to method route so we can match it with jsonwire full
+        $jsonRouteObjectSmVerb = [];
+        foreach ($jsonRouteObjectSm as $key => $value) {
+            foreach ($value as $verb => $verbValue) {
+                $verbValue['http_method'] = $verb;
+                $verbValue['src'] = 'route.json';
+                $verbValue['link'] = ['https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js'];
+                $jsonRouteObjectSmVerb[strtolower($verb) . ' ' . strtolower($key)] = $verbValue;
+
+
+            }
+        }
+
+        // override
+        foreach ($jsonRouteObjectOverRide as $key => $value) {
+            foreach ($value as $verb => $verbValue) {
+                $orgArr = ($jsonRouteObjectSmVerb[strtolower($verb) . ' ' . strtolower($key)]);
+
+                $jsonRouteObjectSmVerb[strtolower($verb) . ' ' . strtolower($key)] = array_merge($orgArr, $verbValue);
+            }
+        }
+
+        foreach ($jsonWireObject as $key => $commandDesc) {
+            preg_match('#\w+ #', $key, $match);
+            $httpMethod = trim($match[0]);
+            $keyUrl = str_replace(' ', ' /wd/hub', $key);
+            $jsonWireObjectSm[strtolower($keyUrl)] =
+                [
+                    'desc' => $commandDesc,
+                    'http_method' => $httpMethod,
+                    'src' => 'jsonwire-full',
+                    'link' => ['https://github.com/admc/wd/blob/master/doc/jsonwire-full-mapping.md'],
+                ];
+        }
+
+
+        // add not founds
+        foreach ($jsonRouteObjectSmVerb as $key => $value) {
+            $cmdDetail = $jsonWireObjectSm[$key] ?? false;
+            if (!$cmdDetail) {
+                $jsonWireObjectSm[$key] = [
+                    'desc' => $key,
+                    'http_method' => $value['http_method']
+                ];
+
+            }
+        }
+
+//        foreach ($jsonWireObjectSm as $key => $commandDesc) {
+//            $cmdDetail = $jsonRouteObjectSmVerb[$key] ?? false;
+//
+//            if (!$cmdDetail) {
+//                 add extra Commands
+//                $jsonWireObjectSm[$key] = [
+//                    'desc' => $commandDesc,
+//                    'http_method' => $httpMethod
+//                ];
+//            }
+//        }
+
+        foreach ($jsonWireObjectSm as $key => $commandDesc) {
+
+            $cmd = $key;
+            $urlNoVerb = str_ireplace(['post', 'get', 'delete',], '', $key);
+            $url = str_ireplace(['/wd/hub', '/session/:sessionid'], '', $urlNoVerb);
+            $url = trim($url);
+
+            $cmdDetail = $jsonRouteObjectSmVerb[$key] ?? false;
+
+            if ($cmdDetail) {
+                if (!isset($cmdDetail['command'])) {
+                    $cmdDetail['command'] = $this->toCamelCase($this->getCommandNameOfUrl($cmd, $commandDesc['http_method']), '_');
+                }
+                preg_match_all('#:(\w+)#', $url, $matches);
+                $urlParams = array_unique($matches[1]);
+
+                // remove validate
+                $payload = [];
+
+                if (!empty($cmdDetail['payloadParams']['required'])) {
+                    $payload['required'] = $cmdDetail['payloadParams']['required'];
+                }
+
+                if (!empty($cmdDetail['payloadParams']['optional'])) {
+                    $payload['optional'] = $cmdDetail['payloadParams']['optional'];
+                }
+                $arrCommands[$key] =
+                    [
+                        'url' => $url,
+                        'wdUrl' => trim($urlNoVerb),
+                        'name' => $cmdDetail['command'],
+                        'desc' => $cmdDetail['desc'] ?? $commandDesc['desc'],
+                        'http_method' => $this->httpMethod($key),
+                        'uriParams' => $urlParams ?? [],
+                        'payloadParams' => $payload,
+                        'src' => $cmdDetail['src'] ?? '',
+                        'note' => $cmdDetail['note'] ?? '',
+                        'link' => $cmdDetail['link'] ?? []
+                    ];
+            }
+
+        }
+
+        file_put_contents($this->defaultJsonFile, json_encode($arrCommands, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+
+        $this->functionsArray = $arrCommands;
+        return $this;
     }
 
     /**
@@ -126,9 +350,7 @@ class JsonParser
         }
 
         foreach ($this->functionsArray as $key => $function) {
-            list($inspectedUrl, $url) = $this->inspectUrl($function['url']);
-            $this->functionsArray[$key]['urlConst'] = $inspectedUrl;
-            $this->functionsArray[$key]['url'] = $url;
+            $this->addConstant(strtoupper($function['name']), $function['url']);
         }
 
         return $this;
@@ -155,12 +377,10 @@ class JsonParser
      */
     protected function createClassFile()
     {
-        foreach ($this->functionsArray as $key => $item) {
-            if ($item['urlConst'] && !empty($item['details'])) {
-                foreach ($item['details'] as $detail) {
-                    $this->writeFunction($item['urlConst'], $detail['type'], $detail['options'], $item['url']);
-                }
+        foreach ($this->functionsArray as $key => $function) {
 
+            if (!empty($function['url'])) {
+                $this->writeFunction($function);
             }
             $this->classOutput .= "";
         }
@@ -175,50 +395,55 @@ class JsonParser
     /**
      * Write function
      *
-     * @param $url
-     * @param $options
-     * @param $urlReal
+     * @param $function
      *
      * @return string
      *
      */
-    protected function writeFunction($url, $type, $options, $urlReal)
+    protected function writeFunction($function)
     {
         // Skip the routs without the command
-        if (!isset($options['command'])) {
+        if (!isset($function['url'])) {
             return "";
         }
 
-        // Skip the routes with the same command
-        if (isset($this->classArray[$options['command']])) {
-            return "";
-        }
 
         $routeParamsString = '';
         $optionsAnnotations = "\n\t/**\n";
-        $optionsAnnotations .= "\t* " . $options['command'] . "\n\t*\n";
+        $optionsAnnotations .= "\t* " . $function['name'] . "\n\t*\n";
 
-        $allOptions = $this->addOptions($options);
-        $routeParams = $this->getUrlOptions($urlReal);
+        $allOptions = $function['payloadParams'];
+
+        $routeParams = $function['uriParams'];
+
         if ($routeParams) {
             foreach ($routeParams as $key => $param) {
                 $routeParamsString .= ($key) ? ", " : "";
-                $routeParamsString .= "$" . $param['parameterName'];
+                $routeParamsString .= "$" . $param;
 
             }
         }
+
+        $optionsAnnotations .= ($function['desc']) ? "\t* {$function['desc']}\n" : "";
+        $optionsAnnotations .= ($function['note']) ? "\t* @note {$function['note']}\n" : "";
+
+        foreach ($function['link'] as $link) {
+            $optionsAnnotations .= "\t* @link {$link}\n";
+        }
+
+        $optionsAnnotations .= ($function['src']) ? "\t* @source {$function['src']}\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @param array \$data\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @options " . json_encode($allOptions) . "\n\t*\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @return mixed\n" : "";
         $options_ = ($allOptions) ? "\$data" : "";
         $routeParamsString = ($allOptions && $routeParamsString) ? ", " . $routeParamsString : $routeParamsString;
         $this->classOutput .= $optionsAnnotations . "\t*\n\t**/\n";
-        $this->classOutput .= "\tpublic function " . $options['command'] . "(" . $options_ . "" . $routeParamsString . "){\n";
+        $this->classOutput .= "\tpublic function " . $function['name'] . "(" . $options_ . "" . $routeParamsString . "){\n";
 
-        $this->classOutput .= "\t\t" . $this->getCommand($url, $type, $options_, $routeParams) . "\n\t}";
-        $this->classArray[$options['command']] = $options['command'];
+        $this->classOutput .= "\t\t" . $this->getCommand($function['url'], $function['http_method'], $options_, $function['uriParams']) . "\n\t}";
+        $this->classArray[$function['name']] = $function['name'];
 
-        return $options['command'];
+        return $function['name'];
     }
 
     /**
@@ -230,45 +455,22 @@ class JsonParser
      * @param $routeParams
      *
      * @return string
-     *
      */
     protected function getCommand($url, $type, $data, $routeParams)
     {
         $routeParamsString = "";
         $data = ($data) ? ", \$data" : '';
-        $urlString = $this->constantsOutputFileName . "::$" . $url;
+        $urlString = "'$url'";
         if ($routeParams) {
             $urlString = "\$url";
+            $routeParamsString .= "\t\$url = '" . $url . "';\n\t\t";
             foreach ($routeParams as $param) {
-                $routeParamsString .= "\t\$url = str_replace('" . $param['replace'] . "', $" . $param['parameterName'] . ", " . $this->constantsOutputFileName . "::$" . $url . ");\n\t\t";
+                $routeParamsString .= "\t\$url = str_ireplace(':" . $param . "', $" . $param . ", \$url );\n\t\t";
             }
         }
         $command = $routeParamsString . "\treturn \$this->driverCommand(" . $this->constantsOutputFileName . "::$" . $type . ", " . $urlString . $data . ");";
 
         return $command;
-    }
-
-    /**
-     * Add options
-     *
-     * @param $options
-     *
-     * @return array
-     *
-     */
-    protected function addOptions($options)
-    {
-        $allOptions = [];
-
-        if (!$options) {
-            return $allOptions;
-        }
-
-        if (isset($options['payloadParams'])) {
-            $allOptions = $options['payloadParams'];
-        }
-
-        return $allOptions;
     }
 
     /**
@@ -286,76 +488,23 @@ class JsonParser
     /**
      * Inspect url
      *
-     * @param string $url
+     * @param string $name
+     * @param string $value
      *
-     * @return string
+     * @return mixed
      *
      */
-    protected function inspectUrl($url)
+    protected function addConstant($name, $value)
     {
-        // Skip the one that don't have the :sessionId
-        if (strpos($url, ':sessionId/') === false) {
-            return '';
+        $nameSm = strtolower($name);
+
+        if (!isset($this->constantsArray[$nameSm])) {
+            $this->constants .= "\n\t/** @var string */\n\tpublic static \$" . $name . " = '" . $value . "';\n";
+            $this->constantsArray[$nameSm] = $value;
+        } else {
+
+            echo "Duplicate key constants :" . $name . ' -- ' . $value . "\n";
         }
-
-        $urlArray = explode(':sessionId/', $url);
-        $urlParts = explode('/', $urlArray[1]);
-        $constantName = $this->generateUnqConstant($urlParts);
-
-        $this->constants .= "\n\t/** @var string */\n\t static public \$" . $constantName . " = '" . $urlArray[1] . "';\n";
-
-        return [$constantName, $urlArray[1]];
     }
 
-    /**
-     * Get url options
-     *
-     * @param $url
-     *
-     * @return array
-     *
-     */
-    protected function getUrlOptions($url)
-    {
-        return Helper::getBetweenAll($url);
-    }
-
-    /**
-     * Inspect options and return the command name
-     *
-     * @param $options
-     *
-     * @return string
-     *
-     */
-    protected function inspectOptions($options)
-    {
-        // Skip items without commands
-        if (!isset($options['command'])) {
-            return '';
-        }
-
-        return $options['command'];
-    }
-
-    /**
-     * Generate uniq constant
-     *
-     * @param $urlParts
-     *
-     * @return string
-     *
-     */
-    protected function generateUnqConstant($urlParts)
-    {
-        $constantName = strtoupper($urlParts[count($urlParts) - 1]);
-        // Check if its parameter and replace with bottom line if it is
-        $constantName = (strpos($constantName, ':') === false) ? $constantName : strtoupper($urlParts[count($urlParts) - 2]) . str_replace(':', '_', $constantName);
-        $uniqConstant = (count($urlParts) > 1) ? str_replace(':', '_', strtoupper($urlParts[count($urlParts) - 2])) : '';
-        // Check if we already have the same constant and add uniqConstant if we have
-        $constantName = (!isset($this->constantsArray[$constantName])) ? $constantName : $constantName . "_" . $uniqConstant;
-        $this->constantsArray[$constantName] = $constantName;
-
-        return $constantName;
-    }
 }

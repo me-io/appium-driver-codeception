@@ -464,4 +464,22 @@ class AppiumDriver extends CodeceptionModule implements
         return $response->getValue();
     }
 
+    /**
+     * @param $method
+     * @param $command
+     * @param $data
+     *
+     * @return mixed
+     */
+    public function driverCommandWithoutSession($method = 'POST', $command, $data = [])
+    {
+
+        $url = $this->getSession()->getSessionUrl()->descend($command);
+
+        /** @var \PHPUnit_Extensions_Selenium2TestCase_Response $response */
+        $response = $this->getDriver()->curl($method, $url, $data);
+
+        return $response->getValue();
+    }
+
 }

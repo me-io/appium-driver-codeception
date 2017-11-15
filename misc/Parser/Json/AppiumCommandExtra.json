@@ -1,0 +1,16 @@
+{
+  "/wd/hub/session/:sessionId/simulator/touch_id": {
+    "POST": {
+      "command": "touchId",
+      "link": [
+        "https://github.com/admc/wd/blob/master/doc/jsonwire-full-mapping.md"
+      ],
+      "payloadParams": {
+        "required": [
+          "match"
+        ]
+      },
+      "desc": "Simulate iOS touchID (mjsonWire)"
+    }
+  }
+}

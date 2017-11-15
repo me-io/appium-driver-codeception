@@ -28,11 +28,14 @@ trait Touch
     /**
      * @return \Appium\TestCase\MultiAction
      */
-    public function getMultiAction()
+    public function getMultiTouchAction()
     {
         return new MultiAction($this->getSessionUrl(), $this->getDriver());
     }
 
+    /**
+     * @link https://pypkg.com/pypi/appium-python-client/f/appium/webdriver/webdriver.py
+     */
 
     /**
      * @param startX x-percent at which to start
@@ -45,7 +48,7 @@ trait Touch
      */
     public function swipe($startX, $startY, $endX, $endY, $duration = 800)
     {
-        $action = $this->initiateTouchAction();
+        $action = $this->getTouchAction();
         $action->press(array('x' => $startX, 'y' => $startY))
             ->wait($duration)
             ->moveTo(array('x' => $endX, 'y' => $endY))
@@ -56,12 +59,20 @@ trait Touch
     }
 
     /**
-     * @return TouchAction
+     * @param startX x-percent at which to start
+     * @param startY y-percent at which to start
+     * @param endX x-percent at which to end
+     * @param endY y-percent at which to end
+     *
+     * @return mixed
      */
-    public function initiateTouchAction()
+    public function flick($startX, $startY, $endX, $endY)
     {
-        /** @var \Appium\TestCase\Session $session */
-        $session = $this->getSession();
-        return new TouchAction($session->getSessionUrl(), $session->getDriver());
+        $action = $this->getTouchAction();
+        $action->press(array('x' => $startX, 'y' => $startY))
+            ->moveTo(array('x' => $endX, 'y' => $endY))
+            ->release()
+            ->perform();
+        return $this;
     }
 }

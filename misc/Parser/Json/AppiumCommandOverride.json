@@ -1,0 +1,42 @@
+{
+  "/wd/hub/session/:sessionId/touch/click": {
+    "POST": {
+      "note": "override mismatch jsonwire file",
+      "command": "touchClick"
+    }
+  },
+  "/wd/hub/session/:sessionId/appium/simulator/touch_id": {
+    "POST": {
+      "note": "override mismatch jsonwire file",
+      "command": "simulatorTouchId"
+    }
+  },
+  "/wd/hub/session/:sessionId/appium/receive_async_response": {
+    "POST": {
+      "note": "override same command name in route.js",
+      "command": "appReceiveAsyncResponse"
+    }
+  },
+  "/wd/hub/session/:sessionId/alert/text": {
+    "GET": {
+      "note": "override same command name in route.js",
+      "command": "getAlertTextEx"
+    },
+    "POST": {
+      "note": "override same command name in route.js",
+      "command": "setAlertTextEx"
+    }
+  },
+  "/wd/hub/session/:sessionId/alert/accept": {
+    "POST": {
+      "note": "override same command name in route.js",
+      "command": "postAcceptAlertEx"
+    }
+  },
+  "/wd/hub/session/:sessionId/alert/dismiss": {
+    "POST": {
+      "note": "override same command name in route.js",
+      "command": "postDismissAlertEx"
+    }
+  }
+}
