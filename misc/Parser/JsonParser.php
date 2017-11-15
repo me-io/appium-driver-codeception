@@ -111,7 +111,7 @@ class JsonParser
 
     public function generateDocMd()
     {
-        $columns = ['MethodName', 'Method', 'Url', 'Description', 'Payload'];
+        $columns = ['Method Name', 'HTTP', 'Url/Desc', 'Payload'];
         $rows = [];
         foreach ($this->functionsArray as $function) {
             $params = '';
@@ -123,13 +123,12 @@ class JsonParser
             $rows[] = [
                 $function['name'],
                 $function['http_method'],
-                $function['url'],
-                $function['desc'],
+                $function['url'] . "<br>" . $function['desc'],
                 $params,
             ];
         }
         $t = new TextTable($columns, $rows);
-
+        $t->maxlen = 400;
         //$t->setAlgin(['L', 'C', 'R']);
 
         $mdTable = $t->render();

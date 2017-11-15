@@ -8,7 +8,7 @@ namespace Parser\Helper;
 class TextTable
 {
     /** @var int The source path */
-    public $maxlen = 50;
+    public $maxlen = 200;
     /** @var array The source path */
     private $data = array();
     /** @var array The source path */
