@@ -4,6 +4,10 @@
 
 Include codeception appium driver in the composer.json file:
 
+```
+composer require tajawal/codeception-appium
+```
+OR : 
 ```json
 {
     "require": {
@@ -12,14 +16,15 @@ Include codeception appium driver in the composer.json file:
 }
 ```
 
-Run composer update:
+Run composer update / install:
 
 ```bash
-composer update
+composer install
 ```
 
-This will install codeception appium driver and all dependencies. 
-Enable module in your suite yml file:
+This will install codeception appium driver and all dependencies.
+ 
+####Enable module in your suite yml file:
 
 ```yaml
 modules:
