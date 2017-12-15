@@ -33,7 +33,6 @@ use Codeception\TestInterface;
 class AppiumDriver extends CodeceptionModule implements
     MultiSessionInterface,
     ScreenshotSaver,
-    ConflictsWithModule,
     RequiresPackage
 {
     use BaseCommands;
@@ -115,11 +114,6 @@ class AppiumDriver extends CodeceptionModule implements
                 $e->getMessage() . "\n \nPlease make sure that Selenium Server or PhantomJS is running."
             );
         }
-    }
-
-    public function _conflicts()
-    {
-        return 'Codeception\Lib\Interfaces\Web';
     }
 
     public function _before(TestInterface $test)
