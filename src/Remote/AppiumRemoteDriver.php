@@ -3,13 +3,29 @@
 namespace Appium\Remote;
 
 use Appium\TestCase\Session;
+use PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts;
+use PHPUnit_Extensions_Selenium2TestCase_URL;
 
+/**
+ * Class AppiumRemoteDriver
+ *
+ * @package Appium\Remote
+ */
 class AppiumRemoteDriver extends \PHPUnit_Extensions_Selenium2TestCase_Driver
 {
+    /** @var PHPUnit_Extensions_Selenium2TestCase_URL */
     private $seleniumServerUrl;
+
+    /** @var int */
     private $seleniumServerRequestsTimeout;
 
-    public function __construct(\PHPUnit_Extensions_Selenium2TestCase_URL $seleniumServerUrl, $timeout = 60)
+    /**
+     * AppiumRemoteDriver constructor.
+     *
+     * @param PHPUnit_Extensions_Selenium2TestCase_URL $seleniumServerUrl
+     * @param int                                      $timeout
+     */
+    public function __construct(PHPUnit_Extensions_Selenium2TestCase_URL $seleniumServerUrl, int $timeout = 60)
     {
         parent::__construct($seleniumServerUrl, $timeout);
 
@@ -17,16 +33,22 @@ class AppiumRemoteDriver extends \PHPUnit_Extensions_Selenium2TestCase_Driver
         $this->seleniumServerRequestsTimeout = $timeout;
     }
 
-    public function startSession(array $desiredCapabilities,
-                                 \PHPUnit_Extensions_Selenium2TestCase_URL $browserUrl)
+    /**
+     * @param array                                    $desiredCapabilities
+     * @param PHPUnit_Extensions_Selenium2TestCase_URL $browserUrl
+     *
+     * @return Session
+     */
+    public function startSession(array $desiredCapabilities, PHPUnit_Extensions_Selenium2TestCase_URL $browserUrl)
     {
         $sessionCreation = $this->seleniumServerUrl->descend("/wd/hub/session");
         $response        = $this->curl('POST', $sessionCreation, [
             'desiredCapabilities' => $desiredCapabilities,
         ]);
-        $sessionPrefix   = $response->getURL();
 
-        $timeouts = new \PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts(
+        $sessionPrefix = $response->getURL();
+
+        $timeouts = new PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts(
             $this,
             $sessionPrefix->descend('timeouts'),
             $this->seleniumServerRequestsTimeout * 1000
@@ -40,7 +62,10 @@ class AppiumRemoteDriver extends \PHPUnit_Extensions_Selenium2TestCase_Driver
         );
     }
 
-    public function getServerUrl()
+    /**
+     * @return PHPUnit_Extensions_Selenium2TestCase_URL
+     */
+    public function getServerUrl(): PHPUnit_Extensions_Selenium2TestCase_URL
     {
         return $this->seleniumServerUrl;
     }

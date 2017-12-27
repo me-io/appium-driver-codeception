@@ -3,21 +3,31 @@
 namespace Appium\TestCase;
 
 use Appium\Remote\AppiumRemoteDriver;
+use PHPUnit_Extensions_Selenium2TestCase_URL;
 
+/**
+ * Class TouchAction
+ *
+ * @package Appium\TestCase
+ */
 class TouchAction
 {
+    /** @var PHPUnit_Extensions_Selenium2TestCase_URL */
     private $sessionUrl;
+
+    /** @var AppiumRemoteDriver */
     private $driver;
+
+    /** @var array */
     private $actions;
 
     /**
      * TouchAction constructor.
      *
-     * @param \PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl
-     * @param \Appium\Remote\AppiumRemoteDriver         $driver
+     * @param PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl
+     * @param \Appium\Remote\AppiumRemoteDriver        $driver
      */
-    public function __construct(\PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl,
-                                AppiumRemoteDriver $driver)
+    public function __construct(PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl, AppiumRemoteDriver $driver)
     {
         $this->sessionUrl = $sessionUrl;
         $this->driver     = $driver;
@@ -144,7 +154,8 @@ class TouchAction
         $params = [
             'actions' => $this->actions,
         ];
-        $url    = $this->sessionUrl->descend('touch')->descend('perform');
+        
+        $url = $this->sessionUrl->descend('touch')->descend('perform');
 
         return $this->driver->curl('POST', $url, $params);
     }
@@ -201,7 +212,7 @@ class TouchAction
     public function addAction($action, $options)
     {
         $gesture = [
-            'action' => $action,
+            'action'  => $action,
             'options' => $options,
         ];
 

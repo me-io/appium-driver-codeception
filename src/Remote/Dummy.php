@@ -4,7 +4,6 @@ namespace Appium\Remote;
 
 class Dummy
 {
-
     public function quit()
     {
 
