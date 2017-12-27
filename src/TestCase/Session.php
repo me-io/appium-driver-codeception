@@ -2,32 +2,45 @@
 
 namespace Appium\TestCase;
 
-class Session
-    extends \PHPUnit_Extensions_Selenium2TestCase_Session
+use PHPUnit_Extensions_Selenium2TestCase_Element;
+use PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts;
+use PHPUnit_Extensions_Selenium2TestCase_URL;
+
+/**
+ * Class Session
+ *
+ * @package Appium\TestCase
+ */
+class Session extends \PHPUnit_Extensions_Selenium2TestCase_Session
 {
     /**
-     * @var string  the base URL for this session,
-     *              which all relative URLs will refer to
+     * @var string  the base URL for this session, which all relative URLs will refer to
      */
     private $baseUrl;
 
-    public function __construct($driver,
-                                \PHPUnit_Extensions_Selenium2TestCase_URL $url,
-                                \PHPUnit_Extensions_Selenium2TestCase_URL $baseUrl,
-                                \PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts $timeouts)
+    /**
+     * Session constructor.
+     *
+     * @param                                                        $driver
+     * @param PHPUnit_Extensions_Selenium2TestCase_URL               $url
+     * @param PHPUnit_Extensions_Selenium2TestCase_URL               $baseUrl
+     * @param PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts  $timeouts
+     */
+    public function __construct($driver, PHPUnit_Extensions_Selenium2TestCase_URL $url, PHPUnit_Extensions_Selenium2TestCase_URL $baseUrl, PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts $timeouts)
     {
         $this->baseUrl = $baseUrl;
+
         parent::__construct($driver, $url, $baseUrl, $timeouts);
     }
 
     /**
      * @param array $value WebElement JSON object
      *
-     * @return \PHPUnit_Extensions_Selenium2TestCase_Element
+     * @return PHPUnit_Extensions_Selenium2TestCase_Element
      */
     public function elementFromResponseValue($value)
     {
-        return \PHPUnit_Extensions_Selenium2TestCase_Element::fromResponseValue($value, $this->getSessionUrl()->descend('element'), $this->driver);
+        return PHPUnit_Extensions_Selenium2TestCase_Element::fromResponseValue($value, $this->getSessionUrl()->descend('element'), $this->driver);
     }
 
     /**
@@ -49,6 +62,7 @@ class Session
     {
         $url  = $this->getSessionUrl()->addCommand('appium/app/strings');
         $data = [];
+
         if (!is_null($language)) {
             $data['language'] = $language;
         }
@@ -67,7 +81,7 @@ class Session
     {
         $url  = $this->getSessionUrl()->addCommand('appium/device/keyevent');
         $data = [
-            'keycode' => $keycode,
+            'keycode'   => $keycode,
             'metastate' => $metastate,
         ];
 
@@ -89,7 +103,6 @@ class Session
      */
     protected function initCommands()
     {
-        $baseUrl  = $this->baseUrl;
         $commands = parent::initCommands();
 
         $commands['contexts'] = 'PHPUnit_Extensions_Selenium2TestCase_SessionCommand_GenericAccessor';

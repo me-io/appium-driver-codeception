@@ -2,9 +2,13 @@
 
 namespace Appium\Traits;
 
+/**
+ * Class BaseConstants
+ *
+ * @package Appium\Traits
+ */
 class BaseConstants
 {
-
     /** @var string */
     static public $POST = 'POST';
 

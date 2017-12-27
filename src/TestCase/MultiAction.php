@@ -3,24 +3,35 @@
 namespace Appium\TestCase;
 
 use Appium\Remote\AppiumRemoteDriver;
+use PHPUnit_Extensions_Selenium2TestCase_URL;
 
+/**
+ * Class MultiAction
+ *
+ * @package Appium\TestCase
+ */
 class MultiAction
 {
+    /** @var PHPUnit_Extensions_Selenium2TestCase_URL */
     private $sessionUrl;
+
+    /** @var AppiumRemoteDriver */
     private $driver;
+
+    /** @var Element|null */
     private $element;
+
+    /** @var array */
     private $actions;
 
     /**
      * MultiAction constructor.
      *
-     * @param \PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl
-     * @param \Appium\Remote\AppiumRemoteDriver         $driver
-     * @param \Appium\TestCase\Element|null             $element
+     * @param PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl
+     * @param \Appium\Remote\AppiumRemoteDriver        $driver
+     * @param \Appium\TestCase\Element|null            $element
      */
-    public function __construct(\PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl,
-                                AppiumRemoteDriver $driver,
-                                Element $element = null)
+    public function __construct(PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl, AppiumRemoteDriver $driver, Element $element = null)
     {
         $this->sessionUrl = $sessionUrl;
         $this->driver     = $driver;

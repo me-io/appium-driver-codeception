@@ -3,6 +3,7 @@
 namespace Parser;
 
 use Parser\Helper\Helper;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class JsonParser
@@ -48,7 +49,7 @@ class JsonParser
                                     \n\t/** @var string */\n\tstatic public \$DELETE = 'DELETE';
                                     {{constants}}\n}\n";
 
-    /** @var \Symfony\Component\Console\Output\OutputInterface Console output */
+    /** @var OutputInterface Console output */
     protected $consoleOutput;
 
     /** @var string */
@@ -60,13 +61,14 @@ class JsonParser
     /**
      * JsonParser constructor.
      *
-     * @param string $jsonFile
+     * @param OutputInterface $console
+     * @param string          $jsonFile
      */
-    public function __construct(\Symfony\Component\Console\Output\OutputInterface $console, $jsonFile = '')
+    public function __construct(OutputInterface $console, string $jsonFile = '')
     {
         $this->consoleOutput = $console;
-        $jsonFile = ($jsonFile) ? $jsonFile : $this->defaultJsonFile;
-        $this->jsonObject = json_decode(file_get_contents($jsonFile), true);
+        $jsonFile            = $jsonFile ? $jsonFile : $this->defaultJsonFile;
+        $this->jsonObject    = json_decode(file_get_contents($jsonFile), true);
     }
 
     /**
@@ -77,15 +79,15 @@ class JsonParser
     {
         foreach ($this->jsonObject as $key => $item) {
             $this->functionsArray[] = [
-                'url' => $key,
+                'url'     => $key,
                 'details' => $this->getDetails($item),
             ];
         }
 
         $this->createFunctions()
-            ->createConstants()
-            ->createConstantsFile()
-            ->createClassFile();
+             ->createConstants()
+             ->createConstantsFile()
+             ->createClassFile();
 
         $this->consoleOutput->writeln("<info>Finished \nYou will find output files in /Tools/Parser/output</info>");
     }
@@ -104,7 +106,7 @@ class JsonParser
 
         foreach ($data as $key => $item) {
             $details[] = [
-                'type' => $key,
+                'type'    => $key,
                 'options' => $item,
             ];
         }
@@ -128,7 +130,7 @@ class JsonParser
         foreach ($this->functionsArray as $key => $function) {
             list($inspectedUrl, $url) = $this->inspectUrl($function['url']);
             $this->functionsArray[$key]['urlConst'] = $inspectedUrl;
-            $this->functionsArray[$key]['url'] = $url;
+            $this->functionsArray[$key]['url']      = $url;
         }
 
         return $this;
@@ -175,14 +177,13 @@ class JsonParser
     /**
      * Write function
      *
-     * @param $url
-     * @param $options
-     * @param $urlReal
-     *
+     * @param string $url
+     * @param string $type
+     * @param array  $options
+     * @param string $urlReal
      * @return string
-     *
      */
-    protected function writeFunction($url, $type, $options, $urlReal)
+    protected function writeFunction(string $url, string $type, array $options, string $urlReal)
     {
         // Skip the routs without the command
         if (!isset($options['command'])) {
@@ -194,12 +195,13 @@ class JsonParser
             return "";
         }
 
-        $routeParamsString = '';
+        $routeParamsString  = '';
         $optionsAnnotations = "\n\t/**\n";
         $optionsAnnotations .= "\t* " . $options['command'] . "\n\t*\n";
 
-        $allOptions = $this->addOptions($options);
+        $allOptions  = $this->addOptions($options);
         $routeParams = $this->getUrlOptions($urlReal);
+
         if ($routeParams) {
             foreach ($routeParams as $key => $param) {
                 $routeParamsString .= ($key) ? ", " : "";
@@ -207,15 +209,16 @@ class JsonParser
 
             }
         }
+
         $optionsAnnotations .= ($allOptions) ? "\t* @param array \$data\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @options " . json_encode($allOptions) . "\n\t*\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @return mixed\n" : "";
-        $options_ = ($allOptions) ? "\$data" : "";
-        $routeParamsString = ($allOptions && $routeParamsString) ? ", " . $routeParamsString : $routeParamsString;
-        $this->classOutput .= $optionsAnnotations . "\t*\n\t**/\n";
-        $this->classOutput .= "\tpublic function " . $options['command'] . "(" . $options_ . "" . $routeParamsString . "){\n";
+        $options_           = ($allOptions) ? "\$data" : "";
+        $routeParamsString  = ($allOptions && $routeParamsString) ? ", " . $routeParamsString : $routeParamsString;
+        $this->classOutput  .= $optionsAnnotations . "\t*\n\t**/\n";
+        $this->classOutput  .= "\tpublic function " . $options['command'] . "(" . $options_ . "" . $routeParamsString . "){\n";
 
-        $this->classOutput .= "\t\t" . $this->getCommand($url, $type, $options_, $routeParams) . "\n\t}";
+        $this->classOutput                     .= "\t\t" . $this->getCommand($url, $type, $options_, $routeParams) . "\n\t}";
         $this->classArray[$options['command']] = $options['command'];
 
         return $options['command'];
@@ -224,25 +227,25 @@ class JsonParser
     /**
      * Get the command for the function
      *
-     * @param $url
-     * @param $type
-     * @param $data
-     * @param $routeParams
-     *
+     * @param string $url
+     * @param string $type
+     * @param string $data
+     * @param array  $routeParams
      * @return string
-     *
      */
-    protected function getCommand($url, $type, $data, $routeParams)
+    protected function getCommand(string $url, string $type, string $data, array $routeParams)
     {
         $routeParamsString = "";
-        $data = ($data) ? ", \$data" : '';
-        $urlString = $this->constantsOutputFileName . "::$" . $url;
+        $data              = ($data) ? ", \$data" : '';
+        $urlString         = $this->constantsOutputFileName . "::$" . $url;
+
         if ($routeParams) {
             $urlString = "\$url";
             foreach ($routeParams as $param) {
                 $routeParamsString .= "\t\$url = str_replace('" . $param['replace'] . "', $" . $param['parameterName'] . ", " . $this->constantsOutputFileName . "::$" . $url . ");\n\t\t";
             }
         }
+
         $command = $routeParamsString . "\treturn \$this->driverCommand(" . $this->constantsOutputFileName . "::$" . $type . ", " . $urlString . $data . ");";
 
         return $command;
@@ -298,8 +301,8 @@ class JsonParser
             return '';
         }
 
-        $urlArray = explode(':sessionId/', $url);
-        $urlParts = explode('/', $urlArray[1]);
+        $urlArray     = explode(':sessionId/', $url);
+        $urlParts     = explode('/', $urlArray[1]);
         $constantName = $this->generateUnqConstant($urlParts);
 
         $this->constants .= "\n\t/** @var string */\n\t static public \$" . $constantName . " = '" . $urlArray[1] . "';\n";
@@ -349,11 +352,12 @@ class JsonParser
     protected function generateUnqConstant($urlParts)
     {
         $constantName = strtoupper($urlParts[count($urlParts) - 1]);
+        
         // Check if its parameter and replace with bottom line if it is
         $constantName = (strpos($constantName, ':') === false) ? $constantName : strtoupper($urlParts[count($urlParts) - 2]) . str_replace(':', '_', $constantName);
         $uniqConstant = (count($urlParts) > 1) ? str_replace(':', '_', strtoupper($urlParts[count($urlParts) - 2])) : '';
         // Check if we already have the same constant and add uniqConstant if we have
-        $constantName = (!isset($this->constantsArray[$constantName])) ? $constantName : $constantName . "_" . $uniqConstant;
+        $constantName                        = (!isset($this->constantsArray[$constantName])) ? $constantName : $constantName . "_" . $uniqConstant;
         $this->constantsArray[$constantName] = $constantName;
 
         return $constantName;

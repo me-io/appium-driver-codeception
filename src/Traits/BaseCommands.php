@@ -2,9 +2,13 @@
 
 namespace Appium\Traits;
 
+/**
+ * Class BaseCommands
+ *
+ * @package Appium\Traits
+ */
 trait BaseCommands
 {
-
     /**
      * timeouts
      *
@@ -13,7 +17,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function timeouts($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$TIMEOUTS, $data);
@@ -27,7 +31,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function asyncScriptTimeout($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ASYNC_SCRIPT, $data);
@@ -41,7 +45,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function implicitWait($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$IMPLICIT_WAIT, $data);
@@ -51,7 +55,7 @@ trait BaseCommands
      * getWindowHandle
      *
      *
-     **/
+     */
     public function getWindowHandle()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$WINDOW_HANDLE);
@@ -61,7 +65,7 @@ trait BaseCommands
      * getWindowHandles
      *
      *
-     **/
+     */
     public function getWindowHandles()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$WINDOW_HANDLES);
@@ -71,7 +75,7 @@ trait BaseCommands
      * getUrl
      *
      *
-     **/
+     */
     public function getUrl()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$URL);
@@ -85,7 +89,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setUrl($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$URL, $data);
@@ -95,7 +99,7 @@ trait BaseCommands
      * forward
      *
      *
-     **/
+     */
     public function forward()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$FORWARD);
@@ -105,7 +109,7 @@ trait BaseCommands
      * back
      *
      *
-     **/
+     */
     public function back()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$BACK);
@@ -115,7 +119,7 @@ trait BaseCommands
      * refresh
      *
      *
-     **/
+     */
     public function refresh()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$REFRESH);
@@ -129,7 +133,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function execute($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$EXECUTE, $data);
@@ -143,7 +147,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function executeAsync($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$EXECUTE_ASYNC, $data);
@@ -153,7 +157,7 @@ trait BaseCommands
      * getScreenshot
      *
      *
-     **/
+     */
     public function getScreenshot()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$SCREENSHOT);
@@ -163,7 +167,7 @@ trait BaseCommands
      * availableIMEEngines
      *
      *
-     **/
+     */
     public function availableIMEEngines()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$AVAILABLE_ENGINES);
@@ -173,7 +177,7 @@ trait BaseCommands
      * getActiveIMEEngine
      *
      *
-     **/
+     */
     public function getActiveIMEEngine()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$ACTIVE_ENGINE);
@@ -183,7 +187,7 @@ trait BaseCommands
      * isIMEActivated
      *
      *
-     **/
+     */
     public function isIMEActivated()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$ACTIVATED);
@@ -193,7 +197,7 @@ trait BaseCommands
      * deactivateIMEEngine
      *
      *
-     **/
+     */
     public function deactivateIMEEngine()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$DEACTIVATE);
@@ -207,7 +211,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function activateIMEEngine($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ACTIVATE, $data);
@@ -221,7 +225,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setFrame($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$FRAME, $data);
@@ -235,7 +239,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setWindow($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$WINDOW, $data);
@@ -245,7 +249,7 @@ trait BaseCommands
      * closeWindow
      *
      *
-     **/
+     */
     public function closeWindow()
     {
         return $this->driverCommand(BaseConstants::$DELETE, BaseConstants::$WINDOW);
@@ -255,10 +259,11 @@ trait BaseCommands
      * getWindowSize
      *
      *
-     **/
+     */
     public function getWindowSize($windowhandle)
     {
         $url = str_replace(':windowhandle', $windowhandle, BaseConstants::$SIZE);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -266,10 +271,11 @@ trait BaseCommands
      * maximizeWindow
      *
      *
-     **/
+     */
     public function maximizeWindow($windowhandle)
     {
         $url = str_replace(':windowhandle', $windowhandle, BaseConstants::$MAXIMIZE);
+
         return $this->driverCommand(BaseConstants::$POST, $url);
     }
 
@@ -277,7 +283,7 @@ trait BaseCommands
      * getCookies
      *
      *
-     **/
+     */
     public function getCookies()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$COOKIE);
@@ -291,7 +297,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setCookie($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$COOKIE, $data);
@@ -301,7 +307,7 @@ trait BaseCommands
      * deleteCookies
      *
      *
-     **/
+     */
     public function deleteCookies()
     {
         return $this->driverCommand(BaseConstants::$DELETE, BaseConstants::$COOKIE);
@@ -311,10 +317,11 @@ trait BaseCommands
      * deleteCookie
      *
      *
-     **/
+     */
     public function deleteCookie($name)
     {
         $url = str_replace(':name', $name, BaseConstants::$COOKIE_NAME);
+
         return $this->driverCommand(BaseConstants::$DELETE, $url);
     }
 
@@ -322,7 +329,7 @@ trait BaseCommands
      * getPageSource
      *
      *
-     **/
+     */
     public function getPageSource()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$SOURCE);
@@ -332,7 +339,7 @@ trait BaseCommands
      * title
      *
      *
-     **/
+     */
     public function title()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$TITLE);
@@ -346,7 +353,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function findElement($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ELEMENT, $data);
@@ -360,7 +367,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function findElements($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ELEMENTS, $data);
@@ -370,7 +377,7 @@ trait BaseCommands
      * active
      *
      *
-     **/
+     */
     public function active()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ACTIVE);
@@ -384,10 +391,11 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function findElementFromElement($data, $elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$ELEMENT__ELEMENTID);
+
         return $this->driverCommand(BaseConstants::$POST, $url, $data);
     }
 
@@ -399,10 +407,11 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function findElementsFromElement($data, $elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$ELEMENTS__ELEMENTID);
+
         return $this->driverCommand(BaseConstants::$POST, $url, $data);
     }
 
@@ -410,10 +419,11 @@ trait BaseCommands
      * click
      *
      *
-     **/
+     */
     public function click($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$CLICK);
+
         return $this->driverCommand(BaseConstants::$POST, $url);
     }
 
@@ -421,10 +431,11 @@ trait BaseCommands
      * submit
      *
      *
-     **/
+     */
     public function submit($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$SUBMIT);
+
         return $this->driverCommand(BaseConstants::$POST, $url);
     }
 
@@ -432,10 +443,11 @@ trait BaseCommands
      * getText
      *
      *
-     **/
+     */
     public function getText($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$TEXT);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -447,10 +459,11 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setValue($data, $elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$VALUE);
+
         return $this->driverCommand(BaseConstants::$POST, $url, $data);
     }
 
@@ -462,7 +475,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function keys($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$KEYS, $data);
@@ -472,10 +485,11 @@ trait BaseCommands
      * getName
      *
      *
-     **/
+     */
     public function getName($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$NAME);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -483,10 +497,11 @@ trait BaseCommands
      * clear
      *
      *
-     **/
+     */
     public function clear($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$CLEAR);
+
         return $this->driverCommand(BaseConstants::$POST, $url);
     }
 
@@ -494,10 +509,11 @@ trait BaseCommands
      * elementSelected
      *
      *
-     **/
+     */
     public function elementSelected($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$SELECTED);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -505,10 +521,11 @@ trait BaseCommands
      * elementEnabled
      *
      *
-     **/
+     */
     public function elementEnabled($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$ENABLED);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -516,11 +533,12 @@ trait BaseCommands
      * getAttribute
      *
      *
-     **/
+     */
     public function getAttribute($elementId, $name)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$ATTRIBUTE_NAME);
         $url = str_replace(':name', $name, BaseConstants::$ATTRIBUTE_NAME);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -528,11 +546,12 @@ trait BaseCommands
      * equalsElement
      *
      *
-     **/
+     */
     public function equalsElement($elementId, $otherId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$EQUALS_OTHERID);
         $url = str_replace(':otherId', $otherId, BaseConstants::$EQUALS_OTHERID);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -540,10 +559,11 @@ trait BaseCommands
      * elementDisplayed
      *
      *
-     **/
+     */
     public function elementDisplayed($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$DISPLAYED);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -551,10 +571,11 @@ trait BaseCommands
      * getLocation
      *
      *
-     **/
+     */
     public function getLocation($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$LOCATION);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -562,10 +583,11 @@ trait BaseCommands
      * getLocationInView
      *
      *
-     **/
+     */
     public function getLocationInView($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$LOCATION_IN_VIEW);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -573,10 +595,11 @@ trait BaseCommands
      * getSize
      *
      *
-     **/
+     */
     public function getSize($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$SIZE__ELEMENTID);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -584,11 +607,12 @@ trait BaseCommands
      * getCssProperty
      *
      *
-     **/
+     */
     public function getCssProperty($elementId, $propertyName)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$CSS_PROPERTYNAME);
         $url = str_replace(':propertyName', $propertyName, BaseConstants::$CSS_PROPERTYNAME);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -596,7 +620,7 @@ trait BaseCommands
      * getOrientation
      *
      *
-     **/
+     */
     public function getOrientation()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$ORIENTATION);
@@ -610,7 +634,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setOrientation($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ORIENTATION, $data);
@@ -620,7 +644,7 @@ trait BaseCommands
      * getRotation
      *
      *
-     **/
+     */
     public function getRotation()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$ROTATION);
@@ -634,7 +658,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setRotation($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ROTATION, $data);
@@ -648,7 +672,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function moveTo($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$MOVETO, $data);
@@ -662,7 +686,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function clickCurrent($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$CLICK_, $data);
@@ -676,7 +700,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function touchDown($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$DOWN, $data);
@@ -690,7 +714,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function touchUp($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$UP, $data);
@@ -704,7 +728,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function touchMove($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$MOVE, $data);
@@ -718,7 +742,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function touchLongClick($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$LONGCLICK, $data);
@@ -732,7 +756,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function flick($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$FLICK, $data);
@@ -742,7 +766,7 @@ trait BaseCommands
      * getGeoLocation
      *
      *
-     **/
+     */
     public function getGeoLocation()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$LOCATION_);
@@ -756,7 +780,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setGeoLocation($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$LOCATION_, $data);
@@ -770,7 +794,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function getLog($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$LOG, $data);
@@ -780,7 +804,7 @@ trait BaseCommands
      * getLogTypes
      *
      *
-     **/
+     */
     public function getLogTypes()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$TYPES);
@@ -790,7 +814,7 @@ trait BaseCommands
      * getCurrentContext
      *
      *
-     **/
+     */
     public function getCurrentContext()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$CONTEXT);
@@ -804,7 +828,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setContext($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$CONTEXT, $data);
@@ -814,7 +838,7 @@ trait BaseCommands
      * getContexts
      *
      *
-     **/
+     */
     public function getContexts()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$CONTEXTS);
@@ -824,10 +848,11 @@ trait BaseCommands
      * getPageIndex
      *
      *
-     **/
+     */
     public function getPageIndex($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$PAGEINDEX);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
@@ -835,7 +860,7 @@ trait BaseCommands
      * getNetworkConnection
      *
      *
-     **/
+     */
     public function getNetworkConnection()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$NETWORK_CONNECTION);
@@ -849,7 +874,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setNetworkConnection($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$NETWORK_CONNECTION, $data);
@@ -863,7 +888,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function performTouch($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$PERFORM, $data);
@@ -877,7 +902,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function performMultiAction($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$PERFORM_MULTI, $data);
@@ -891,7 +916,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function receiveAsyncResponse($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$RECEIVE_ASYNC_RESPONSE, $data);
@@ -901,7 +926,7 @@ trait BaseCommands
      * mobileShake
      *
      *
-     **/
+     */
     public function mobileShake()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$SHAKE);
@@ -911,7 +936,7 @@ trait BaseCommands
      * getDeviceTime
      *
      *
-     **/
+     */
     public function getDeviceTime()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$SYSTEM_TIME);
@@ -925,7 +950,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function lock($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$LOCK, $data);
@@ -935,7 +960,7 @@ trait BaseCommands
      * unlock
      *
      *
-     **/
+     */
     public function unlock()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$UNLOCK);
@@ -945,7 +970,7 @@ trait BaseCommands
      * isLocked
      *
      *
-     **/
+     */
     public function isLocked()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$IS_LOCKED);
@@ -959,7 +984,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function startRecordingScreen($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$START_RECORDING_SCREEN, $data);
@@ -969,7 +994,7 @@ trait BaseCommands
      * stopRecordingScreen
      *
      *
-     **/
+     */
     public function stopRecordingScreen()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$STOP_RECORDING_SCREEN);
@@ -979,7 +1004,7 @@ trait BaseCommands
      * getPerformanceDataTypes
      *
      *
-     **/
+     */
     public function getPerformanceDataTypes()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$TYPES_PERFORMANCEDATA);
@@ -993,7 +1018,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function getPerformanceData($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$GETPERFORMANCEDATA, $data);
@@ -1007,7 +1032,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function pressKeyCode($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$PRESS_KEYCODE, $data);
@@ -1021,7 +1046,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function longPressKeyCode($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$LONG_PRESS_KEYCODE, $data);
@@ -1035,7 +1060,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function fingerprint($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$FINGER_PRINT, $data);
@@ -1049,7 +1074,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function sendSMS($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$SEND_SMS, $data);
@@ -1063,7 +1088,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function gsmCall($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$GSM_CALL, $data);
@@ -1077,7 +1102,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function gsmSignal($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$GSM_SIGNAL, $data);
@@ -1091,7 +1116,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function gsmVoice($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$GSM_VOICE, $data);
@@ -1105,7 +1130,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function powerCapacity($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$POWER_CAPACITY, $data);
@@ -1119,7 +1144,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function powerAC($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$POWER_AC, $data);
@@ -1133,7 +1158,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function networkSpeed($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$NETWORK_SPEED, $data);
@@ -1147,7 +1172,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function keyevent($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$KEYEVENT, $data);
@@ -1161,7 +1186,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function mobileRotation($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ROTATE, $data);
@@ -1171,7 +1196,7 @@ trait BaseCommands
      * getCurrentActivity
      *
      *
-     **/
+     */
     public function getCurrentActivity()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$CURRENT_ACTIVITY);
@@ -1181,7 +1206,7 @@ trait BaseCommands
      * getCurrentPackage
      *
      *
-     **/
+     */
     public function getCurrentPackage()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$CURRENT_PACKAGE);
@@ -1195,7 +1220,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function installApp($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$INSTALL_APP, $data);
@@ -1209,7 +1234,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function removeApp($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$REMOVE_APP, $data);
@@ -1223,7 +1248,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function isAppInstalled($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$APP_INSTALLED, $data);
@@ -1237,7 +1262,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function hideKeyboard($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$HIDE_KEYBOARD, $data);
@@ -1247,7 +1272,7 @@ trait BaseCommands
      * isKeyboardShown
      *
      *
-     **/
+     */
     public function isKeyboardShown()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$IS_KEYBOARD_SHOWN);
@@ -1261,7 +1286,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function pushFile($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$PUSH_FILE, $data);
@@ -1275,7 +1300,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function pullFile($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$PULL_FILE, $data);
@@ -1289,7 +1314,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function pullFolder($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$PULL_FOLDER, $data);
@@ -1299,7 +1324,7 @@ trait BaseCommands
      * toggleFlightMode
      *
      *
-     **/
+     */
     public function toggleFlightMode()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$TOGGLE_AIRPLANE_MODE);
@@ -1309,7 +1334,7 @@ trait BaseCommands
      * toggleData
      *
      *
-     **/
+     */
     public function toggleData()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$TOGGLE_DATA);
@@ -1319,7 +1344,7 @@ trait BaseCommands
      * toggleWiFi
      *
      *
-     **/
+     */
     public function toggleWiFi()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$TOGGLE_WIFI);
@@ -1329,7 +1354,7 @@ trait BaseCommands
      * toggleLocationServices
      *
      *
-     **/
+     */
     public function toggleLocationServices()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$TOGGLE_LOCATION_SERVICES);
@@ -1339,7 +1364,7 @@ trait BaseCommands
      * openNotifications
      *
      *
-     **/
+     */
     public function openNotifications()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$OPEN_NOTIFICATIONS);
@@ -1353,7 +1378,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function startActivity($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$START_ACTIVITY, $data);
@@ -1363,7 +1388,7 @@ trait BaseCommands
      * getSystemBars
      *
      *
-     **/
+     */
     public function getSystemBars()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$SYSTEM_BARS);
@@ -1373,7 +1398,7 @@ trait BaseCommands
      * getDisplayDensity
      *
      *
-     **/
+     */
     public function getDisplayDensity()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$DISPLAY_DENSITY);
@@ -1387,7 +1412,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function touchId($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$TOUCH_ID, $data);
@@ -1401,7 +1426,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function toggleEnrollTouchId($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$TOGGLE_TOUCH_ID_ENROLLMENT, $data);
@@ -1411,7 +1436,7 @@ trait BaseCommands
      * launchApp
      *
      *
-     **/
+     */
     public function launchApp()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$LAUNCH);
@@ -1421,7 +1446,7 @@ trait BaseCommands
      * closeApp
      *
      *
-     **/
+     */
     public function closeApp()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$CLOSE);
@@ -1431,7 +1456,7 @@ trait BaseCommands
      * reset
      *
      *
-     **/
+     */
     public function reset()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$RESET);
@@ -1445,7 +1470,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function background($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$BACKGROUND, $data);
@@ -1459,7 +1484,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function endCoverage($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$END_TEST_COVERAGE, $data);
@@ -1473,7 +1498,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function getStrings($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$STRINGS, $data);
@@ -1487,10 +1512,11 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setValueImmediate($data, $elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$VALUE__ELEMENTID);
+
         return $this->driverCommand(BaseConstants::$POST, $url, $data);
     }
 
@@ -1502,10 +1528,11 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function replaceValue($data, $elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$REPLACE_VALUE);
+
         return $this->driverCommand(BaseConstants::$POST, $url, $data);
     }
 
@@ -1517,7 +1544,7 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function updateSettings($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$SETTINGS, $data);
@@ -1527,7 +1554,7 @@ trait BaseCommands
      * getSettings
      *
      *
-     **/
+     */
     public function getSettings()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$SETTINGS);
@@ -1537,7 +1564,7 @@ trait BaseCommands
      * getAlertText
      *
      *
-     **/
+     */
     public function getAlertText()
     {
         return $this->driverCommand(BaseConstants::$GET, BaseConstants::$ALERT_TEXT);
@@ -1551,40 +1578,36 @@ trait BaseCommands
      *
      * @return mixed
      *
-     **/
+     */
     public function setAlertText($data)
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ALERT_TEXT, $data);
     }
 
     /**
-     * postAcceptAlert
-     *
-     *
-     **/
+     * @return mixed
+     */
     public function postAcceptAlert()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$ACCEPT_ALERT);
     }
 
     /**
-     * postDismissAlert
-     *
-     *
-     **/
+     * @return mixed
+     */
     public function postDismissAlert()
     {
         return $this->driverCommand(BaseConstants::$POST, BaseConstants::$DISMISS_ALERT);
     }
 
     /**
-     * getElementRect
-     *
-     *
-     **/
+     * @param $elementId
+     * @return mixed
+     */
     public function getElementRect($elementId)
     {
         $url = str_replace(':elementId', $elementId, BaseConstants::$RECT);
+
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 }

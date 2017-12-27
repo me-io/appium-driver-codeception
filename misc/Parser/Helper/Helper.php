@@ -20,7 +20,7 @@ class Helper
     static public function getBetweenAll($data)
     {
         $results = [];
-        $endsAt = 0;
+        $endsAt  = 0;
 
         do {
             $startsAt = (!$endsAt) ? strpos($data, ":") : strpos($data, ":", $endsAt);
@@ -30,7 +30,7 @@ class Helper
                     $endsAt = strlen($data);
                 }
                 $results[] = [
-                    'replace' => substr($data, $startsAt, $endsAt - $startsAt),
+                    'replace'       => substr($data, $startsAt, $endsAt - $startsAt),
                     'parameterName' => substr($data, ($startsAt + 1), $endsAt - ($startsAt + 1))];
             }
         } while ($startsAt);
