@@ -12,20 +12,15 @@
   ],
   "type": "library",
   "license": "MIT",
-  "authors": [
-    {
-      "name": "Mohamed Meabed",
-      "email": "mo.meabed@gmail.com"
-    }
-  ],
-  "version": "0.0.3",
+  "version": "1.1.0",
   "minimum-stability": "stable",
+  "prefer-stable": true,
   "require": {
-    "php": ">=5.5",
+    "php": ">=7.0",
     "phpunit/phpunit": "~6",
     "codeception/codeception": "~2",
     "phpunit/phpunit-selenium": "~4",
-    "symfony/console": "~3"
+    "symfony/console": "~4"
   },
   "autoload": {
     "psr-4": {

@@ -178,7 +178,7 @@ class TouchAction
                 /*
                  * Select the type of the selector sent in the options: ['element' => ['type' => 'xpath', 'value' => '//your_xpath']]
                  */
-                $opts['element'] = $this->TestCaseElement()->by($params['element']['type'], $params['element']['value'])->getId();
+                $opts['element'] = $this->TestCaseElement()->by($params['element']['type'] , $params['element']['value'])->getId();
             }
 
         }
