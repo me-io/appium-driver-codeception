@@ -1,5 +1,5 @@
 <p align="center">
-  <h3 align="center">Codeception Appium Driver</h3>
+  <h1 align="center">Codeception Appium Driver</h1>
   <p align="center">This is the codeception appium driver for writing Appium Tests.</p>
   <p align="center">
             <a href="LICENSE.md">
@@ -111,7 +111,16 @@ class FirstAndroidCest
 
 ### Running tests
 
-Run the following command inside your terminal to run the tests:
+Run the appium server by running the following command:
+
+```bash
+appium
+```
+
+After running the appium server now you need to start android emulator and install the application that you want to test. If you don't know how to start the emulator you can follow the following guide [Setup Genymotion Android Emulators on Mac OS
+](https://shankargarg.wordpress.com/2016/02/25/setup-genymotion-android-emulators-on-mac-os/)
+
+Now run the following command inside your terminal to run the tests:
 
 ```bash
 codecept run --steps
