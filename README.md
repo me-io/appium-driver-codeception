@@ -5,8 +5,8 @@
      <a href="LICENSE.md">
       <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
     </a>
-    <a href="https://packagist.org/packages/me-io/codeception-appium/">
-      <img src="https://img.shields.io/packagist/dm/me-io/codeception-appium.svg" alt="Packagist">
+    <a href="https://packagist.org/packages/me-io/appium-codeception/">
+      <img src="https://img.shields.io/packagist/dm/me-io/appium-codeception.svg" alt="Packagist">
     </a>
   </p>
 </p>
@@ -29,16 +29,16 @@
 
 ## Install
 
-Just add `tajawal/codeception-appium` to your project's composer.json file:
+Just add `me-io/appium-codeception` to your project's composer.json file:
 
 ```bash
-composer require tajawal/codeception-appium
+composer require me-io/appium-codeception
 ```
 
 ```json
 {
     "require": {
-        "tajawal/codeception-appium": "dev-master"
+        "me-io/appium-codeception": "dev-master"
     }
 }
 ```
