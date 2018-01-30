@@ -40,6 +40,5 @@ class JsonParserCommand extends Command
     {
         $output->writeln("<info>Start generating ...</info>");
         (new JsonParser($output))->generate();
-
     }
 }

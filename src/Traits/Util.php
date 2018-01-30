@@ -2,7 +2,6 @@
 
 namespace Appium\Traits;
 
-
 use Appium\Remote\AppiumRemoteDriver;
 
 trait Util

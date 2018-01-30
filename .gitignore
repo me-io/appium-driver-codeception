@@ -102,7 +102,6 @@ fabric.properties
 
 # PHPUnit
 /app/phpunit.xml
-/phpunit.xml
 
 # Build data
 /build/
@@ -202,3 +201,4 @@ $RECYCLE.BIN/
 composer.phar
 package/codecept.phar
 .idea
+.phplint-cache

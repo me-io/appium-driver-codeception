@@ -16,9 +16,10 @@ class TouchAction
      * @param \PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl
      * @param \Appium\Remote\AppiumRemoteDriver $driver
      */
-    public function __construct(\PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl,
-                                AppiumRemoteDriver $driver)
-    {
+    public function __construct(
+        \PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl,
+        AppiumRemoteDriver $driver
+    ) {
         $this->sessionUrl = $sessionUrl;
         $this->driver = $driver;
         $this->actions = [];
@@ -178,9 +179,8 @@ class TouchAction
                 /*
                  * Select the type of the selector sent in the options: ['element' => ['type' => 'xpath', 'value' => '//your_xpath']]
                  */
-                $opts['element'] = $this->TestCaseElement()->by($params['element']['type'] , $params['element']['value'])->getId();
+                $opts['element'] = $this->TestCaseElement()->by($params['element']['type'], $params['element']['value'])->getId();
             }
-
         }
 
         # it makes no sense to have x but no y, or vice versa.
