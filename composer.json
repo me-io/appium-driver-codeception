@@ -1,5 +1,5 @@
 {
-  "name": "me-io/codeception-appium",
+  "name": "me-io/appium-codeception",
   "description": "Codeception appium driver",
   "keywords": [
     "BDD",
