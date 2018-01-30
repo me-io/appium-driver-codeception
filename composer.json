@@ -1,6 +1,6 @@
 {
-  "name": "tajawal/codeception-appium",
-  "description": "Codeception appium driver model",
+  "name": "me-io/codeception-appium",
+  "description": "Codeception appium driver",
   "keywords": [
     "BDD",
     "acceptance testing",
