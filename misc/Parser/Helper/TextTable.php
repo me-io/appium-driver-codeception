@@ -31,14 +31,16 @@ class TextTable
         if ($header) {
             $this->header = $header;
         } elseif ($content) {
-            foreach ($content[0] as $key => $value)
+            foreach ($content[0] as $key => $value) {
                 $this->header[$key] = $key;
+            }
         }
         foreach ($this->header as $key => $label) {
             $this->len[$key] = strlen($label);
         }
-        if (is_array($align))
+        if (is_array($align)) {
             $this->setAlgin($align);
+        }
         $this->addData($content);
     }
 
@@ -83,11 +85,12 @@ class TextTable
     private function renderDelimiter()
     {
         $res = '|';
-        foreach ($this->len as $key => $l)
+        foreach ($this->len as $key => $l) {
             $res .= (isset($this->align[$key]) && ($this->align[$key] == 'C' || $this->align[$key] == 'L') ? ':' : ' ')
                 . str_repeat('-', $l)
                 . (isset($this->align[$key]) && ($this->align[$key] == 'C' || $this->align[$key] == 'R') ? ':' : ' ')
                 . '|';
+        }
         return $res . "\r\n";
     }
 
@@ -117,8 +120,9 @@ class TextTable
         $this->addData($content);
         $res = $this->renderRow($this->header)
             . $this->renderDelimiter();
-        foreach ($this->data as $row)
+        foreach ($this->data as $row) {
             $res .= $this->renderRow($row);
+        }
         return $res;
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Appium\Traits;
 
-
 trait Key
 {
 

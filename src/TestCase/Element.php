@@ -18,8 +18,8 @@ class Element extends \PHPUnit_Extensions_Selenium2TestCase_Element
     public static function fromResponseValue(
         array $value,
         \PHPUnit_Extensions_Selenium2TestCase_URL $parentFolder,
-        \PHPUnit_Extensions_Selenium2TestCase_Driver $driver)
-    {
+        \PHPUnit_Extensions_Selenium2TestCase_Driver $driver
+    ) {
         if (!isset($value['ELEMENT'])) {
             throw new \InvalidArgumentException('Element not found.');
         }
@@ -122,5 +122,4 @@ class Element extends \PHPUnit_Extensions_Selenium2TestCase_Element
         $response = $this->driver->curl('GET', $url, $data);
         return $response->getValue();
     }
-
 }

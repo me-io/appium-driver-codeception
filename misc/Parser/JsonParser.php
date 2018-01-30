@@ -143,7 +143,8 @@ class JsonParser
     {
         $txtArr = explode($del, $str);
 
-        $newStr = join("\n",
+        $newStr = join(
+            "\n",
             [
                 trim($txtArr[0]),
                 "$del\n\n" . $replace . "\n\n$del",
@@ -234,8 +235,6 @@ class JsonParser
                 $verbValue['src'] = 'route.json';
                 $verbValue['link'] = ['https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js'];
                 $jsonRouteObjectSmVerb[strtolower($verb) . ' ' . strtolower($key)] = $verbValue;
-
-
             }
         }
 
@@ -270,7 +269,6 @@ class JsonParser
                     'desc' => $key,
                     'http_method' => $value['http_method']
                 ];
-
             }
         }
 
@@ -287,7 +285,6 @@ class JsonParser
 //        }
 
         foreach ($jsonWireObjectSm as $key => $commandDesc) {
-
             $cmd = $key;
             $urlNoVerb = str_ireplace(['post', 'get', 'delete',], '', $key);
             $url = str_ireplace(['/wd/hub', '/session/:sessionid'], '', $urlNoVerb);
@@ -326,7 +323,6 @@ class JsonParser
                         'link' => $cmdDetail['link'] ?? []
                     ];
             }
-
         }
 
         file_put_contents($this->defaultJsonFile, json_encode($arrCommands, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
@@ -377,7 +373,6 @@ class JsonParser
     protected function createClassFile()
     {
         foreach ($this->functionsArray as $key => $function) {
-
             if (!empty($function['url'])) {
                 $this->writeFunction($function);
             }
@@ -419,7 +414,6 @@ class JsonParser
             foreach ($routeParams as $key => $param) {
                 $routeParamsString .= ($key) ? ", " : "";
                 $routeParamsString .= "$" . $param;
-
             }
         }
 
@@ -501,9 +495,7 @@ class JsonParser
             $this->constants .= "\n\t/** @var string */\n\tpublic static \$" . $name . " = '" . $value . "';\n";
             $this->constantsArray[$nameSm] = $value;
         } else {
-
             echo "Duplicate key constants :" . $name . ' -- ' . $value . "\n";
         }
     }
-
 }

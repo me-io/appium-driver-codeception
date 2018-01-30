@@ -114,7 +114,6 @@ class AppiumDriver extends CodeceptionModule implements
         try {
             if (!empty($this->config['dummyRemote'])) {
                 $this->AppiumDriver = new Dummy();
-
             } else {
                 $this->AppiumDriver = new AppiumRemoteDriver($this->selenium_url, $this->connectionTimeoutInMs);
                 $this->AppiumSession = $this->AppiumDriver->startSession($this->capabilities, $this->selenium_url);
@@ -144,7 +143,6 @@ class AppiumDriver extends CodeceptionModule implements
                 $this->outputCli('Cleaning appium: before ' . $class);
                 $this->cleanAppiumDriver();
             }
-
         }
 
         if (!isset($this->AppiumSession)) {
@@ -153,7 +151,6 @@ class AppiumDriver extends CodeceptionModule implements
         $test->getMetadata()->setCurrent([
             'capabilities' => $this->config['capabilities'],
         ]);
-
     }
 
     /**
@@ -341,7 +338,6 @@ class AppiumDriver extends CodeceptionModule implements
         $key = array_shift($keys);
         try {
             $AppiumSession->stop();
-
         } catch (\Exception $e) {
             // Session already closed so nothing to do
         }
@@ -390,17 +386,19 @@ class AppiumDriver extends CodeceptionModule implements
         for ($i = 0; $i < $count; $i++) {
             if ($tokens[$i][0] === T_NAMESPACE) {
                 for ($j = $i + 1; $j < $count; ++$j) {
-                    if ($tokens[$j][0] === T_STRING)
+                    if ($tokens[$j][0] === T_STRING) {
                         $namespace .= "\\" . $tokens[$j][1];
-                    elseif ($tokens[$j] === '{' or $tokens[$j] === ';')
+                    } elseif ($tokens[$j] === '{' or $tokens[$j] === ';') {
                         break;
+                    }
                 }
             }
             if ($tokens[$i][0] === T_CLASS) {
-                for ($j = $i + 1; $j < $count; ++$j)
+                for ($j = $i + 1; $j < $count; ++$j) {
                     if ($tokens[$j] === '{') {
                         $classes[] = $namespace . "\\" . $tokens[$i + 2][1];
                     }
+                }
             }
         }
 
@@ -418,7 +416,6 @@ class AppiumDriver extends CodeceptionModule implements
         $output->writeln('');
         $output->writeln($msg);
         $output->writeln('');
-
     }
 
     ////     ___ _    ___ __  __ ___ _  _ _____ ___
@@ -481,5 +478,4 @@ class AppiumDriver extends CodeceptionModule implements
 
         return $response->getValue();
     }
-
 }

@@ -15,11 +15,12 @@ class Session extends \PHPUnit_Extensions_Selenium2TestCase_Session
      */
     private $baseUrl;
 
-    public function __construct($driver,
-                                \PHPUnit_Extensions_Selenium2TestCase_URL $url,
-                                \PHPUnit_Extensions_Selenium2TestCase_URL $baseUrl,
-                                \PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts $timeouts)
-    {
+    public function __construct(
+        $driver,
+        \PHPUnit_Extensions_Selenium2TestCase_URL $url,
+        \PHPUnit_Extensions_Selenium2TestCase_URL $baseUrl,
+        \PHPUnit_Extensions_Selenium2TestCase_Session_Timeouts $timeouts
+    ) {
         $this->baseUrl = $baseUrl;
         parent::__construct($driver, $url, $baseUrl, $timeouts);
     }

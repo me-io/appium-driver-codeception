@@ -3,7 +3,6 @@
 help:
 	@echo ""
 	@echo "Available tasks:"
-	@echo "    server               Run php local server"
 	@echo "    deps-update-dev      Install dependencies"
 	@echo "    deps-update-prod     Install dependencies"
 	@echo "    deps-install-dev     Install dependencies"
@@ -16,9 +15,6 @@ help:
 	@echo "    watch                Run linter and unit tests when any of the source files change"
 	@echo "    all                  Install dependencies and run linter and unit tests"
 	@echo ""
-
-server:
-	php -S 0.0.0.0:3500 -t public index.php
 
 deps-update-dev:
 	composer update --prefer-dist --no-ansi --no-interaction --optimize-autoloader --ignore-platform-reqs

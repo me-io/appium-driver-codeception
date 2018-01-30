@@ -18,10 +18,11 @@ class MultiAction
      * @param \Appium\Remote\AppiumRemoteDriver $driver
      * @param \Appium\TestCase\Element|null $element
      */
-    public function __construct(\PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl,
-                                AppiumRemoteDriver $driver,
-                                Element $element = null)
-    {
+    public function __construct(
+        \PHPUnit_Extensions_Selenium2TestCase_URL $sessionUrl,
+        AppiumRemoteDriver $driver,
+        Element $element = null
+    ) {
         $this->sessionUrl = $sessionUrl;
         $this->driver = $driver;
         $this->element = $element;

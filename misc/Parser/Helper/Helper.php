@@ -17,7 +17,7 @@ class Helper
      * @return array
      *
      */
-    static public function getBetweenAll($data)
+    public static function getBetweenAll($data)
     {
         $results = [];
         $endsAt = 0;

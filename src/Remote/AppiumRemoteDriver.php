@@ -30,9 +30,10 @@ class AppiumRemoteDriver extends \PHPUnit_Extensions_Selenium2TestCase_Driver
      * @param \PHPUnit_Extensions_Selenium2TestCase_URL $browserUrl
      * @return Session
      */
-    public function startSession(array $desiredCapabilities,
-                                 \PHPUnit_Extensions_Selenium2TestCase_URL $browserUrl)
-    {
+    public function startSession(
+        array $desiredCapabilities,
+        \PHPUnit_Extensions_Selenium2TestCase_URL $browserUrl
+    ) {
         $sessionCreation = $this->seleniumServerUrl->descend("/wd/hub/session");
         $response = $this->curl('POST', $sessionCreation, [
             'desiredCapabilities' => $desiredCapabilities,

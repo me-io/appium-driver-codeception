@@ -105,7 +105,5 @@ trait Touch
             ->perform();
 
         return $this;
-
-
     }
 }
