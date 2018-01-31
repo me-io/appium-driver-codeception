@@ -1,12 +1,7 @@
 <?php
 
-namespace Parser\Helper;
+namespace AppiumCodeceptionCLI\Parser\Helpers;
 
-/**
- * Class Helper
- *
- * @package App\Helper
- */
 class Helper
 {
     /**

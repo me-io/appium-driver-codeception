@@ -29,12 +29,13 @@
   "autoload": {
     "psr-4": {
       "Appium\\": "src/",
-      "Parser\\": "misc/Parser/"
+      "Parser\\": "cmd/Parser/",
+      "AppiumCodeceptionCLI\\": "cmd/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Appium\\Tests\\": "tests/"
+      "Tests\\": "tests/"
     }
   }
 }

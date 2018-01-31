@@ -137,8 +137,6 @@ codecept run --steps
 ## License
 
 The code is available under the [MIT license](LICENSE.md).
-
-
 [comment]: # (core-function-comment)
 
 | Method Name               | HTTP   | Url/Desc                                                                                                                                                                                                 | Payload                                                                                                                                                                                |
