@@ -2,12 +2,11 @@
   <h1 align="center">Codeception Appium Driver</h1>
   <p align="center">This is the codeception appium driver for writing Appium Tests.</p>
   <p align="center">
-
-     <a href="LICENSE.md">
-      <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
+    <a href="LICENSE.md">
+    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
     </a>
     <a href="https://packagist.org/packages/me-io/appium-codeception/">
-      <img src="https://img.shields.io/packagist/dm/me-io/appium-codeception.svg" alt="Packagist">
+    <img src="https://img.shields.io/packagist/dm/me-io/appium-codeception.svg" alt="Packagist">
     </a>
   </p>
 </p>
