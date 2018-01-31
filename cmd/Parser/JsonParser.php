@@ -133,7 +133,7 @@ class JsonParser
 
         $mdTable = $t->render();
 
-        $readMeFile = __DIR__ . '/../../readme.md';
+        $readMeFile = __DIR__ . '/../../README.md';
         $txt = file_get_contents($readMeFile);
         $txtNew = $this->replaceInStrWithDel($txt, '[comment]: # (core-function-comment)', $mdTable);
         file_put_contents($readMeFile, $txtNew);
