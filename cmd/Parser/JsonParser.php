@@ -400,7 +400,7 @@ class JsonParser
      */
     protected function writeFunction($function)
     {
-        // Skip the routs without the command
+        // Skip the routes without the command
         if (!isset($function['url'])) {
             return "";
         }
