@@ -8,7 +8,7 @@ trait BaseCommands
 	* getStatus
 	*
 	* Query the server's current status.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -19,7 +19,7 @@ trait BaseCommands
 	* createSession
 	*
 	* Create a new session.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"optional":["desiredCapabilities","requiredCapabilities","capabilities"]}
@@ -34,7 +34,7 @@ trait BaseCommands
 	* getSessions
 	*
 	* Returns a list of the currently active sessions.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -45,7 +45,7 @@ trait BaseCommands
 	* timeouts
 	*
 	* Configure the amount of time that a particular type of operation can execute for before they are aborted and a |Timeout| error is returned to the client.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["type","ms"]}
@@ -60,7 +60,7 @@ trait BaseCommands
 	* asyncScriptTimeout
 	*
 	* Set the amount of time, in milliseconds, that asynchronous scripts executed by /session/:sessionId/execute_async are permitted to run before they are aborted and a |Timeout| error is returned to the client.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["ms"]}
@@ -75,7 +75,7 @@ trait BaseCommands
 	* implicitWait
 	*
 	* Set the amount of time the driver should wait when searching for elements.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["ms"]}
@@ -90,7 +90,7 @@ trait BaseCommands
 	* getWindowHandle
 	*
 	* Retrieve the current window handle.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -101,7 +101,7 @@ trait BaseCommands
 	* getWindowHandles
 	*
 	* Retrieve the list of all window handles available to the session.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -112,7 +112,7 @@ trait BaseCommands
 	* getUrl
 	*
 	* Retrieve the URL of the current page.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -123,7 +123,7 @@ trait BaseCommands
 	* setUrl
 	*
 	* Navigate to a new URL.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["url"]}
@@ -138,7 +138,7 @@ trait BaseCommands
 	* forward
 	*
 	* Navigate forwards in the browser history, if possible.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -149,7 +149,7 @@ trait BaseCommands
 	* back
 	*
 	* Navigate backwards in the browser history, if possible.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -160,7 +160,7 @@ trait BaseCommands
 	* refresh
 	*
 	* Refresh the current page.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -171,7 +171,7 @@ trait BaseCommands
 	* execute
 	*
 	* Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["script","args"]}
@@ -186,7 +186,7 @@ trait BaseCommands
 	* executeAsync
 	*
 	* Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["script","args"]}
@@ -201,7 +201,7 @@ trait BaseCommands
 	* getScreenshot
 	*
 	* Take a screenshot of the current page.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -212,7 +212,7 @@ trait BaseCommands
 	* availableIMEEngines
 	*
 	* List all available engines on the machine.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -223,7 +223,7 @@ trait BaseCommands
 	* getActiveIMEEngine
 	*
 	* Get the name of the active IME engine.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -234,7 +234,7 @@ trait BaseCommands
 	* isIMEActivated
 	*
 	* Indicates whether IME input is active at the moment (not if it's available).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -245,7 +245,7 @@ trait BaseCommands
 	* deactivateIMEEngine
 	*
 	* De-activates the currently-active IME engine.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -256,7 +256,7 @@ trait BaseCommands
 	* activateIMEEngine
 	*
 	* Make an engines that is available (appears on the listreturned by getAvailableEngines) active.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["engine"]}
@@ -271,7 +271,7 @@ trait BaseCommands
 	* setFrame
 	*
 	* Change focus to another frame on the page.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["id"]}
@@ -286,7 +286,7 @@ trait BaseCommands
 	* setWindow
 	*
 	* Change focus to another window.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["name"]}
@@ -301,7 +301,7 @@ trait BaseCommands
 	* closeWindow
 	*
 	* Close the current window.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -312,7 +312,7 @@ trait BaseCommands
 	* postWindowSize
 	*
 	* Change the size of the specified window.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -325,7 +325,7 @@ trait BaseCommands
 	* getWindowSize
 	*
 	* Get the size of the specified window.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -338,7 +338,7 @@ trait BaseCommands
 	* postWindowPosition
 	*
 	* Change the position of the specified window.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -351,7 +351,7 @@ trait BaseCommands
 	* getWindowPosition
 	*
 	* Get the position of the specified window.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -364,7 +364,7 @@ trait BaseCommands
 	* maximizeWindow
 	*
 	* Maximize the specified window if not already maximized.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -377,7 +377,7 @@ trait BaseCommands
 	* getCookies
 	*
 	* Retrieve all cookies visible to the current page.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -388,7 +388,7 @@ trait BaseCommands
 	* setCookie
 	*
 	* Set a cookie.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["cookie"]}
@@ -403,7 +403,7 @@ trait BaseCommands
 	* deleteCookies
 	*
 	* Delete all cookies visible to the current page.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -414,7 +414,7 @@ trait BaseCommands
 	* deleteCookie
 	*
 	* Delete the cookie with the given name.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -427,7 +427,7 @@ trait BaseCommands
 	* getPageSource
 	*
 	* Get the current page source.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -438,7 +438,7 @@ trait BaseCommands
 	* title
 	*
 	* Get the current page title.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -449,7 +449,7 @@ trait BaseCommands
 	* findElement
 	*
 	* Search for an element on the page, starting from the document root.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["using","value"]}
@@ -464,7 +464,7 @@ trait BaseCommands
 	* findElements
 	*
 	* Search for multiple elements on the page, starting from the document root.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["using","value"]}
@@ -479,7 +479,7 @@ trait BaseCommands
 	* active
 	*
 	* Get the element on the page that currently has focus.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -490,7 +490,7 @@ trait BaseCommands
 	* keys
 	*
 	* Send a sequence of key strokes to the active element.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["value"]}
@@ -505,7 +505,7 @@ trait BaseCommands
 	* getOrientation
 	*
 	* Get the current browser orientation.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -516,7 +516,7 @@ trait BaseCommands
 	* setOrientation
 	*
 	* Set the browser orientation.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["orientation"]}
@@ -531,7 +531,7 @@ trait BaseCommands
 	* getAlertText
 	*
 	* Gets the text of the currently displayed JavaScript alert(), confirm(), or prompt() dialog.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -542,7 +542,7 @@ trait BaseCommands
 	* setAlertText
 	*
 	* Sends keystrokes to a JavaScript prompt() dialog.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["text"]}
@@ -557,7 +557,7 @@ trait BaseCommands
 	* postAcceptAlert
 	*
 	* Accepts the currently displayed alert dialog.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -568,7 +568,7 @@ trait BaseCommands
 	* postDismissAlert
 	*
 	* Dismisses the currently displayed alert dialog.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -579,7 +579,7 @@ trait BaseCommands
 	* moveTo
 	*
 	* Move the mouse by an offset of the specificed element.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"optional":["element","xoffset","yoffset"]}
@@ -594,7 +594,7 @@ trait BaseCommands
 	* clickCurrent
 	*
 	* Click any mouse button (at the coordinates set by the last moveto command).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"optional":["button"]}
@@ -609,7 +609,7 @@ trait BaseCommands
 	* postButtondown
 	*
 	* Click and hold the left mouse button (at the coordinates set by the last moveto command).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -620,7 +620,7 @@ trait BaseCommands
 	* postButtonup
 	*
 	* Releases the mouse button previously held (where the mouse is currently at).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -631,7 +631,7 @@ trait BaseCommands
 	* postDoubleclick
 	*
 	* Double-clicks at the current mouse coordinates (set by moveto).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -643,7 +643,7 @@ trait BaseCommands
 	*
 	* Single tap on the touch enabled device.
 	* @note override mismatch jsonwire file
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["element"]}
@@ -658,7 +658,7 @@ trait BaseCommands
 	* touchDown
 	*
 	* Finger down on the screen.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["x","y"]}
@@ -673,7 +673,7 @@ trait BaseCommands
 	* touchUp
 	*
 	* Finger up on the screen.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["x","y"]}
@@ -688,7 +688,7 @@ trait BaseCommands
 	* touchMove
 	*
 	* Finger move on the screen.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["x","y"]}
@@ -703,7 +703,7 @@ trait BaseCommands
 	* postTouchScroll
 	*
 	* Scroll on the touch screen using finger based motion events.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -714,7 +714,7 @@ trait BaseCommands
 	* postTouchDoubleclick
 	*
 	* Double tap on the touch screen using finger motion events.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -725,7 +725,7 @@ trait BaseCommands
 	* touchLongClick
 	*
 	* Long press on the touch screen using finger motion events.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["elements"]}
@@ -740,7 +740,7 @@ trait BaseCommands
 	* flick
 	*
 	* Flick on the touch screen using finger motion events.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"optional":["element","xspeed","yspeed","xoffset","yoffset","speed"]}
@@ -755,7 +755,7 @@ trait BaseCommands
 	* getGeoLocation
 	*
 	* Get the current geo location.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -766,7 +766,7 @@ trait BaseCommands
 	* setGeoLocation
 	*
 	* Set the current geo location.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["location"]}
@@ -781,7 +781,7 @@ trait BaseCommands
 	* getLocalStorage
 	*
 	* Get all keys of the storage.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -792,7 +792,7 @@ trait BaseCommands
 	* postLocalStorage
 	*
 	* Set the storage item for the given key.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -803,7 +803,7 @@ trait BaseCommands
 	* deleteLocalStorage
 	*
 	* Clear the storage.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -814,7 +814,7 @@ trait BaseCommands
 	* getLocalStorageKey
 	*
 	* Get the storage item for the given key.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -827,7 +827,7 @@ trait BaseCommands
 	* deleteLocalStorageKey
 	*
 	* Remove the storage item for the given key.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -840,7 +840,7 @@ trait BaseCommands
 	* getLocalStorageSize
 	*
 	* Get the number of items in the storage.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -851,7 +851,7 @@ trait BaseCommands
 	* getSessionStorage
 	*
 	* Get all keys of the storage.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -862,7 +862,7 @@ trait BaseCommands
 	* postSessionStorage
 	*
 	* Set the storage item for the given key.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -873,7 +873,7 @@ trait BaseCommands
 	* deleteSessionStorage
 	*
 	* Clear the storage.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -884,7 +884,7 @@ trait BaseCommands
 	* getSessionStorageKey
 	*
 	* Get the storage item for the given key.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -897,7 +897,7 @@ trait BaseCommands
 	* deleteSessionStorageKey
 	*
 	* Remove the storage item for the given key.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -910,7 +910,7 @@ trait BaseCommands
 	* getSessionStorageSize
 	*
 	* Get the number of items in the storage.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -921,7 +921,7 @@ trait BaseCommands
 	* getLog
 	*
 	* Get the log for a given log type.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["type"]}
@@ -936,7 +936,7 @@ trait BaseCommands
 	* getLogTypes
 	*
 	* Get available log types.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -947,7 +947,7 @@ trait BaseCommands
 	* getApplicationCacheStatus
 	*
 	* Get the status of the html5 application cache.
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -958,7 +958,7 @@ trait BaseCommands
 	* getCurrentContext
 	*
 	* Get the current context (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -969,7 +969,7 @@ trait BaseCommands
 	* setContext
 	*
 	* Set the current context (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["name"]}
@@ -984,7 +984,7 @@ trait BaseCommands
 	* getContexts
 	*
 	* Get a list of the available contexts (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -995,7 +995,7 @@ trait BaseCommands
 	* performTouch
 	*
 	* Perform touch action (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["actions"]}
@@ -1010,7 +1010,7 @@ trait BaseCommands
 	* performMultiAction
 	*
 	* Perform multitouch action (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["actions"],"optional":["elementId"]}
@@ -1025,7 +1025,7 @@ trait BaseCommands
 	* mobileShake
 	*
 	* Shake device (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1036,7 +1036,7 @@ trait BaseCommands
 	* lock
 	*
 	* Lock device (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"optional":["seconds"]}
@@ -1051,7 +1051,7 @@ trait BaseCommands
 	* keyevent
 	*
 	* Send key event to device (DEPRECATED) (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["keycode"],"optional":["metastate"]}
@@ -1066,7 +1066,7 @@ trait BaseCommands
 	* pressKeyCode
 	*
 	* Send key event to device (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["keycode"],"optional":["metastate"]}
@@ -1081,7 +1081,7 @@ trait BaseCommands
 	* mobileRotation
 	*
 	* Rotate device (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["x","y","radius","rotation","touchCount","duration"],"optional":["element"]}
@@ -1096,7 +1096,7 @@ trait BaseCommands
 	* getCurrentActivity
 	*
 	* Get current activity (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1107,7 +1107,7 @@ trait BaseCommands
 	* getCurrentPackage
 	*
 	* Get current package (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1118,7 +1118,7 @@ trait BaseCommands
 	* installApp
 	*
 	* Install app (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["appPath"]}
@@ -1133,7 +1133,7 @@ trait BaseCommands
 	* removeApp
 	*
 	* Remove app (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":[["appId"],["bundleId"]]}
@@ -1148,7 +1148,7 @@ trait BaseCommands
 	* isAppInstalled
 	*
 	* Check if the app is installed (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["bundleId"]}
@@ -1163,7 +1163,7 @@ trait BaseCommands
 	* pushFile
 	*
 	* Push file to device (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["path","data"]}
@@ -1178,7 +1178,7 @@ trait BaseCommands
 	* pullFile
 	*
 	* Pull file from device (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["path"]}
@@ -1193,7 +1193,7 @@ trait BaseCommands
 	* pullFolder
 	*
 	* Pull folder from device (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["path"]}
@@ -1208,7 +1208,7 @@ trait BaseCommands
 	* toggleFlightMode
 	*
 	* Toggle airplane mode (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1219,7 +1219,7 @@ trait BaseCommands
 	* toggleWiFi
 	*
 	* Toggle wifi (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1230,7 +1230,7 @@ trait BaseCommands
 	* toggleLocationServices
 	*
 	* Toggle location services (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1241,7 +1241,7 @@ trait BaseCommands
 	* toggleData
 	*
 	* Toggle data (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1252,7 +1252,7 @@ trait BaseCommands
 	* startActivity
 	*
 	* Start an Android activity (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["appPackage","appActivity"],"optional":["appWaitPackage","appWaitActivity","intentAction","intentCategory","intentFlags","optionalIntentArguments","dontStopAppOnReset"]}
@@ -1267,7 +1267,7 @@ trait BaseCommands
 	* launchApp
 	*
 	* Launch app (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1278,7 +1278,7 @@ trait BaseCommands
 	* closeApp
 	*
 	* Close app (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1289,7 +1289,7 @@ trait BaseCommands
 	* reset
 	*
 	* Reset app (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1300,7 +1300,7 @@ trait BaseCommands
 	* background
 	*
 	* Background app (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["seconds"]}
@@ -1315,7 +1315,7 @@ trait BaseCommands
 	* endCoverage
 	*
 	* End test coverage (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["intent","path"]}
@@ -1330,7 +1330,7 @@ trait BaseCommands
 	* getStrings
 	*
 	* Retrieve app strings (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"optional":["language","stringFile"]}
@@ -1345,7 +1345,7 @@ trait BaseCommands
 	* getNetworkConnection
 	*
 	* Get appium selendroid network connection type (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1356,7 +1356,7 @@ trait BaseCommands
 	* setNetworkConnection
 	*
 	* Set appium selendroid network connection type (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["type"]}
@@ -1371,7 +1371,7 @@ trait BaseCommands
 	* hideKeyboard
 	*
 	* Hide keyboard (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"optional":["strategy","key","keyCode","keyName"]}
@@ -1386,7 +1386,7 @@ trait BaseCommands
 	* openNotifications
 	*
 	* Open Notifications (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1397,7 +1397,7 @@ trait BaseCommands
 	* fingerprint
 	*
 	* Send fingerprint (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["fingerprintId"]}
@@ -1412,7 +1412,7 @@ trait BaseCommands
 	* sendSMS
 	*
 	* Send sms to Android emulator (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["phoneNumber","message"]}
@@ -1427,7 +1427,7 @@ trait BaseCommands
 	* gsmCall
 	*
 	* Send GSM call to Android emulator (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["phoneNumber","action"]}
@@ -1442,7 +1442,7 @@ trait BaseCommands
 	* gsmSignal
 	*
 	* Set GSM signal strenght on Android emulator (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["signalStrengh"]}
@@ -1457,7 +1457,7 @@ trait BaseCommands
 	* gsmVoice
 	*
 	* Set GSM state  fingerprint (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["state"]}
@@ -1472,7 +1472,7 @@ trait BaseCommands
 	* powerCapacity
 	*
 	* Set battery percent on Android emulator (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["percent"]}
@@ -1487,7 +1487,7 @@ trait BaseCommands
 	* powerAC
 	*
 	* Set state of power charger on Android emulator(mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["state"]}
@@ -1502,7 +1502,7 @@ trait BaseCommands
 	* networkSpeed
 	*
 	* Set Android emulator network speed (mjsonWire).
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["netspeed"]}
@@ -1517,7 +1517,7 @@ trait BaseCommands
 	* touchId
 	*
 	* Simulate iOS touchID (mjsonWire)
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["match"]}
@@ -1532,7 +1532,7 @@ trait BaseCommands
 	* postFrameParent
 	*
 	* post /wd/hub/session/:sessionid/frame/parent
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1543,7 +1543,7 @@ trait BaseCommands
 	* getElement
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1556,7 +1556,7 @@ trait BaseCommands
 	* findElementFromElement
 	*
 	* post /wd/hub/session/:sessionid/element/:elementid/element
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["using","value"]}
@@ -1573,7 +1573,7 @@ trait BaseCommands
 	* findElementsFromElement
 	*
 	* post /wd/hub/session/:sessionid/element/:elementid/elements
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["using","value"]}
@@ -1590,7 +1590,7 @@ trait BaseCommands
 	* click
 	*
 	* post /wd/hub/session/:sessionid/element/:elementid/click
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1603,7 +1603,7 @@ trait BaseCommands
 	* submit
 	*
 	* post /wd/hub/session/:sessionid/element/:elementid/submit
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1616,7 +1616,7 @@ trait BaseCommands
 	* getText
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/text
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1629,7 +1629,7 @@ trait BaseCommands
 	* setValue
 	*
 	* post /wd/hub/session/:sessionid/element/:elementid/value
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"optional":["value","text"]}
@@ -1646,7 +1646,7 @@ trait BaseCommands
 	* getName
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/name
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1659,7 +1659,7 @@ trait BaseCommands
 	* clear
 	*
 	* post /wd/hub/session/:sessionid/element/:elementid/clear
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1672,7 +1672,7 @@ trait BaseCommands
 	* elementSelected
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/selected
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1685,7 +1685,7 @@ trait BaseCommands
 	* elementEnabled
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/enabled
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1698,7 +1698,7 @@ trait BaseCommands
 	* getAttribute
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/attribute/:name
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1712,7 +1712,7 @@ trait BaseCommands
 	* equalsElement
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/equals/:otherid
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1726,7 +1726,7 @@ trait BaseCommands
 	* elementDisplayed
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/displayed
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1739,7 +1739,7 @@ trait BaseCommands
 	* getLocation
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/location
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1752,7 +1752,7 @@ trait BaseCommands
 	* getLocationInView
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/location_in_view
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1765,7 +1765,7 @@ trait BaseCommands
 	* getSize
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/size
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1778,7 +1778,7 @@ trait BaseCommands
 	* getCssProperty
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/css/:propertyname
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1792,7 +1792,7 @@ trait BaseCommands
 	* getRotation
 	*
 	* get /wd/hub/session/:sessionid/rotation
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1803,7 +1803,7 @@ trait BaseCommands
 	* setRotation
 	*
 	* post /wd/hub/session/:sessionid/rotation
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["x","y","z"]}
@@ -1818,7 +1818,7 @@ trait BaseCommands
 	* getPageIndex
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/pageindex
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1831,7 +1831,7 @@ trait BaseCommands
 	* receiveAsyncResponse
 	*
 	* post /wd/hub/session/:sessionid/receive_async_response
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["status","value"]}
@@ -1846,7 +1846,7 @@ trait BaseCommands
 	* getDeviceTime
 	*
 	* get /wd/hub/session/:sessionid/appium/device/system_time
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1857,7 +1857,7 @@ trait BaseCommands
 	* unlock
 	*
 	* post /wd/hub/session/:sessionid/appium/device/unlock
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1868,7 +1868,7 @@ trait BaseCommands
 	* isLocked
 	*
 	* post /wd/hub/session/:sessionid/appium/device/is_locked
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1879,7 +1879,7 @@ trait BaseCommands
 	* startRecordingScreen
 	*
 	* post /wd/hub/session/:sessionid/appium/start_recording_screen
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["filePath","videoSize","timeLimit","bitRate"]}
@@ -1894,7 +1894,7 @@ trait BaseCommands
 	* stopRecordingScreen
 	*
 	* post /wd/hub/session/:sessionid/appium/stop_recording_screen
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1905,7 +1905,7 @@ trait BaseCommands
 	* getPerformanceDataTypes
 	*
 	* post /wd/hub/session/:sessionid/appium/performancedata/types
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1916,7 +1916,7 @@ trait BaseCommands
 	* getPerformanceData
 	*
 	* post /wd/hub/session/:sessionid/appium/getperformancedata
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["packageName","dataType"],"optional":["dataReadTimeout"]}
@@ -1931,7 +1931,7 @@ trait BaseCommands
 	* longPressKeyCode
 	*
 	* post /wd/hub/session/:sessionid/appium/device/long_press_keycode
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["keycode"],"optional":["metastate"]}
@@ -1946,7 +1946,7 @@ trait BaseCommands
 	* isKeyboardShown
 	*
 	* get /wd/hub/session/:sessionid/appium/device/is_keyboard_shown
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1957,7 +1957,7 @@ trait BaseCommands
 	* getSystemBars
 	*
 	* get /wd/hub/session/:sessionid/appium/device/system_bars
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1968,7 +1968,7 @@ trait BaseCommands
 	* getDisplayDensity
 	*
 	* get /wd/hub/session/:sessionid/appium/device/display_density
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -1980,7 +1980,7 @@ trait BaseCommands
 	*
 	* post /wd/hub/session/:sessionid/appium/simulator/touch_id
 	* @note override mismatch jsonwire file
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["match"]}
@@ -1995,7 +1995,7 @@ trait BaseCommands
 	* toggleEnrollTouchId
 	*
 	* post /wd/hub/session/:sessionid/appium/simulator/toggle_touch_id_enrollment
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"optional":["enabled"]}
@@ -2010,7 +2010,7 @@ trait BaseCommands
 	* setValueImmediate
 	*
 	* post /wd/hub/session/:sessionid/appium/element/:elementid/value
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["value"]}
@@ -2027,7 +2027,7 @@ trait BaseCommands
 	* replaceValue
 	*
 	* post /wd/hub/session/:sessionid/appium/element/:elementid/replace_value
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["value"]}
@@ -2044,7 +2044,7 @@ trait BaseCommands
 	* updateSettings
 	*
 	* post /wd/hub/session/:sessionid/appium/settings
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["settings"]}
@@ -2059,7 +2059,7 @@ trait BaseCommands
 	* getSettings
 	*
 	* get /wd/hub/session/:sessionid/appium/settings
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -2071,7 +2071,7 @@ trait BaseCommands
 	*
 	* post /wd/hub/session/:sessionid/appium/receive_async_response
 	* @note override same command name in route.js
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["response"]}
@@ -2087,7 +2087,7 @@ trait BaseCommands
 	*
 	* get /wd/hub/session/:sessionid/alert/text
 	* @note override same command name in route.js
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -2099,7 +2099,7 @@ trait BaseCommands
 	*
 	* post /wd/hub/session/:sessionid/alert/text
 	* @note override same command name in route.js
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
 	* @options {"required":["text"]}
@@ -2115,7 +2115,7 @@ trait BaseCommands
 	*
 	* post /wd/hub/session/:sessionid/alert/accept
 	* @note override same command name in route.js
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -2127,7 +2127,7 @@ trait BaseCommands
 	*
 	* post /wd/hub/session/:sessionid/alert/dismiss
 	* @note override same command name in route.js
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/
@@ -2138,7 +2138,7 @@ trait BaseCommands
 	* getElementRect
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/rect
-	* @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	*
 	**/

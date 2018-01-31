@@ -235,7 +235,7 @@ class JsonParser
             foreach ($value as $verb => $verbValue) {
                 $verbValue['http_method']                                          = $verb;
                 $verbValue['src']                                                  = 'route.json';
-                $verbValue['link']                                                 = ['https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js'];
+                $verbValue['link']                                                 = ['https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js'];
                 $jsonRouteObjectSmVerb[strtolower($verb) . ' ' . strtolower($key)] = $verbValue;
             }
         }

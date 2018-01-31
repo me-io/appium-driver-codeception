@@ -10,7 +10,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session": {
@@ -30,7 +30,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/sessions": {
@@ -44,7 +44,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid": {
@@ -58,7 +58,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "delete /wd/hub/session/:sessionid": {
@@ -72,7 +72,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/timeouts": {
@@ -91,7 +91,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/timeouts/async_script": {
@@ -109,7 +109,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/timeouts/implicit_wait": {
@@ -127,7 +127,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/window_handle": {
@@ -141,7 +141,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/window_handles": {
@@ -155,7 +155,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/url": {
@@ -169,7 +169,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/url": {
@@ -187,7 +187,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/forward": {
@@ -201,7 +201,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/back": {
@@ -215,7 +215,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/refresh": {
@@ -229,7 +229,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/execute": {
@@ -248,7 +248,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/execute_async": {
@@ -267,7 +267,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/screenshot": {
@@ -281,7 +281,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/ime/available_engines": {
@@ -295,7 +295,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/ime/active_engine": {
@@ -309,7 +309,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/ime/activated": {
@@ -323,7 +323,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/ime/deactivate": {
@@ -337,7 +337,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/ime/activate": {
@@ -355,7 +355,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/frame": {
@@ -373,7 +373,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/window": {
@@ -391,7 +391,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "delete /wd/hub/session/:sessionid/window": {
@@ -405,7 +405,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/window/:windowhandle/size": {
@@ -421,7 +421,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/window/:windowhandle/size": {
@@ -437,7 +437,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/window/:windowhandle/position": {
@@ -453,7 +453,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/window/:windowhandle/position": {
@@ -469,7 +469,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/window/:windowhandle/maximize": {
@@ -485,7 +485,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/cookie": {
@@ -499,7 +499,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/cookie": {
@@ -517,7 +517,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "delete /wd/hub/session/:sessionid/cookie": {
@@ -531,7 +531,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "delete /wd/hub/session/:sessionid/cookie/:name": {
@@ -547,7 +547,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/source": {
@@ -561,7 +561,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/title": {
@@ -575,7 +575,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/element": {
@@ -594,7 +594,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/elements": {
@@ -613,7 +613,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/element/active": {
@@ -627,7 +627,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/keys": {
@@ -645,7 +645,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/orientation": {
@@ -659,7 +659,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/orientation": {
@@ -677,7 +677,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/alert_text": {
@@ -691,7 +691,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/alert_text": {
@@ -709,7 +709,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/accept_alert": {
@@ -723,7 +723,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/dismiss_alert": {
@@ -737,7 +737,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/moveto": {
@@ -757,7 +757,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/click": {
@@ -775,7 +775,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/buttondown": {
@@ -789,7 +789,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/buttonup": {
@@ -803,7 +803,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/doubleclick": {
@@ -817,7 +817,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/click": {
@@ -835,7 +835,7 @@
         "src": "route.json",
         "note": "override mismatch jsonwire file",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/down": {
@@ -854,7 +854,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/up": {
@@ -873,7 +873,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/move": {
@@ -892,7 +892,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/scroll": {
@@ -906,7 +906,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/doubleclick": {
@@ -920,7 +920,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/longclick": {
@@ -938,7 +938,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/flick": {
@@ -961,7 +961,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/location": {
@@ -975,7 +975,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/location": {
@@ -993,7 +993,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/local_storage": {
@@ -1007,7 +1007,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/local_storage": {
@@ -1021,7 +1021,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "delete /wd/hub/session/:sessionid/local_storage": {
@@ -1035,7 +1035,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/local_storage/key/:key": {
@@ -1051,7 +1051,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "delete /wd/hub/session/:sessionid/local_storage/key/:key": {
@@ -1067,7 +1067,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/local_storage/size": {
@@ -1081,7 +1081,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/session_storage": {
@@ -1095,7 +1095,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/session_storage": {
@@ -1109,7 +1109,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "delete /wd/hub/session/:sessionid/session_storage": {
@@ -1123,7 +1123,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/session_storage/key/:key": {
@@ -1139,7 +1139,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "delete /wd/hub/session/:sessionid/session_storage/key/:key": {
@@ -1155,7 +1155,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/session_storage/size": {
@@ -1169,7 +1169,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/log": {
@@ -1187,7 +1187,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/log/types": {
@@ -1201,7 +1201,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/application_cache/status": {
@@ -1215,7 +1215,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/context": {
@@ -1229,7 +1229,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/context": {
@@ -1247,7 +1247,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/contexts": {
@@ -1261,7 +1261,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/perform": {
@@ -1279,7 +1279,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/touch/multi/perform": {
@@ -1300,7 +1300,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/shake": {
@@ -1314,7 +1314,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/lock": {
@@ -1332,7 +1332,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/keyevent": {
@@ -1353,7 +1353,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/press_keycode": {
@@ -1374,7 +1374,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/rotate": {
@@ -1400,7 +1400,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/appium/device/current_activity": {
@@ -1414,7 +1414,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/appium/device/current_package": {
@@ -1428,7 +1428,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/install_app": {
@@ -1446,7 +1446,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/remove_app": {
@@ -1469,7 +1469,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/app_installed": {
@@ -1487,7 +1487,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/push_file": {
@@ -1506,7 +1506,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/pull_file": {
@@ -1524,7 +1524,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/pull_folder": {
@@ -1542,7 +1542,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/toggle_airplane_mode": {
@@ -1556,7 +1556,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/toggle_wifi": {
@@ -1570,7 +1570,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/toggle_location_services": {
@@ -1584,7 +1584,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/toggle_data": {
@@ -1598,7 +1598,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/start_activity": {
@@ -1626,7 +1626,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/app/launch": {
@@ -1640,7 +1640,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/app/close": {
@@ -1654,7 +1654,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/app/reset": {
@@ -1668,7 +1668,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/app/background": {
@@ -1686,7 +1686,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/app/end_test_coverage": {
@@ -1705,7 +1705,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/app/strings": {
@@ -1724,7 +1724,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/network_connection": {
@@ -1738,7 +1738,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/network_connection": {
@@ -1756,7 +1756,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/hide_keyboard": {
@@ -1777,7 +1777,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/open_notifications": {
@@ -1791,7 +1791,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/finger_print": {
@@ -1809,7 +1809,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/send_sms": {
@@ -1828,7 +1828,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/gsm_call": {
@@ -1847,7 +1847,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/gsm_signal": {
@@ -1865,7 +1865,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/gsm_voice": {
@@ -1883,7 +1883,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/power_capacity": {
@@ -1901,7 +1901,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/power_ac": {
@@ -1919,7 +1919,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/network_speed": {
@@ -1937,7 +1937,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/simulator/touch_id": {
@@ -1955,7 +1955,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/frame/parent": {
@@ -1969,7 +1969,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid": {
@@ -1985,7 +1985,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/element/:elementid/element": {
@@ -2006,7 +2006,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/element/:elementid/elements": {
@@ -2027,7 +2027,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/element/:elementid/click": {
@@ -2043,7 +2043,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/element/:elementid/submit": {
@@ -2059,7 +2059,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/text": {
@@ -2075,7 +2075,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/element/:elementid/value": {
@@ -2096,7 +2096,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/name": {
@@ -2112,7 +2112,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/element/:elementid/clear": {
@@ -2128,7 +2128,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/selected": {
@@ -2144,7 +2144,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/enabled": {
@@ -2160,7 +2160,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/attribute/:name": {
@@ -2177,7 +2177,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/equals/:otherid": {
@@ -2194,7 +2194,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/displayed": {
@@ -2210,7 +2210,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/location": {
@@ -2226,7 +2226,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/location_in_view": {
@@ -2242,7 +2242,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/size": {
@@ -2258,7 +2258,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/css/:propertyname": {
@@ -2275,7 +2275,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/rotation": {
@@ -2289,7 +2289,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/rotation": {
@@ -2309,7 +2309,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/pageindex": {
@@ -2325,7 +2325,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/receive_async_response": {
@@ -2344,7 +2344,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/appium/device/system_time": {
@@ -2358,7 +2358,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/unlock": {
@@ -2372,7 +2372,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/is_locked": {
@@ -2386,7 +2386,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/start_recording_screen": {
@@ -2407,7 +2407,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/stop_recording_screen": {
@@ -2421,7 +2421,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/performancedata/types": {
@@ -2435,7 +2435,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/getperformancedata": {
@@ -2457,7 +2457,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/long_press_keycode": {
@@ -2478,7 +2478,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/appium/device/is_keyboard_shown": {
@@ -2492,7 +2492,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/appium/device/system_bars": {
@@ -2506,7 +2506,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/appium/device/display_density": {
@@ -2520,7 +2520,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/simulator/touch_id": {
@@ -2538,7 +2538,7 @@
         "src": "route.json",
         "note": "override mismatch jsonwire file",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/simulator/toggle_touch_id_enrollment": {
@@ -2556,7 +2556,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/element/:elementid/value": {
@@ -2576,7 +2576,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/element/:elementid/replace_value": {
@@ -2596,7 +2596,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/settings": {
@@ -2614,7 +2614,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/appium/settings": {
@@ -2628,7 +2628,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/appium/receive_async_response": {
@@ -2646,7 +2646,7 @@
         "src": "route.json",
         "note": "override same command name in route.js",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/alert/text": {
@@ -2660,7 +2660,7 @@
         "src": "route.json",
         "note": "override same command name in route.js",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/alert/text": {
@@ -2678,7 +2678,7 @@
         "src": "route.json",
         "note": "override same command name in route.js",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/alert/accept": {
@@ -2692,7 +2692,7 @@
         "src": "route.json",
         "note": "override same command name in route.js",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "post /wd/hub/session/:sessionid/alert/dismiss": {
@@ -2706,7 +2706,7 @@
         "src": "route.json",
         "note": "override same command name in route.js",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
     "get /wd/hub/session/:sessionid/element/:elementid/rect": {
@@ -2722,7 +2722,7 @@
         "src": "route.json",
         "note": "",
         "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js"
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     }
 }
