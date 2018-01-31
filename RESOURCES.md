@@ -1,5 +1,6 @@
-### resources 
-- https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js
+### Resources 
+
+- https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 
 - https://w3c.github.io/webdriver/webdriver-spec.html
 
