@@ -2,10 +2,11 @@
 
 namespace AppiumCodeceptionCLI\Commands;
 
+use AppiumCodeceptionCLI\Parser\JsonParser;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
  * Class JsonParserCommand
@@ -40,7 +41,7 @@ class JsonParserCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $style = new SymfonyStyle($input, $output);
-        $style->success('Start generating ...');
-        (new JsonParser($output))->generate();
+        $output->writeln('<comment>Start generating...</comment>');
+        (new JsonParser($style))->generate();
     }
 }

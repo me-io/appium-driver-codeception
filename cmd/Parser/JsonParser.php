@@ -1,9 +1,9 @@
 <?php
 
-namespace Parser;
+namespace AppiumCodeceptionCLI\Parser;
 
-use Parser\Helper\TextTable;
-use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
+use AppiumCodeceptionCLI\Parser\Helpers\TextTable;
 
 /**
  * Class JsonParser
@@ -60,8 +60,8 @@ class JsonParser
                                     \n\t/** @var string */\n\tstatic public \$DELETE = 'DELETE';
                                     {{constants}}\n}\n";
 
-    /** @var \Symfony\Component\Console\Output\OutputInterface Console output */
-    protected $consoleOutput;
+    /** @var \Symfony\Component\Console\Style\SymfonyStyle */
+    protected $symfonyStyle;
 
     /** @var string */
     protected $constants = "";
@@ -71,14 +71,15 @@ class JsonParser
 
     /**
      * JsonParser constructor.
-     * @param OutputInterface $console
-     * @param string $jsonFile
+     *
+     * @param \Symfony\Component\Console\Style\SymfonyStyle $symfonyStyle
+     * @param string                                        $jsonFile
      */
-    public function __construct(OutputInterface $console, $jsonFile = '')
+    public function __construct(SymfonyStyle $symfonyStyle, $jsonFile = '')
     {
-        $this->consoleOutput = $console;
-        $jsonFile = ($jsonFile) ? $jsonFile : $this->defaultJsonFile;
-        $this->jsonObject = json_decode(file_get_contents($jsonFile), true);
+        $this->symfonyStyle = $symfonyStyle;
+        $jsonFile           = ($jsonFile) ? $jsonFile : $this->defaultJsonFile;
+        $this->jsonObject   = json_decode(file_get_contents($jsonFile), true);
     }
 
     /**
@@ -87,15 +88,14 @@ class JsonParser
      */
     public function generate()
     {
-        $this
-            ->generateFullFile()
-            ->createFunctions()
-            ->createConstants()
-            ->createConstantsFile()
-            ->createClassFile()
-            ->generateDocMd();
+        $this->generateFullFile()
+             ->createFunctions()
+             ->createConstants()
+             ->createConstantsFile()
+             ->createClassFile()
+             ->generateDocMd();
 
-        $this->consoleOutput->writeln("<info>Finished \nYou will find output files in {$this->classFileLocation}</info>");
+        $this->symfonyStyle->success("You will find output files in {$this->classFileLocation}");
     }
 
     public function itemList($arr)
@@ -103,16 +103,17 @@ class JsonParser
         $list = '';
         foreach ($arr as $value) {
             $listItem = (is_array($value) ? $this->itemList($value) : $value);
-            $list .= "- $listItem";
+            $list     .= "- $listItem";
         }
         $list .= '';
+
         return $list;
     }
 
     public function generateDocMd()
     {
         $columns = ['Method Name', 'HTTP', 'Url/Desc', 'Payload'];
-        $rows = [];
+        $rows    = [];
         foreach ($this->functionsArray as $function) {
             $params = '';
             if ($function['payloadParams']) {
@@ -127,15 +128,15 @@ class JsonParser
                 $params,
             ];
         }
-        $t = new TextTable($columns, $rows);
+        $t         = new TextTable($columns, $rows);
         $t->maxlen = 400;
         //$t->setAlgin(['L', 'C', 'R']);
 
         $mdTable = $t->render();
 
         $readMeFile = __DIR__ . '/../../README.md';
-        $txt = file_get_contents($readMeFile);
-        $txtNew = $this->replaceInStrWithDel($txt, '[comment]: # (core-function-comment)', $mdTable);
+        $txt        = file_get_contents($readMeFile);
+        $txtNew     = $this->replaceInStrWithDel($txt, '[comment]: # (core-function-comment)', $mdTable);
         file_put_contents($readMeFile, $txtNew);
     }
 
@@ -170,6 +171,7 @@ class JsonParser
         if ($isDELETE) {
             return 'DELETE';
         }
+
         return 'NA';
     }
 
@@ -182,8 +184,8 @@ class JsonParser
         $urlExt = trim($urlExt, '/');
         $urlExt = trim($urlExt);
 
-        $urlExtArr = explode('/', $urlExt);
-        $urlExtArr = array_unique($urlExtArr);
+        $urlExtArr     = explode('/', $urlExt);
+        $urlExtArr     = array_unique($urlExtArr);
         $urlExtArrLast = array_slice($urlExtArr, -2, 2);
 
 
@@ -211,13 +213,13 @@ class JsonParser
     {
         $arrCommands = [];
 
-        $jsonWireObject = json_decode(file_get_contents($this->defaultJsonWireFile), true);
-        $jsonRouteObject = json_decode(file_get_contents($this->defaultJsonRouteFile), true);
+        $jsonWireObject          = json_decode(file_get_contents($this->defaultJsonWireFile), true);
+        $jsonRouteObject         = json_decode(file_get_contents($this->defaultJsonRouteFile), true);
         $jsonRouteObjectOverRide = json_decode(file_get_contents($this->defaultJsonRouteOverrideFile), true);
-        $extraRouteObject = json_decode(file_get_contents($this->defaultJsonExtraFile), true);
+        $extraRouteObject        = json_decode(file_get_contents($this->defaultJsonExtraFile), true);
 
         $jsonRouteObjectSm = [];
-        $jsonWireObjectSm = [];
+        $jsonWireObjectSm  = [];
 
         foreach ($jsonRouteObject as $key => $value) {
             $jsonRouteObjectSm[strtolower($key)] = $value;
@@ -231,9 +233,9 @@ class JsonParser
         $jsonRouteObjectSmVerb = [];
         foreach ($jsonRouteObjectSm as $key => $value) {
             foreach ($value as $verb => $verbValue) {
-                $verbValue['http_method'] = $verb;
-                $verbValue['src'] = 'route.json';
-                $verbValue['link'] = ['https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js'];
+                $verbValue['http_method']                                          = $verb;
+                $verbValue['src']                                                  = 'route.json';
+                $verbValue['link']                                                 = ['https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js'];
                 $jsonRouteObjectSmVerb[strtolower($verb) . ' ' . strtolower($key)] = $verbValue;
             }
         }
@@ -249,15 +251,14 @@ class JsonParser
 
         foreach ($jsonWireObject as $key => $commandDesc) {
             preg_match('#\w+ #', $key, $match);
-            $httpMethod = trim($match[0]);
-            $keyUrl = str_replace(' ', ' /wd/hub', $key);
-            $jsonWireObjectSm[strtolower($keyUrl)] =
-                [
-                    'desc' => $commandDesc,
-                    'http_method' => $httpMethod,
-                    'src' => 'jsonwire-full',
-                    'link' => ['https://github.com/admc/wd/blob/master/doc/jsonwire-full-mapping.md'],
-                ];
+            $httpMethod                            = trim($match[0]);
+            $keyUrl                                = str_replace(' ', ' /wd/hub', $key);
+            $jsonWireObjectSm[strtolower($keyUrl)] = [
+                'desc'        => $commandDesc,
+                'http_method' => $httpMethod,
+                'src'         => 'jsonwire-full',
+                'link'        => ['https://github.com/admc/wd/blob/master/doc/jsonwire-full-mapping.md'],
+            ];
         }
 
 
@@ -266,8 +267,8 @@ class JsonParser
             $cmdDetail = $jsonWireObjectSm[$key] ?? false;
             if (!$cmdDetail) {
                 $jsonWireObjectSm[$key] = [
-                    'desc' => $key,
-                    'http_method' => $value['http_method']
+                    'desc'        => $key,
+                    'http_method' => $value['http_method'],
                 ];
             }
         }
@@ -285,16 +286,17 @@ class JsonParser
 //        }
 
         foreach ($jsonWireObjectSm as $key => $commandDesc) {
-            $cmd = $key;
+            $cmd       = $key;
             $urlNoVerb = str_ireplace(['post', 'get', 'delete',], '', $key);
-            $url = str_ireplace(['/wd/hub', '/session/:sessionid'], '', $urlNoVerb);
-            $url = trim($url);
+            $url       = str_ireplace(['/wd/hub', '/session/:sessionid'], '', $urlNoVerb);
+            $url       = trim($url);
 
             $cmdDetail = $jsonRouteObjectSmVerb[$key] ?? false;
 
             if ($cmdDetail) {
                 if (!isset($cmdDetail['command'])) {
-                    $cmdDetail['command'] = $this->toCamelCase($this->getCommandNameOfUrl($cmd, $commandDesc['http_method']), '_');
+                    $cmdDetail['command'] = $this->toCamelCase($this->getCommandNameOfUrl($cmd,
+                        $commandDesc['http_method']), '_');
                 }
                 preg_match_all('#:(\w+)#', $url, $matches);
                 $urlParams = array_unique($matches[1]);
@@ -311,23 +313,25 @@ class JsonParser
                 }
                 $arrCommands[$key] =
                     [
-                        'url' => $url,
-                        'wdUrl' => trim($urlNoVerb),
-                        'name' => $cmdDetail['command'],
-                        'desc' => $cmdDetail['desc'] ?? $commandDesc['desc'],
-                        'http_method' => $this->httpMethod($key),
-                        'uriParams' => $urlParams ?? [],
+                        'url'           => $url,
+                        'wdUrl'         => trim($urlNoVerb),
+                        'name'          => $cmdDetail['command'],
+                        'desc'          => $cmdDetail['desc'] ?? $commandDesc['desc'],
+                        'http_method'   => $this->httpMethod($key),
+                        'uriParams'     => $urlParams ?? [],
                         'payloadParams' => $payload,
-                        'src' => $cmdDetail['src'] ?? '',
-                        'note' => $cmdDetail['note'] ?? '',
-                        'link' => $cmdDetail['link'] ?? []
+                        'src'           => $cmdDetail['src'] ?? '',
+                        'note'          => $cmdDetail['note'] ?? '',
+                        'link'          => $cmdDetail['link'] ?? [],
                     ];
             }
         }
 
-        file_put_contents($this->defaultJsonFile, json_encode($arrCommands, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        file_put_contents($this->defaultJsonFile,
+            json_encode($arrCommands, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
         $this->functionsArray = $arrCommands;
+
         return $this;
     }
 
@@ -402,7 +406,7 @@ class JsonParser
         }
 
 
-        $routeParamsString = '';
+        $routeParamsString  = '';
         $optionsAnnotations = "\n\t/**\n";
         $optionsAnnotations .= "\t* " . $function['name'] . "\n\t*\n";
 
@@ -428,12 +432,13 @@ class JsonParser
         $optionsAnnotations .= ($allOptions) ? "\t* @param array \$data\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @options " . json_encode($allOptions) . "\n\t*\n" : "";
         $optionsAnnotations .= ($allOptions) ? "\t* @return mixed\n" : "";
-        $options_ = ($allOptions) ? "\$data" : "";
-        $routeParamsString = ($allOptions && $routeParamsString) ? ", " . $routeParamsString : $routeParamsString;
-        $this->classOutput .= $optionsAnnotations . "\t*\n\t**/\n";
-        $this->classOutput .= "\tpublic function " . $function['name'] . "(" . $options_ . "" . $routeParamsString . "){\n";
+        $options_           = ($allOptions) ? "\$data" : "";
+        $routeParamsString  = ($allOptions && $routeParamsString) ? ", " . $routeParamsString : $routeParamsString;
+        $this->classOutput  .= $optionsAnnotations . "\t*\n\t**/\n";
+        $this->classOutput  .= "\tpublic function " . $function['name'] . "(" . $options_ . "" . $routeParamsString . "){\n";
 
-        $this->classOutput .= "\t\t" . $this->getCommand($function['url'], $function['http_method'], $options_, $function['uriParams']) . "\n\t}";
+        $this->classOutput                   .= "\t\t" . $this->getCommand($function['url'], $function['http_method'],
+                $options_, $function['uriParams']) . "\n\t}";
         $this->classArray[$function['name']] = $function['name'];
 
         return $function['name'];
@@ -452,10 +457,10 @@ class JsonParser
     protected function getCommand($url, $type, $data, $routeParams)
     {
         $routeParamsString = "";
-        $data = ($data) ? ", \$data" : '';
-        $urlString = "'$url'";
+        $data              = ($data) ? ", \$data" : '';
+        $urlString         = "'$url'";
         if ($routeParams) {
-            $urlString = "\$url";
+            $urlString         = "\$url";
             $routeParamsString .= "\t\$url = '" . $url . "';\n\t\t";
             foreach ($routeParams as $param) {
                 $routeParamsString .= "\t\$url = str_ireplace(':" . $param . "', $" . $param . ", \$url );\n\t\t";
@@ -473,7 +478,8 @@ class JsonParser
      */
     protected function createConstantsFile()
     {
-        file_put_contents($this->classFileLocation . '/' . $this->constantsOutputFileName . '.php', $this->constantsOutput);
+        file_put_contents($this->classFileLocation . '/' . $this->constantsOutputFileName . '.php',
+            $this->constantsOutput);
 
         return $this;
     }
@@ -492,7 +498,7 @@ class JsonParser
         $nameSm = strtolower($name);
 
         if (!isset($this->constantsArray[$nameSm])) {
-            $this->constants .= "\n\t/** @var string */\n\tpublic static \$" . $name . " = '" . $value . "';\n";
+            $this->constants               .= "\n\t/** @var string */\n\tpublic static \$" . $name . " = '" . $value . "';\n";
             $this->constantsArray[$nameSm] = $value;
         } else {
             echo "Duplicate key constants :" . $name . ' -- ' . $value . "\n";

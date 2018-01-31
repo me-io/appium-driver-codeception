@@ -1,6 +1,6 @@
 <?php
 
-namespace Parser\Helper;
+namespace AppiumCodeceptionCLI\Parser\Helpers;
 
 /**
  * Creates a markdown document based on the parsed documentation
@@ -9,24 +9,28 @@ class TextTable
 {
     /** @var int The source path */
     public $maxlen = 200;
+
     /** @var array The source path */
-    private $data = array();
+    private $data = [];
+
     /** @var array The source path */
-    private $header = array();
+    private $header = [];
+
     /** @var array The source path */
-    private $len = array();
+    private $len = [];
+
     /** @var array The source path */
-    private $align = array(
+    private $align = [
         'name' => 'L',
-        'type' => 'C'
-    );
+        'type' => 'C',
+    ];
 
     /**
-     * @param array $header The header array [key => label, ...]
+     * @param array $header  The header array [key => label, ...]
      * @param array $content Content
-     * @param array $align Alignment optios [key => L|R|C, ...]
+     * @param bool  $align   Alignment optios [key => L|R|C, ...]
      */
-    public function __construct($header = null, $content = array(), $align = false)
+    public function __construct($header = null, $content = [], $align = false)
     {
         if ($header) {
             $this->header = $header;
@@ -58,6 +62,8 @@ class TextTable
      * Add data to the table
      *
      * @param array $content Content
+     *
+     * @return \AppiumCodeceptionCLI\Parser\Helpers\TextTable
      */
     public function addData($content)
     {
@@ -67,13 +73,14 @@ class TextTable
                     $row[$key] = '-';
                 } elseif (strlen($row[$key]) > $this->maxlen) {
                     $this->len[$key] = $this->maxlen;
-                    $row[$key] = substr($row[$key], 0, $this->maxlen - 3) . '...';
+                    $row[$key]       = substr($row[$key], 0, $this->maxlen - 3) . '...';
                 } elseif (strlen($row[$key]) > $this->len[$key]) {
                     $this->len[$key] = strlen($row[$key]);
                 }
             }
         }
         $this->data = $this->data + $content;
+
         return $this;
     }
 
@@ -87,10 +94,11 @@ class TextTable
         $res = '|';
         foreach ($this->len as $key => $l) {
             $res .= (isset($this->align[$key]) && ($this->align[$key] == 'C' || $this->align[$key] == 'L') ? ':' : ' ')
-                . str_repeat('-', $l)
-                . (isset($this->align[$key]) && ($this->align[$key] == 'C' || $this->align[$key] == 'R') ? ':' : ' ')
-                . '|';
+                    . str_repeat('-', $l)
+                    . (isset($this->align[$key]) && ($this->align[$key] == 'C' || $this->align[$key] == 'R') ? ':' : ' ')
+                    . '|';
         }
+
         return $res . "\r\n";
     }
 
@@ -98,6 +106,7 @@ class TextTable
      * Render a single row
      *
      * @param  array $row
+     *
      * @return string
      */
     private function renderRow($row)
@@ -106,6 +115,7 @@ class TextTable
         foreach ($this->len as $key => $l) {
             $res .= ' ' . $row[$key] . ($l > strlen($row[$key]) ? str_repeat(' ', $l - strlen($row[$key])) : '') . ' |';
         }
+
         return $res . "\r\n";
     }
 
@@ -113,16 +123,18 @@ class TextTable
      * Render the table
      *
      * @param  array $content Additional table content
+     *
      * @return string
      */
-    public function render($content = array())
+    public function render($content = [])
     {
         $this->addData($content);
         $res = $this->renderRow($this->header)
-            . $this->renderDelimiter();
+               . $this->renderDelimiter();
         foreach ($this->data as $row) {
             $res .= $this->renderRow($row);
         }
+
         return $res;
     }
 }
