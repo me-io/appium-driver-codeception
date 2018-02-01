@@ -2481,6 +2481,29 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "post /wd/hub/session/:sessionid/appium/device/activate_app": {
+        "url": "/appium/device/activate_app",
+        "wdUrl": "/wd/hub/session/:sessionid/appium/device/activate_app",
+        "name": "activateApp",
+        "desc": "post /wd/hub/session/:sessionid/appium/device/activate_app",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": {
+            "required": [
+                [
+                    "appId"
+                ],
+                [
+                    "bundleId"
+                ]
+            ]
+        },
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "get /wd/hub/session/:sessionid/appium/device/is_keyboard_shown": {
         "url": "/appium/device/is_keyboard_shown",
         "wdUrl": "/wd/hub/session/:sessionid/appium/device/is_keyboard_shown",
