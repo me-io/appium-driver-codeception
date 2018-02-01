@@ -223,4 +223,37 @@ trait Touch
 
         return $this;
     }
+
+    /**
+     * Pinch on an element a certain amount
+     * convenience method added to Appium (NOT Selenium 3)
+     *
+     * @link https://github.com/appium/python-client/blob/master/appium/webdriver/webdriver.py
+     * @usage $this->zoom($element)
+     *
+     * @param null $element the element to zoom
+     * @param int  $percent amount to pinch. Defaults to 200%
+     * @param int  $steps   number of steps in the pinch action
+     *
+     * @return \Appium\Traits\Touch
+     */
+    public function zoom($element = null, $percent = 200, $steps = 50)
+    {
+        if ($element) {
+            $element = $element['id'];
+        }
+
+        $options = [
+            'element' => $element,
+            'percent' => $percent,
+            'steps'   => $steps,
+        ];
+
+        $this->execute([
+            'mobile: pinchOpen',
+            $options,
+        ]);
+
+        return $this;
+    }
 }
