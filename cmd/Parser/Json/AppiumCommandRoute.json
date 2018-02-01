@@ -874,6 +874,21 @@
       }
     }
   },
+  "/wd/hub/session/:sessionId/appium/device/activate_app": {
+    "POST": {
+      "command": "activateApp",
+      "payloadParams": {
+        "required": [
+          [
+            "appId"
+          ],
+          [
+            "bundleId"
+          ]
+        ]
+      }
+    }
+  },
   "/wd/hub/session/:sessionId/appium/device/app_installed": {
     "POST": {
       "command": "isAppInstalled",

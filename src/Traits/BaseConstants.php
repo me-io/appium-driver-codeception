@@ -464,6 +464,9 @@ class BaseConstants
 	public static $LONGPRESSKEYCODE = '/appium/device/long_press_keycode';
 
 	/** @var string */
+	public static $ACTIVATEAPP = '/appium/device/activate_app';
+
+	/** @var string */
 	public static $ISKEYBOARDSHOWN = '/appium/device/is_keyboard_shown';
 
 	/** @var string */

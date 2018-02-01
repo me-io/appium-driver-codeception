@@ -1943,6 +1943,21 @@ trait BaseCommands
 			return $this->driverCommand(BaseConstants::$POST, '/appium/device/long_press_keycode', $data);
 	}
 	/**
+	* activateApp
+	*
+	* post /wd/hub/session/:sessionid/appium/device/activate_app
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	* @param array $data
+	* @options {"required":[["appId"],["bundleId"]]}
+	*
+	* @return mixed
+	*
+	**/
+	public function activateApp($data){
+			return $this->driverCommand(BaseConstants::$POST, '/appium/device/activate_app', $data);
+	}
+	/**
 	* isKeyboardShown
 	*
 	* get /wd/hub/session/:sessionid/appium/device/is_keyboard_shown
