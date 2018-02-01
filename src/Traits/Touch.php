@@ -5,13 +5,13 @@ namespace Appium\Traits;
 use Appium\TestCase\MultiAction;
 use Appium\TestCase\TouchAction;
 
+/**
+ * Trait Touch
+ *
+ * @package Appium\Traits
+ */
 trait Touch
 {
-    ////  _____ ___  _   _  ___ _  _     _   ___ _____ ___ ___  _  _
-    //// |_   _/ _ \| | | |/ __| || |   /_\ / __|_   _|_ _/ _ \| \| |
-    ////   | || (_) | |_| | (__| __ |  / _ \ (__  | |  | | (_) | .` |
-    ////   |_| \___/ \___/ \___|_||_| /_/ \_\___| |_| |___\___/|_|\_|
-
     /**
      * @return \Appium\TestCase\TouchAction
      */
@@ -20,11 +20,6 @@ trait Touch
         return new TouchAction($this->getSessionUrl(), $this->getDriver());
     }
 
-    ////     __  __ _   _ _  _____ ___   _____ ___  _   _  ___ _  _     _   ___ _____ ___ ___  _  _
-    ////    |  \/  | | | | ||_   _|_ _| |_   _/ _ \| | | |/ __| || |   /_\ / __|_   _|_ _/ _ \| \| |
-    ////    | |\/| | |_| | |__| |  | |    | || (_) | |_| | (__| __ |  / _ \ (__  | |  | | (_) | .` |
-    ////    |_|  |_|\___/|____|_| |___|   |_| \___/ \___/ \___|_||_| /_/ \_\___| |_| |___\___/|_|\_|
-
     /**
      * @return \Appium\TestCase\MultiAction
      */
@@ -32,10 +27,6 @@ trait Touch
     {
         return new MultiAction($this->getSessionUrl(), $this->getDriver());
     }
-
-    /**
-     * @link https://pypkg.com/pypi/appium-python-client/f/appium/webdriver/webdriver.py
-     */
 
     /**
      * Swipe from one point to another point, for an optional duration.
@@ -93,13 +84,11 @@ trait Touch
      * convenience method added to Appium (NOT Selenium 3)
      *
      * @link https://pypkg.com/pypi/appium-python-client/f/appium/webdriver/webdriver.py
-     *
-     * @param     $originElArray      array containing type ( name, xpath, id, accessibility id,.... ) of element match
-     *                                and value  [ 'type'=>'id' ,'value=>'email_address' ]
-     * @param     $destinationElArray array containing type ( name, xpath, id, accessibility id,.... ) of element match
-     *                                and value  [ 'type'=>'id' ,'value=>'email_address' ]
-     * @param int $duration
      * @usage $this->scroll(['type'=>'id','value'=>'header_bar'],['type'=>'xpath','value'=>'div1[1]>classA>textare']);
+     *
+     * @param array $originElArray      the element from which to being scrolling
+     * @param array $destinationElArray the element to scroll to
+     * @param int   $duration
      *
      * @return $this
      */
@@ -121,9 +110,9 @@ trait Touch
      *
      * @link https://github.com/appium/python-client/blob/master/appium/webdriver/webdriver.py
      *
-     * @param     $originElArray      array
-     * @param     $destinationElArray array
-     * @param int $duration
+     * @param array $originElArray
+     * @param array $destinationElArray
+     * @param int   $duration
      *
      * @return \Appium\Traits\Touch
      */
@@ -146,8 +135,8 @@ trait Touch
      * @link https://github.com/appium/python-client/blob/master/appium/webdriver/webdriver.py
      * @usage $this->tap([(100, 20), (100, 60), (100, 100)], 500);
      *
-     * @param     $positions
-     * @param int $duration
+     * @param array $positions
+     * @param int   $duration
      *
      * @return \Appium\Traits\Touch
      */
