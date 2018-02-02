@@ -68,7 +68,7 @@ trait Touch
      *
      * @return mixed
      */
-    public function flick($startX, $startY, $endX, $endY)
+    public function flickFromTo($startX, $startY, $endX, $endY)
     {
         $action = $this->getTouchAction();
         $action->press(['x' => $startX, 'y' => $startY])
