@@ -5,8 +5,11 @@
     <a href="LICENSE.md">
     <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
     </a>
+    <a href="#">
+      <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome">
+    </a>
     <a href="https://packagist.org/packages/me-io/appium-codeception/">
-    <img src="https://img.shields.io/packagist/dm/me-io/appium-codeception.svg" alt="Packagist">
+      <img src="https://img.shields.io/packagist/dm/me-io/appium-codeception.svg" alt="Packagist">
     </a>
   </p>
 </p>
@@ -134,10 +137,16 @@ codecept run --steps
 
 > **Note**: While following the steps that are mentioned here if you get `codecept command not found` error try to run `codecept` command like this `./vendor/bin/codecept`.
 
+## Contributors
+
+A huge thanks to all of our contributors:
+
+| [<img src="https://avatars0.githubusercontent.com/u/45731?v=3" width="100px;"/><br /><sub><b>Mohamed Meabed</b></sub>](https://github.com/Meabed)<br />[💬](#question-meabed "Answering Questions") [📖](#documentation-meabed "Documentation") [👀](#review-meabed "Reviewed Pull Requests") [📢](#talk-meabed "Talks") | [<img src="https://avatars2.githubusercontent.com/u/16267321?" width="100px;"/><br /><sub><b>Zeeshan Ahmad</b></sub>](https://github.com/zeeshanu)<br />[💻](#code-zeeshan "Code") [📖](#documentation-zeeshan "Documentation") |
+|:---: | :---: |
+
 ## License
 
 The code is available under the [MIT license](LICENSE.md).
-[comment]: 
 
 # Core Functions
 
