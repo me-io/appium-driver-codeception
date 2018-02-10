@@ -201,3 +201,4 @@ composer.phar
 package/codecept.phar
 .idea
 .phplint-cache
+node_modules
