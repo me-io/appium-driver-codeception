@@ -14,7 +14,7 @@
     <a href="https://packagist.org/packages/me-io/appium-codeception/">
         <img src="https://img.shields.io/packagist/dm/me-io/appium-codeception.svg" alt="Packagist">
     </a>
-  </p>vmd 
+  </p> 
 </p>
 
 ## Requirement
