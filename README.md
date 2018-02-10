@@ -1,15 +1,20 @@
-<p align="center">
-  <h1 align="center">Codeception Appium Driver</h1>
-  <p align="center">This is the codeception appium driver for writing Appium Tests.</p>
-  <p align="center">
-    <a href="LICENSE.md">
-    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License">
-    </a>
-    <a href="https://packagist.org/packages/me-io/appium-codeception/">
-    <img src="https://img.shields.io/packagist/dm/me-io/appium-codeception.svg" alt="Packagist">
-    </a>
-  </p>
-</p>
+<h1 align="center">
+  Appium Driver for Codeception 
+</h1>
+<p align="center" style="font-size: 1.2rem;">Appium driver for codeception for writing mobile tests.</p>
+
+<hr />
+
+[![Build Status][build-badge]](build)
+[![downloads][downloads-badge]](downloads)
+[![MIT License][license-badge]](license)
+
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![PRs Welcome][prs-badge]](prs) 
+[![Code of Conduct][coc-badge]](coc)
+[![Watch on GitHub][github-watch-badge]](github-watch)
+[![Star on GitHub][github-star-badge]](github-star)
+[![Tweet][twitter-badge]](twitter)
 
 ## Requirement
 
@@ -38,7 +43,7 @@ composer require me-io/appium-codeception
 ```json
 {
     "require": {
-        "me-io/appium-codeception": "dev-master"
+        "me-io/appium-codeception": "~1"
 }
 ```
 
@@ -61,32 +66,34 @@ Now, lets create a new configuration file `android.suite.yml` inside tests direc
 ```yml
 class_name: AndroidGuy
 modules:
-    enabled:
-        - \Appium\AppiumDriver # Enable appium driver
-        -  Asserts
-    config:
-        \Appium\AppiumDriver: # Configuration for appium driver
-            host            : 0.0.0.0
-            port            : 4723
-            dummyRemote     : false
-            resetAfterSuite : true
-            resetAfterCest  : false
-            resetAfterTest  : false
-            resetAfterStep  : false
-            capabilities:
-                platformName          : 'Android'
-                deviceName            : 'Android device'
-                automationName        : 'Appium'
-                appPackage            : com.travel.almosafer
-                fullReset             : false
-                noReset               : false
-                newCommandTimeout     : 7200
-                nativeInstrumentsLib  : true
-                connection_timeout    : 500
-                request_timeout       : 500
-                autoAcceptAlerts      : true
-                appActivity           : com.tajawal.splash.SplashActivity
-                skipUnlock            : true
+  enabled:
+    # Enable appium driver
+    - \Appium\AppiumDriver 
+    -  Asserts
+  config:
+    # Configuration for appium driver
+    \Appium\AppiumDriver:
+      host: 0.0.0.0
+      port: 4723
+      dummyRemote: false
+      resetAfterSuite: true
+      resetAfterCest: false
+      resetAfterTest: false
+      resetAfterStep: false
+      capabilities:
+        platformName: 'Android'
+        deviceName: 'Android device'
+        automationName: 'Appium'
+        appPackage: io.selendroid.testapp
+        fullReset: false
+        noReset: false
+        newCommandTimeout: 7200
+        nativeInstrumentsLib: true
+        connection_timeout: 500
+        request_timeout: 500
+        autoAcceptAlerts: true
+        appActivity: io.selendroid.testapp.HomeScreenActivity
+        skipUnlock: true
 ```
 
 ### Generating Actor classes
@@ -134,12 +141,35 @@ codecept run --steps
 
 > **Note**: While following the steps that are mentioned here if you get `codecept command not found` error try to run `codecept` command like this `./vendor/bin/codecept`.
 
+## Contributors
+
+A huge thanks to all of our contributors:
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars0.githubusercontent.com/u/45731?v=3" width="100px;"/><br /><sub><b>Mohamed Meabed</b></sub>](https://github.com/Meabed)<br />[💻](https://github.com/me-io/appium-driver-codeception/commits?author=Meabed "Code") [📢](#talk-Meabed "Talks") | [<img src="https://avatars2.githubusercontent.com/u/16267321?v=3" width="100px;"/><br /><sub><b>Zeeshan Ahmad</b></sub>](https://github.com/zeeshanu)<br />[💻](https://github.com/me-io/appium-driver-codeception/commits?author=zeeshanu "Code") [🐛](https://github.com/me-io/appium-driver-codeception/issues?q=author%3Azeeshanu "Bug reports") [⚠️](https://github.com/me-io/appium-driver-codeception/commits?author=zeeshanu "Tests") [📖](https://github.com/me-io/appium-driver-codeception/commits?author=zeeshanu "Documentation") |
+| :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+
 ## License
 
 The code is available under the [MIT license](LICENSE.md).
-[comment]: 
 
-# Core Functions
+[build-badge]: https://img.shields.io/travis/me-io/appium-driver-codeception.svg?style=flat-square
+[downloads-badge]: https://img.shields.io/packagist/dm/me-io/appium-driver-codeception.svg?style=flat-square
+[license-badge]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[prs]: http://makeapullrequest.com
+[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
+[github-watch-badge]: https://img.shields.io/github/watchers/me-io/appium-driver-codeception.svg?style=social
+[github-watch]: https://github.com/me-io/appium-driver-codeception/watchers
+[github-star-badge]: https://img.shields.io/github/stars/me-io/appium-driver-codeception.svg?style=social
+[github-star]: https://github.com/me-io/appium-driver-codeception/stargazers
+[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20appium-driver-codeception!%20https://github.com/me-io/appium-driver-codeception%20%F0%9F%91%8D
+[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/me-io/appium-driver-codeception.svg?style=social
+
+## Core Functions
 
 | Method Name               | HTTP   | Url/Desc                                                                                                                                                                                                 | Payload                                                                                                                                                                                |
 | ------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -309,6 +339,3 @@ The code is available under the [MIT license](LICENSE.md).
 | postAcceptAlertEx         | POST   | /alert/accept<br>post /wd/hub/session/:sessionid/alert/accept                                                                                                                                            |                                                                                                                                                                                        |
 | postDismissAlertEx        | POST   | /alert/dismiss<br>post /wd/hub/session/:sessionid/alert/dismiss                                                                                                                                          |                                                                                                                                                                                        |
 | getElementRect            | GET    | /element/:elementid/rect<br>get /wd/hub/session/:sessionid/element/:elementid/rect                                                                                                                       |                                                                                                                                                                                        |
-
-
-[comment]: # (core-function-comment)

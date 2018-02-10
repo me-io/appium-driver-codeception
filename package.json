@@ -1,0 +1,21 @@
+{
+  "name": "appium-driver-codeception",
+  "version": "1.0.0",
+  "description": "Appium driver for codeception for writing mobile tests.",
+  "scripts": {
+    "contributors:add": "./node_modules/.bin/all-contributors add",
+    "contributors:generate": "./node_modules/.bin/all-contributors generate"
+  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/me-io/appium-codeception.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/me-io/appium-codeception/issues"
+  },
+  "homepage": "https://github.com/me-io/appium-codeception#readme",
+  "devDependencies": {
+    "all-contributors-cli": "^4.10.1"
+  }
+}

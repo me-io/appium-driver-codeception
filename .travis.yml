@@ -1,0 +1,19 @@
+language: php
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.1
+
+sudo: false
+
+cache:
+  apt: true
+  directories:
+    - $HOME/.composer/cache
+
+before_script:
+  - composer --prefer-dist install --no-interaction -o --no-progress
+
+script:
+  - ./vendor/bin/phpunit
