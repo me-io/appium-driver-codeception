@@ -14,7 +14,7 @@
     <a href="https://packagist.org/packages/me-io/appium-codeception/">
         <img src="https://img.shields.io/packagist/dm/me-io/appium-codeception.svg" alt="Packagist">
     </a>
-  </p>
+  </p>vmd 
 </p>
 
 ## Requirement
@@ -67,32 +67,34 @@ Now, lets create a new configuration file `android.suite.yml` inside tests direc
 ```yml
 class_name: AndroidGuy
 modules:
-    enabled:
-        - \Appium\AppiumDriver # Enable appium driver
-        -  Asserts
-    config:
-        \Appium\AppiumDriver: # Configuration for appium driver
-            host            : 0.0.0.0
-            port            : 4723
-            dummyRemote     : false
-            resetAfterSuite : true
-            resetAfterCest  : false
-            resetAfterTest  : false
-            resetAfterStep  : false
-            capabilities:
-                platformName          : 'Android'
-                deviceName            : 'Android device'
-                automationName        : 'Appium'
-                appPackage            : com.travel.almosafer
-                fullReset             : false
-                noReset               : false
-                newCommandTimeout     : 7200
-                nativeInstrumentsLib  : true
-                connection_timeout    : 500
-                request_timeout       : 500
-                autoAcceptAlerts      : true
-                appActivity           : com.tajawal.splash.SplashActivity
-                skipUnlock            : true
+  enabled:
+    # Enable appium driver
+    - \Appium\AppiumDriver 
+    -  Asserts
+  config:
+    # Configuration for appium driver
+    \Appium\AppiumDriver:
+      host: 0.0.0.0
+      port: 4723
+      dummyRemote: false
+      resetAfterSuite: true
+      resetAfterCest: false
+      resetAfterTest: false
+      resetAfterStep: false
+      capabilities:
+        platformName: 'Android'
+        deviceName: 'Android device'
+        automationName: 'Appium'
+        appPackage: io.selendroid.testapp
+        fullReset: false
+        noReset: false
+        newCommandTimeout: 7200
+        nativeInstrumentsLib: true
+        connection_timeout: 500
+        request_timeout: 500
+        autoAcceptAlerts: true
+        appActivity: io.selendroid.testapp.HomeScreenActivity
+        skipUnlock: true
 ```
 
 ### Generating Actor classes
