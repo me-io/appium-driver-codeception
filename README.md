@@ -41,7 +41,7 @@ composer require me-io/appium-codeception
 ```json
 {
     "require": {
-        "me-io/appium-codeception": "dev-master"
+        "me-io/appium-codeception": "~1"
 }
 ```
 
