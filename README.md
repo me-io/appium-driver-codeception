@@ -1,5 +1,5 @@
 <h1 align="center">
-  Codeception Appium Driver
+  Appium Driver for Codeception 
 </h1>
 <p align="center" style="font-size: 1.2rem;">This is the codeception appium driver for writing Appium Tests.</p>
 
