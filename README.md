@@ -6,19 +6,14 @@
 <hr />
 
 [![Build Status][build-badge]][build]
-[![version][version-badge]][package]
 [![downloads][downloads-badge]][downloads]
 [![MIT License][license-badge]][license]
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 [![PRs Welcome][prs-badge]][prs] [![Code of Conduct][coc-badge]][coc]
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
-
-[build-badge]: https://img.shields.io/travis/me-io/appium-driver-codeception.svg?style=flat-square
-[build]: https://travis-ci.org/me-io/appium-driver-codeception
-[version-badge]: https://img.shields.io/packagist/php-v/me-io/appium-driver-codeception.svg?style=flat-square
 
 ## Requirement
 
@@ -155,6 +150,19 @@ A huge thanks to all of our contributors:
 ## License
 
 The code is available under the [MIT license](LICENSE.md).
+
+[build-badge]: https://img.shields.io/travis/me-io/appium-driver-codeception.svg?style=flat-square
+[downloads-badge]: https://img.shields.io/packagist/dm/me-io/appium-driver-codeception.svg?style=flat-square
+[license-badge]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[prs]: http://makeapullrequest.com
+[coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
+[github-watch-badge]: https://img.shields.io/github/watchers/me-io/appium-driver-codeception.svg?style=social
+[github-watch]: https://github.com/me-io/appium-driver-codeception/watchers
+[github-star-badge]: https://img.shields.io/github/stars/me-io/appium-driver-codeception.svg?style=social
+[github-star]: https://github.com/me-io/appium-driver-codeception/stargazers
+[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20appium-driver-codeception!%20https://github.com/me-io/appium-driver-codeception%20%F0%9F%91%8D
+[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/me-io/appium-driver-codeception.svg?style=social
 
 ## Core Functions
 
@@ -326,6 +334,3 @@ The code is available under the [MIT license](LICENSE.md).
 | postAcceptAlertEx         | POST   | /alert/accept<br>post /wd/hub/session/:sessionid/alert/accept                                                                                                                                            |                                                                                                                                                                                        |
 | postDismissAlertEx        | POST   | /alert/dismiss<br>post /wd/hub/session/:sessionid/alert/dismiss                                                                                                                                          |                                                                                                                                                                                        |
 | getElementRect            | GET    | /element/:elementid/rect<br>get /wd/hub/session/:sessionid/element/:elementid/rect                                                                                                                       |                                                                                                                                                                                        |
-
-
-[comment]: # (core-function-comment)
