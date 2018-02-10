@@ -1,13 +1,17 @@
 {
-  "name": "me-io/appium-codeception",
-  "description": "Codeception appium driver",
+  "name": "me-io/appium-driver-codeception",
+  "description": "appium driver for codeception framework",
   "keywords": [
     "BDD",
+    "automation testing",
     "acceptance testing",
     "functional testing",
     "unit testing",
     "tdd",
+    "android automation",
+    "ios automation",
     "appium",
+    "appium driver",
     "codeception"
   ],
   "type": "library",
