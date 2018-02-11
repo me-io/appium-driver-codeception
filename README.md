@@ -5,16 +5,16 @@
 
 <hr />
 
-[![Build Status][build-badge]](build)
-[![downloads][downloads-badge]](downloads)
-[![MIT License][license-badge]](license)
+[![Build Status][build-badge]][build]
+[![downloads][downloads-badge]][downloads]
+[![MIT License][license-badge]][license]
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
-[![PRs Welcome][prs-badge]](prs) 
-[![Code of Conduct][coc-badge]](coc)
-[![Watch on GitHub][github-watch-badge]](github-watch)
-[![Star on GitHub][github-star-badge]](github-star)
-[![Tweet][twitter-badge]](twitter)
+[![PRs Welcome][prs-badge]][prs]
+[![Code of Conduct][coc-badge]][coc]
+[![Watch on GitHub][github-watch-badge]][github-watch]
+[![Star on GitHub][github-star-badge]][github-star]
+[![Tweet][twitter-badge]][twitter]
 
 ## Requirement
 
@@ -157,11 +157,15 @@ A huge thanks to all of our contributors:
 The code is available under the [MIT license](LICENSE.md).
 
 [build-badge]: https://img.shields.io/travis/me-io/appium-driver-codeception.svg?style=flat-square
+[build]: https://travis-ci.org/me-io/appium-driver-codeception
 [downloads-badge]: https://img.shields.io/packagist/dm/me-io/appium-driver-codeception.svg?style=flat-square
+[downloads]: https://packagist.org/packages/me-io/appium-driver-codeception/stats
 [license-badge]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[license]: https://github.com/me-io/appium-driver-codeception/blob/master/LICENSE.md
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
+[coc]: https://github.com/me-io/appium-driver-codeception/blob/master/CODE_OF_CONDUCT.md
 [github-watch-badge]: https://img.shields.io/github/watchers/me-io/appium-driver-codeception.svg?style=social
 [github-watch]: https://github.com/me-io/appium-driver-codeception/watchers
 [github-star-badge]: https://img.shields.io/github/stars/me-io/appium-driver-codeception.svg?style=social
