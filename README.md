@@ -34,20 +34,21 @@
 
 ## Install
 
-Just add `me-io/appium-codeception` to your project's composer.json file:
-
-```bash
-composer require me-io/appium-codeception
-```
+Just add `me-io/appium-driver-codeception` to your project's composer.json file:
 
 ```json
 {
     "require": {
-        "me-io/appium-codeception": "~1"
+        "me-io/appium-driver-codeception": "~1"
+    }
 }
 ```
 
-and then run `composer install`. This will install codeception appium driver and all it's dependencies.
+and then run `composer install`. This will install codeception appium driver and all it's dependencies. Or run the following command
+
+```bash
+composer require me-io/appium-driver-codeception
+```
 
 ## Tests
 
