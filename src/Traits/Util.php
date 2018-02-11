@@ -42,4 +42,26 @@ trait Util
 
         return $response;
     }
+
+    /**
+     * DESC
+     * @param $latitude
+     * @param $longitude
+     * @param $altitude
+     * @return mixed
+     * @usage $this->setLocation(100,150,200);
+     * @author Anoop Ambunhi <anoop.nair@tajawal.com>
+     *
+     */
+    public function setLocation($latitude, $longitude, $altitude)
+    {
+        $data = [
+            $location = [
+                'latitude' => strval($latitude),
+                'longitude' => strval($longitude),
+                'altitude' => strval($altitude),
+            ]
+        ];
+        return $this->driverCommand(BaseConstants::$POST, '/location', $data);
+    }
 }
