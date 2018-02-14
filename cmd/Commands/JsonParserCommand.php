@@ -43,5 +43,6 @@ class JsonParserCommand extends Command
         $style = new SymfonyStyle($input, $output);
         $output->writeln('<comment>Start generating...</comment>');
         (new JsonParser($style))->generate();
+
     }
 }
