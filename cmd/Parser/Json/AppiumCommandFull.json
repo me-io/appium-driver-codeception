@@ -83,9 +83,12 @@
         "http_method": "POST",
         "uriParams": [],
         "payloadParams": {
-            "required": [
+            "optional": [
                 "type",
-                "ms"
+                "ms",
+                "script",
+                "pageLoad",
+                "implicit"
             ]
         },
         "src": "route.json",
@@ -1441,6 +1444,9 @@
         "payloadParams": {
             "required": [
                 "appPath"
+            ],
+            "optional": [
+                "options"
             ]
         },
         "src": "route.json",
@@ -1464,6 +1470,9 @@
                 [
                     "bundleId"
                 ]
+            ],
+            "optional": [
+                "options"
             ]
         },
         "src": "route.json",
@@ -1481,7 +1490,12 @@
         "uriParams": [],
         "payloadParams": {
             "required": [
-                "bundleId"
+                [
+                    "appId"
+                ],
+                [
+                    "bundleId"
+                ]
             ]
         },
         "src": "route.json",
@@ -1958,6 +1972,20 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "get /wd/hub/session/:sessionid/timeouts": {
+        "url": "/timeouts",
+        "wdUrl": "/wd/hub/session/:sessionid/timeouts",
+        "name": "getTimeouts",
+        "desc": "get /wd/hub/session/:sessionid/timeouts",
+        "http_method": "GET",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "post /wd/hub/session/:sessionid/frame/parent": {
         "url": "/frame/parent",
         "wdUrl": "/wd/hub/session/:sessionid/frame/parent",
@@ -1965,6 +1993,22 @@
         "desc": "post /wd/hub/session/:sessionid/frame/parent",
         "http_method": "POST",
         "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "get /wd/hub/session/:sessionid/cookie/:name": {
+        "url": "/cookie/:name",
+        "wdUrl": "/wd/hub/session/:sessionid/cookie/:name",
+        "name": "getCookie",
+        "desc": "get /wd/hub/session/:sessionid/cookie/:name",
+        "http_method": "GET",
+        "uriParams": [
+            "name"
+        ],
         "payloadParams": [],
         "src": "route.json",
         "note": "",
@@ -2312,6 +2356,24 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "post /wd/hub/session/:sessionid/actions": {
+        "url": "/actions",
+        "wdUrl": "/wd/hub/session/:sessionid/actions",
+        "name": "performActions",
+        "desc": "post /wd/hub/session/:sessionid/actions",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": {
+            "required": [
+                "actions"
+            ]
+        },
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "get /wd/hub/session/:sessionid/element/:elementid/pageindex": {
         "url": "/element/:elementid/pageindex",
         "wdUrl": "/wd/hub/session/:sessionid/element/:elementid/pageindex",
@@ -2397,11 +2459,8 @@
         "http_method": "POST",
         "uriParams": [],
         "payloadParams": {
-            "required": [
-                "filePath",
-                "videoSize",
-                "timeLimit",
-                "bitRate"
+            "optional": [
+                "options"
             ]
         },
         "src": "route.json",
@@ -2417,7 +2476,11 @@
         "desc": "post /wd/hub/session/:sessionid/appium/stop_recording_screen",
         "http_method": "POST",
         "uriParams": [],
-        "payloadParams": [],
+        "payloadParams": {
+            "optional": [
+                "options"
+            ]
+        },
         "src": "route.json",
         "note": "",
         "link": [
@@ -2486,6 +2549,58 @@
         "wdUrl": "/wd/hub/session/:sessionid/appium/device/activate_app",
         "name": "activateApp",
         "desc": "post /wd/hub/session/:sessionid/appium/device/activate_app",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": {
+            "required": [
+                [
+                    "appId"
+                ],
+                [
+                    "bundleId"
+                ]
+            ],
+            "optional": [
+                "options"
+            ]
+        },
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "post /wd/hub/session/:sessionid/appium/device/terminate_app": {
+        "url": "/appium/device/terminate_app",
+        "wdUrl": "/wd/hub/session/:sessionid/appium/device/terminate_app",
+        "name": "terminateApp",
+        "desc": "post /wd/hub/session/:sessionid/appium/device/terminate_app",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": {
+            "required": [
+                [
+                    "appId"
+                ],
+                [
+                    "bundleId"
+                ]
+            ],
+            "optional": [
+                "options"
+            ]
+        },
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "post /wd/hub/session/:sessionid/appium/device/app_state": {
+        "url": "/appium/device/app_state",
+        "wdUrl": "/wd/hub/session/:sessionid/appium/device/app_state",
+        "name": "queryAppState",
+        "desc": "post /wd/hub/session/:sessionid/appium/device/app_state",
         "http_method": "POST",
         "uriParams": [],
         "payloadParams": {
@@ -2740,6 +2855,95 @@
         "http_method": "GET",
         "uriParams": [
             "elementid"
+        ],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "get /wd/hub/session/:sessionid/screenshot/:elementid": {
+        "url": "/screenshot/:elementid",
+        "wdUrl": "/wd/hub/session/:sessionid/screenshot/:elementid",
+        "name": "getElementScreenshot",
+        "desc": "get /wd/hub/session/:sessionid/screenshot/:elementid",
+        "http_method": "GET",
+        "uriParams": [
+            "elementid"
+        ],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "get /wd/hub/session/:sessionid/window/rect": {
+        "url": "/window/rect",
+        "wdUrl": "/wd/hub/session/:sessionid/window/rect",
+        "name": "getWindowRect",
+        "desc": "get /wd/hub/session/:sessionid/window/rect",
+        "http_method": "GET",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "post /wd/hub/session/:sessionid/window/rect": {
+        "url": "/window/rect",
+        "wdUrl": "/wd/hub/session/:sessionid/window/rect",
+        "name": "setWindowRect",
+        "desc": "post /wd/hub/session/:sessionid/window/rect",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "post /wd/hub/session/:sessionid/window/minimize": {
+        "url": "/window/minimize",
+        "wdUrl": "/wd/hub/session/:sessionid/window/minimize",
+        "name": "minimizeWindow",
+        "desc": "post /wd/hub/session/:sessionid/window/minimize",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "post /wd/hub/session/:sessionid/window/fullscreen": {
+        "url": "/window/fullscreen",
+        "wdUrl": "/wd/hub/session/:sessionid/window/fullscreen",
+        "name": "fullScreenWindow",
+        "desc": "post /wd/hub/session/:sessionid/window/fullscreen",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "get /wd/hub/session/:sessionid/element/:elementid/property/:name": {
+        "url": "/element/:elementid/property/:name",
+        "wdUrl": "/wd/hub/session/:sessionid/element/:elementid/property/:name",
+        "name": "getProperty",
+        "desc": "get /wd/hub/session/:sessionid/element/:elementid/property/:name",
+        "http_method": "GET",
+        "uriParams": [
+            "elementid",
+            "name"
         ],
         "payloadParams": [],
         "src": "route.json",

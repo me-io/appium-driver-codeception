@@ -371,7 +371,13 @@ class BaseConstants
 	public static $TOUCHID = '/simulator/touch_id';
 
 	/** @var string */
+	public static $GETTIMEOUTS = '/timeouts';
+
+	/** @var string */
 	public static $POSTFRAMEPARENT = '/frame/parent';
+
+	/** @var string */
+	public static $GETCOOKIE = '/cookie/:name';
 
 	/** @var string */
 	public static $GETELEMENT = '/element/:elementid';
@@ -434,6 +440,9 @@ class BaseConstants
 	public static $SETROTATION = '/rotation';
 
 	/** @var string */
+	public static $PERFORMACTIONS = '/actions';
+
+	/** @var string */
 	public static $GETPAGEINDEX = '/element/:elementid/pageindex';
 
 	/** @var string */
@@ -465,6 +474,12 @@ class BaseConstants
 
 	/** @var string */
 	public static $ACTIVATEAPP = '/appium/device/activate_app';
+
+	/** @var string */
+	public static $TERMINATEAPP = '/appium/device/terminate_app';
+
+	/** @var string */
+	public static $QUERYAPPSTATE = '/appium/device/app_state';
 
 	/** @var string */
 	public static $ISKEYBOARDSHOWN = '/appium/device/is_keyboard_shown';
@@ -510,5 +525,23 @@ class BaseConstants
 
 	/** @var string */
 	public static $GETELEMENTRECT = '/element/:elementid/rect';
+
+	/** @var string */
+	public static $GETELEMENTSCREENSHOT = '/screenshot/:elementid';
+
+	/** @var string */
+	public static $GETWINDOWRECT = '/window/rect';
+
+	/** @var string */
+	public static $SETWINDOWRECT = '/window/rect';
+
+	/** @var string */
+	public static $MINIMIZEWINDOW = '/window/minimize';
+
+	/** @var string */
+	public static $FULLSCREENWINDOW = '/window/fullscreen';
+
+	/** @var string */
+	public static $GETPROPERTY = '/element/:elementid/property/:name';
 
 }

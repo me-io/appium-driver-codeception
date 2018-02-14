@@ -43,6 +43,7 @@ class AppiumCodeceptionCLI
     /**
      * The function from where whole fun begins.
      *
+     * @link https://gist.github.com/zeeshanu/e06c367b60f3b29a0e8ea87230f31c90 Steps to follow for generating routes
      * @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js Appium Base Driver Routes
      * @link http://phrogz.net/JS/NeatJSON/ Convert js var to json
      */

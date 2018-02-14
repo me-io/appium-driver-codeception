@@ -8,7 +8,6 @@
     "POST": {
       "command": "createSession",
       "payloadParams": {
-        "validate": {},
         "optional": [
           "desiredCapabilities",
           "requiredCapabilities",
@@ -31,12 +30,18 @@
     }
   },
   "/wd/hub/session/:sessionId/timeouts": {
+    "GET": {
+      "command": "getTimeouts"
+    },
     "POST": {
       "command": "timeouts",
       "payloadParams": {
-        "required": [
+        "optional": [
           "type",
-          "ms"
+          "ms",
+          "script",
+          "pageLoad",
+          "implicit"
         ]
       }
     }
@@ -214,6 +219,9 @@
     }
   },
   "/wd/hub/session/:sessionId/cookie/:name": {
+    "GET": {
+      "command": "getCookie"
+    },
     "DELETE": {
       "command": "deleteCookie"
     }
@@ -299,12 +307,10 @@
     "POST": {
       "command": "setValue",
       "payloadParams": {
-        "validate": {},
         "optional": [
           "value",
           "text"
-        ],
-        "makeArgs": {}
+        ]
       }
     }
   },
@@ -480,6 +486,16 @@
   },
   "/wd/hub/session/:sessionId/touch/doubleclick": {
     "POST": {}
+  },
+  "/wd/hub/session/:sessionId/actions": {
+    "POST": {
+      "command": "performActions",
+      "payloadParams": {
+        "required": [
+          "actions"
+        ]
+      }
+    }
   },
   "/wd/hub/session/:sessionId/touch/longclick": {
     "POST": {
@@ -667,18 +683,20 @@
     "POST": {
       "command": "startRecordingScreen",
       "payloadParams": {
-        "required": [
-          "filePath",
-          "videoSize",
-          "timeLimit",
-          "bitRate"
+        "optional": [
+          "options"
         ]
       }
     }
   },
   "/wd/hub/session/:sessionId/appium/stop_recording_screen": {
     "POST": {
-      "command": "stopRecordingScreen"
+      "command": "stopRecordingScreen",
+      "payloadParams": {
+        "optional": [
+          "options"
+        ]
+      }
     }
   },
   "/wd/hub/session/:sessionId/appium/performanceData/types": {
@@ -855,21 +873,9 @@
       "payloadParams": {
         "required": [
           "appPath"
-        ]
-      }
-    }
-  },
-  "/wd/hub/session/:sessionId/appium/device/remove_app": {
-    "POST": {
-      "command": "removeApp",
-      "payloadParams": {
-        "required": [
-          [
-            "appId"
-          ],
-          [
-            "bundleId"
-          ]
+        ],
+        "optional": [
+          "options"
         ]
       }
     }
@@ -885,6 +891,45 @@
           [
             "bundleId"
           ]
+        ],
+        "optional": [
+          "options"
+        ]
+      }
+    }
+  },
+  "/wd/hub/session/:sessionId/appium/device/remove_app": {
+    "POST": {
+      "command": "removeApp",
+      "payloadParams": {
+        "required": [
+          [
+            "appId"
+          ],
+          [
+            "bundleId"
+          ]
+        ],
+        "optional": [
+          "options"
+        ]
+      }
+    }
+  },
+  "/wd/hub/session/:sessionId/appium/device/terminate_app": {
+    "POST": {
+      "command": "terminateApp",
+      "payloadParams": {
+        "required": [
+          [
+            "appId"
+          ],
+          [
+            "bundleId"
+          ]
+        ],
+        "optional": [
+          "options"
         ]
       }
     }
@@ -894,7 +939,27 @@
       "command": "isAppInstalled",
       "payloadParams": {
         "required": [
-          "bundleId"
+          [
+            "appId"
+          ],
+          [
+            "bundleId"
+          ]
+        ]
+      }
+    }
+  },
+  "/wd/hub/session/:sessionId/appium/device/app_state": {
+    "POST": {
+      "command": "queryAppState",
+      "payloadParams": {
+        "required": [
+          [
+            "appId"
+          ],
+          [
+            "bundleId"
+          ]
         ]
       }
     }
@@ -1162,6 +1227,34 @@
   "/wd/hub/session/:sessionId/element/:elementId/rect": {
     "GET": {
       "command": "getElementRect"
+    }
+  },
+  "/wd/hub/session/:sessionId/screenshot/:elementId": {
+    "GET": {
+      "command": "getElementScreenshot"
+    }
+  },
+  "/wd/hub/session/:sessionId/window/rect": {
+    "GET": {
+      "command": "getWindowRect"
+    },
+    "POST": {
+      "command": "setWindowRect"
+    }
+  },
+  "/wd/hub/session/:sessionId/window/minimize": {
+    "POST": {
+      "command": "minimizeWindow"
+    }
+  },
+  "/wd/hub/session/:sessionId/window/fullscreen": {
+    "POST": {
+      "command": "fullScreenWindow"
+    }
+  },
+  "/wd/hub/session/:sessionId/element/:elementId/property/:name": {
+    "GET": {
+      "command": "getProperty"
     }
   }
 }

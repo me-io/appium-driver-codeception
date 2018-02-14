@@ -48,7 +48,7 @@ trait BaseCommands
 	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
-	* @options {"required":["type","ms"]}
+	* @options {"optional":["type","ms","script","pageLoad","implicit"]}
 	*
 	* @return mixed
 	*
@@ -1121,7 +1121,7 @@ trait BaseCommands
 	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
-	* @options {"required":["appPath"]}
+	* @options {"required":["appPath"],"optional":["options"]}
 	*
 	* @return mixed
 	*
@@ -1136,7 +1136,7 @@ trait BaseCommands
 	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
-	* @options {"required":[["appId"],["bundleId"]]}
+	* @options {"required":[["appId"],["bundleId"]],"optional":["options"]}
 	*
 	* @return mixed
 	*
@@ -1151,7 +1151,7 @@ trait BaseCommands
 	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
-	* @options {"required":["bundleId"]}
+	* @options {"required":[["appId"],["bundleId"]]}
 	*
 	* @return mixed
 	*
@@ -1529,6 +1529,17 @@ trait BaseCommands
 			return $this->driverCommand(BaseConstants::$POST, '/simulator/touch_id', $data);
 	}
 	/**
+	* getTimeouts
+	*
+	* get /wd/hub/session/:sessionid/timeouts
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	*
+	**/
+	public function getTimeouts(){
+			return $this->driverCommand(BaseConstants::$GET, '/timeouts');
+	}
+	/**
 	* postFrameParent
 	*
 	* post /wd/hub/session/:sessionid/frame/parent
@@ -1538,6 +1549,19 @@ trait BaseCommands
 	**/
 	public function postFrameParent(){
 			return $this->driverCommand(BaseConstants::$POST, '/frame/parent');
+	}
+	/**
+	* getCookie
+	*
+	* get /wd/hub/session/:sessionid/cookie/:name
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	*
+	**/
+	public function getCookie($name){
+			$url = '/cookie/:name';
+			$url = str_ireplace(':name', $name, $url );
+			return $this->driverCommand(BaseConstants::$GET, $url);
 	}
 	/**
 	* getElement
@@ -1815,6 +1839,21 @@ trait BaseCommands
 			return $this->driverCommand(BaseConstants::$POST, '/rotation', $data);
 	}
 	/**
+	* performActions
+	*
+	* post /wd/hub/session/:sessionid/actions
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	* @param array $data
+	* @options {"required":["actions"]}
+	*
+	* @return mixed
+	*
+	**/
+	public function performActions($data){
+			return $this->driverCommand(BaseConstants::$POST, '/actions', $data);
+	}
+	/**
 	* getPageIndex
 	*
 	* get /wd/hub/session/:sessionid/element/:elementid/pageindex
@@ -1882,7 +1921,7 @@ trait BaseCommands
 	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
-	* @options {"required":["filePath","videoSize","timeLimit","bitRate"]}
+	* @options {"optional":["options"]}
 	*
 	* @return mixed
 	*
@@ -1896,10 +1935,14 @@ trait BaseCommands
 	* post /wd/hub/session/:sessionid/appium/stop_recording_screen
 	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
+	* @param array $data
+	* @options {"optional":["options"]}
+	*
+	* @return mixed
 	*
 	**/
-	public function stopRecordingScreen(){
-			return $this->driverCommand(BaseConstants::$POST, '/appium/stop_recording_screen');
+	public function stopRecordingScreen($data){
+			return $this->driverCommand(BaseConstants::$POST, '/appium/stop_recording_screen', $data);
 	}
 	/**
 	* getPerformanceDataTypes
@@ -1949,13 +1992,43 @@ trait BaseCommands
 	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
 	* @source route.json
 	* @param array $data
-	* @options {"required":[["appId"],["bundleId"]]}
+	* @options {"required":[["appId"],["bundleId"]],"optional":["options"]}
 	*
 	* @return mixed
 	*
 	**/
 	public function activateApp($data){
 			return $this->driverCommand(BaseConstants::$POST, '/appium/device/activate_app', $data);
+	}
+	/**
+	* terminateApp
+	*
+	* post /wd/hub/session/:sessionid/appium/device/terminate_app
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	* @param array $data
+	* @options {"required":[["appId"],["bundleId"]],"optional":["options"]}
+	*
+	* @return mixed
+	*
+	**/
+	public function terminateApp($data){
+			return $this->driverCommand(BaseConstants::$POST, '/appium/device/terminate_app', $data);
+	}
+	/**
+	* queryAppState
+	*
+	* post /wd/hub/session/:sessionid/appium/device/app_state
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	* @param array $data
+	* @options {"required":[["appId"],["bundleId"]]}
+	*
+	* @return mixed
+	*
+	**/
+	public function queryAppState($data){
+			return $this->driverCommand(BaseConstants::$POST, '/appium/device/app_state', $data);
 	}
 	/**
 	* isKeyboardShown
@@ -2160,6 +2233,77 @@ trait BaseCommands
 	public function getElementRect($elementid){
 			$url = '/element/:elementid/rect';
 			$url = str_ireplace(':elementid', $elementid, $url );
+			return $this->driverCommand(BaseConstants::$GET, $url);
+	}
+	/**
+	* getElementScreenshot
+	*
+	* get /wd/hub/session/:sessionid/screenshot/:elementid
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	*
+	**/
+	public function getElementScreenshot($elementid){
+			$url = '/screenshot/:elementid';
+			$url = str_ireplace(':elementid', $elementid, $url );
+			return $this->driverCommand(BaseConstants::$GET, $url);
+	}
+	/**
+	* getWindowRect
+	*
+	* get /wd/hub/session/:sessionid/window/rect
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	*
+	**/
+	public function getWindowRect(){
+			return $this->driverCommand(BaseConstants::$GET, '/window/rect');
+	}
+	/**
+	* setWindowRect
+	*
+	* post /wd/hub/session/:sessionid/window/rect
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	*
+	**/
+	public function setWindowRect(){
+			return $this->driverCommand(BaseConstants::$POST, '/window/rect');
+	}
+	/**
+	* minimizeWindow
+	*
+	* post /wd/hub/session/:sessionid/window/minimize
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	*
+	**/
+	public function minimizeWindow(){
+			return $this->driverCommand(BaseConstants::$POST, '/window/minimize');
+	}
+	/**
+	* fullScreenWindow
+	*
+	* post /wd/hub/session/:sessionid/window/fullscreen
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	*
+	**/
+	public function fullScreenWindow(){
+			return $this->driverCommand(BaseConstants::$POST, '/window/fullscreen');
+	}
+	/**
+	* getProperty
+	*
+	* get /wd/hub/session/:sessionid/element/:elementid/property/:name
+	* @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+	* @source route.json
+	*
+	**/
+	public function getProperty($elementid, $name){
+			$url = '/element/:elementid/property/:name';
+			$url = str_ireplace(':elementid', $elementid, $url );
+			$url = str_ireplace(':name', $name, $url );
 			return $this->driverCommand(BaseConstants::$GET, $url);
 	}  
 }
