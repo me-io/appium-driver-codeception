@@ -44,7 +44,7 @@ trait Util
     }
 
     /**
-     * DESC
+     * Set the current geo location
      * @param $latitude
      * @param $longitude
      * @param $altitude
