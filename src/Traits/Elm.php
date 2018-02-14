@@ -153,7 +153,7 @@ trait Elm
     /**
      * @param $value
      * @return \Appium\TestCase\Element
-     *
+     * @link https://github.com/appium/python-client/blob/master/appium/webdriver/webdriver.py
      */
     public function byIOSClassChain($value)
     {

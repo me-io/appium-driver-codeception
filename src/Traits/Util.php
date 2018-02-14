@@ -51,17 +51,17 @@ trait Util
      * @return mixed
      * @usage $this->setLocation(100,150,200);
      * @author Anoop Ambunhi <anoop.nair@tajawal.com>
+     * @link https://github.com/appium/python-client/blob/master/appium/webdriver/webdriver.py
      *
      */
     public function setLocation($latitude, $longitude, $altitude)
     {
-        $data = [
-            $location = [
-                'latitude' => strval($latitude),
-                'longitude' => strval($longitude),
-                'altitude' => strval($altitude),
-            ]
-        ];
+        $lat = strval($latitude);
+        $lon = strval($longitude);
+        $alt = strval($altitude);
+        $data = ['latitude' => $lat,
+            'longitude' => $lon,
+            'altitude' => $alt];
         return $this->driverCommand(BaseConstants::$POST, '/location', $data);
     }
 }
