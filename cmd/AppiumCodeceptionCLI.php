@@ -15,7 +15,7 @@ class AppiumCodeceptionCLI
     /**
      * @var string
      */
-    const APPLICATION_VERSION = '0.0.1';
+    const APPLICATION_VERSION = '1.0.0';
 
     /**
      * @var array
@@ -43,7 +43,8 @@ class AppiumCodeceptionCLI
     /**
      * The function from where whole fun begins.
      *
-     * @link https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js Appium Base Driver Routes
+     * @link https://gist.github.com/zeeshanu/e06c367b60f3b29a0e8ea87230f31c90 Steps to follow for generating routes
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js Appium Base Driver Routes
      * @link http://phrogz.net/JS/NeatJSON/ Convert js var to json
      */
     public function runApplication()

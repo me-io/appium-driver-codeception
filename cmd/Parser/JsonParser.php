@@ -311,19 +311,19 @@ class JsonParser
                 if (!empty($cmdDetail['payloadParams']['optional'])) {
                     $payload['optional'] = $cmdDetail['payloadParams']['optional'];
                 }
-                $arrCommands[$key] =
-                    [
-                        'url'           => $url,
-                        'wdUrl'         => trim($urlNoVerb),
-                        'name'          => $cmdDetail['command'],
-                        'desc'          => $cmdDetail['desc'] ?? $commandDesc['desc'],
-                        'http_method'   => $this->httpMethod($key),
-                        'uriParams'     => $urlParams ?? [],
-                        'payloadParams' => $payload,
-                        'src'           => $cmdDetail['src'] ?? '',
-                        'note'          => $cmdDetail['note'] ?? '',
-                        'link'          => $cmdDetail['link'] ?? [],
-                    ];
+
+                $arrCommands[$key] = [
+                    'url'           => $url,
+                    'wdUrl'         => trim($urlNoVerb),
+                    'name'          => $cmdDetail['command'],
+                    'desc'          => $cmdDetail['desc'] ?? $commandDesc['desc'],
+                    'http_method'   => $this->httpMethod($key),
+                    'uriParams'     => $urlParams ?? [],
+                    'payloadParams' => $payload,
+                    'src'           => $cmdDetail['src'] ?? '',
+                    'note'          => $cmdDetail['note'] ?? '',
+                    'link'          => $cmdDetail['link'] ?? [],
+                ];
             }
         }
 
@@ -359,7 +359,6 @@ class JsonParser
      * Create constants from template
      *
      * @return $this
-     *
      */
     protected function createConstants()
     {
@@ -372,7 +371,6 @@ class JsonParser
      * Save class output in the file
      *
      * @return $this
-     *
      */
     protected function createClassFile()
     {
@@ -404,7 +402,6 @@ class JsonParser
         if (!isset($function['url'])) {
             return "";
         }
-
 
         $routeParamsString  = '';
         $optionsAnnotations = "\n\t/**\n";
