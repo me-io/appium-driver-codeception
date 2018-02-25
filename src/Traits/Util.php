@@ -59,9 +59,13 @@ trait Util
         $lat = strval($latitude);
         $lon = strval($longitude);
         $alt = strval($altitude);
-        $data = ['latitude' => $lat,
-            'longitude' => $lon,
-            'altitude' => $alt];
+        $data = [
+            'location' => [
+                'latitude' => $lat,
+                'longitude' => $lon,
+                'altitude' => $alt
+            ]
+        ];
         return $this->driverCommand(BaseConstants::$POST, '/location', $data);
     }
 }
