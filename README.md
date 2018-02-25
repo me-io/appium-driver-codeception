@@ -97,6 +97,8 @@ modules:
         skipUnlock: true
 ```
 
+> **Note**: `deviceName` should be set as `Android device` only for real device. For Android Emulator use the name of the virtual device.
+
 ### Generating Actor classes
 
 Now we need to generate actor class for the  `AndroidGuy` that we defined in `android.suite.yml`. To generate the actor class for `AndroidGuy` run the following command inside your terminal:
@@ -137,7 +139,7 @@ After running the appium server now you need to start android emulator and insta
 Now run the following command inside your terminal to run the tests:
 
 ```bash
-codecept run --steps
+codecept run android FirstAndroidCest.php--steps
 ```
 
 > **Note**: While following the steps that are mentioned here if you get `codecept command not found` error try to run `codecept` command like this `./vendor/bin/codecept`.

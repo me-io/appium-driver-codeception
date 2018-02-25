@@ -42,4 +42,30 @@ trait Util
 
         return $response;
     }
+
+    /**
+     * Set the current geo location
+     * @param $latitude
+     * @param $longitude
+     * @param $altitude
+     * @return mixed
+     * @usage $this->setLocation(100,150,200);
+     * @author Anoop Ambunhi <anoop.nair@tajawal.com>
+     * @link https://github.com/appium/python-client/blob/master/appium/webdriver/webdriver.py
+     *
+     */
+    public function setLocation($latitude, $longitude, $altitude)
+    {
+        $lat = strval($latitude);
+        $lon = strval($longitude);
+        $alt = strval($altitude);
+        $data = [
+            'location' => [
+                'latitude' => $lat,
+                'longitude' => $lon,
+                'altitude' => $alt
+            ]
+        ];
+        return $this->driverCommand(BaseConstants::$POST, '/location', $data);
+    }
 }

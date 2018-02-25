@@ -149,4 +149,14 @@ trait Elm
     {
         return $this->TestCaseElm()->by('xpath', $value);
     }
+
+    /**
+     * @param $value
+     * @return \Appium\TestCase\Element
+     * @link https://github.com/appium/python-client/blob/master/appium/webdriver/webdriver.py
+     */
+    public function byIOSClassChain($value)
+    {
+        return $this->TestCaseElm()->by('-ios class chain', $value);
+    }
 }
