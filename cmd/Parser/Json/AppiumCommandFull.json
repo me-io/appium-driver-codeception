@@ -2886,6 +2886,25 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "post /wd/hub/session/:sessionid/execute/sync": {
+        "url": "/execute/sync",
+        "wdUrl": "/wd/hub/session/:sessionid/execute/sync",
+        "name": "execute",
+        "desc": "post /wd/hub/session/:sessionid/execute/sync",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": {
+            "required": [
+                "script",
+                "args"
+            ]
+        },
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "post /wd/hub/session/:sessionid/execute/async": {
         "url": "/execute/async",
         "wdUrl": "/wd/hub/session/:sessionid/execute/async",
