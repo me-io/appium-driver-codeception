@@ -195,20 +195,20 @@ trait BaseCommands
         return $this->driverCommand(BaseConstants::$POST, '/execute/sync', $data);
     }
     /**
-    * executeAsync
-    *
-    * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
-    * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
-    * @source route.json
-    * @param array $data
-    * @options {"required":["script","args"]}
-    *
-    * @return mixed
-    *
-    **/
+     * executeAsync
+     *
+     * post /wd/hub/session/:sessionid/execute/async
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     * @param array $data
+     * @options {"required":["script","args"]}
+     *
+     * @return mixed
+     *
+     **/
     public function executeAsync($data)
     {
-            return $this->driverCommand(BaseConstants::$POST, '/execute_async', $data);
+        return $this->driverCommand(BaseConstants::$POST, '/execute/async', $data);
     }
     /**
     * getScreenshot
