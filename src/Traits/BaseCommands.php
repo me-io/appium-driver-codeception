@@ -513,14 +513,14 @@ trait BaseCommands
     /**
     * active
     *
-    * Get the element on the page that currently has focus.
+    * get /wd/hub/session/:sessionid/element/active
     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
     * @source route.json
     *
     **/
     public function active()
     {
-            return $this->driverCommand(BaseConstants::$POST, '/element/active');
+            return $this->driverCommand(BaseConstants::$GET, '/element/active');
     }
     /**
     * keys
