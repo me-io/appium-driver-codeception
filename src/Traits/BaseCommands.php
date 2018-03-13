@@ -95,14 +95,14 @@ trait BaseCommands
     /**
     * getWindowHandle
     *
-    * Retrieve the current window handle.
+    * get /wd/hub/session/:sessionid/window
     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
     * @source route.json
     *
     **/
     public function getWindowHandle()
     {
-            return $this->driverCommand(BaseConstants::$GET, '/window_handle');
+            return $this->driverCommand(BaseConstants::$GET, '/window');
     }
     /**
      * getWindowHandles
