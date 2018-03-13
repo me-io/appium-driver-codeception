@@ -2030,6 +2030,20 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "get /wd/hub/session/:sessionid/element/active": {
+        "url": "/element/active",
+        "wdUrl": "/wd/hub/session/:sessionid/element/active",
+        "name": "active",
+        "desc": "get /wd/hub/session/:sessionid/element/active",
+        "http_method": "GET",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "get /wd/hub/session/:sessionid/element/:elementid": {
         "url": "/element/:elementid",
         "wdUrl": "/wd/hub/session/:sessionid/element/:elementid",
