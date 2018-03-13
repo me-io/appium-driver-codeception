@@ -2596,6 +2596,29 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "get /wd/hub/session/:sessionid/appium/device/app_state": {
+        "url": "/appium/device/app_state",
+        "wdUrl": "/wd/hub/session/:sessionid/appium/device/app_state",
+        "name": "queryAppState",
+        "desc": "get /wd/hub/session/:sessionid/appium/device/app_state",
+        "http_method": "GET",
+        "uriParams": [],
+        "payloadParams": {
+            "required": [
+                [
+                    "appId"
+                ],
+                [
+                    "bundleId"
+                ]
+            ]
+        },
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "post /wd/hub/session/:sessionid/appium/device/app_state": {
         "url": "/appium/device/app_state",
         "wdUrl": "/wd/hub/session/:sessionid/appium/device/app_state",
@@ -2879,6 +2902,22 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "get /wd/hub/session/:sessionid/element/:elementid/screenshot": {
+        "url": "/element/:elementid/screenshot",
+        "wdUrl": "/wd/hub/session/:sessionid/element/:elementid/screenshot",
+        "name": "getElementScreenshot",
+        "desc": "get /wd/hub/session/:sessionid/element/:elementid/screenshot",
+        "http_method": "GET",
+        "uriParams": [
+            "elementid"
+        ],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "get /wd/hub/session/:sessionid/window/rect": {
         "url": "/window/rect",
         "wdUrl": "/wd/hub/session/:sessionid/window/rect",
@@ -2898,6 +2937,20 @@
         "wdUrl": "/wd/hub/session/:sessionid/window/rect",
         "name": "setWindowRect",
         "desc": "post /wd/hub/session/:sessionid/window/rect",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "post /wd/hub/session/:sessionid/window/maximize": {
+        "url": "/window/maximize",
+        "wdUrl": "/wd/hub/session/:sessionid/window/maximize",
+        "name": "maximizeWindow",
+        "desc": "post /wd/hub/session/:sessionid/window/maximize",
         "http_method": "POST",
         "uriParams": [],
         "payloadParams": [],
