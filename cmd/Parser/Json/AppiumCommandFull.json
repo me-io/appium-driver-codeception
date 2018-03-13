@@ -2000,6 +2000,20 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "get /wd/hub/session/:sessionid/window": {
+        "url": "/window",
+        "wdUrl": "/wd/hub/session/:sessionid/window",
+        "name": "getWindowHandle",
+        "desc": "get /wd/hub/session/:sessionid/window",
+        "http_method": "GET",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "get /wd/hub/session/:sessionid/cookie/:name": {
         "url": "/cookie/:name",
         "wdUrl": "/wd/hub/session/:sessionid/cookie/:name",
