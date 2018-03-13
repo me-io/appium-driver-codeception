@@ -2886,6 +2886,20 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "get /wd/hub/session/:sessionid/window/handles": {
+        "url": "/window/handles",
+        "wdUrl": "/wd/hub/session/:sessionid/window/handles",
+        "name": "getWindowHandles",
+        "desc": "get /wd/hub/session/:sessionid/window/handles",
+        "http_method": "GET",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "post /wd/hub/session/:sessionid/execute/sync": {
         "url": "/execute/sync",
         "wdUrl": "/wd/hub/session/:sessionid/execute/sync",
