@@ -105,16 +105,15 @@ trait BaseCommands
             return $this->driverCommand(BaseConstants::$GET, '/window_handle');
     }
     /**
-    * getWindowHandles
-    *
-    * Retrieve the list of all window handles available to the session.
-    * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
-    * @source route.json
-    *
-    **/
-    public function getWindowHandles()
-    {
-            return $this->driverCommand(BaseConstants::$GET, '/window_handles');
+     * getWindowHandles
+     *
+     * get /wd/hub/session/:sessionid/window/handles
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     *
+     **/
+    public function getWindowHandles(){
+        return $this->driverCommand(BaseConstants::$GET, '/window/handles');
     }
     /**
     * getUrl
