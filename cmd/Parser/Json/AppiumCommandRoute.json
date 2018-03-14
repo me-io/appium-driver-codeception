@@ -175,6 +175,9 @@
     "POST": {}
   },
   "/wd/hub/session/:sessionId/window": {
+    "GET": {
+      "command": "getWindowHandle"
+    },
     "POST": {
       "command": "setWindow",
       "payloadParams": {
@@ -259,6 +262,9 @@
     }
   },
   "/wd/hub/session/:sessionId/element/active": {
+    "GET": {
+      "command": "active"
+    },
     "POST": {
       "command": "active"
     }
@@ -950,6 +956,19 @@
     }
   },
   "/wd/hub/session/:sessionId/appium/device/app_state": {
+    "GET": {
+      "command": "queryAppState",
+      "payloadParams": {
+        "required": [
+          [
+            "appId"
+          ],
+          [
+            "bundleId"
+          ]
+        ]
+      }
+    },
     "POST": {
       "command": "queryAppState",
       "payloadParams": {
@@ -1229,7 +1248,39 @@
       "command": "getElementRect"
     }
   },
+  "/wd/hub/session/:sessionId/window/handles": {
+    "GET": {
+      "command": "getWindowHandles"
+    }
+  },
+  "/wd/hub/session/:sessionId/execute/sync": {
+    "POST": {
+      "command": "execute",
+      "payloadParams": {
+        "required": [
+          "script",
+          "args"
+        ]
+      }
+    }
+  },
+  "/wd/hub/session/:sessionId/execute/async": {
+    "POST": {
+      "command": "executeAsync",
+      "payloadParams": {
+        "required": [
+          "script",
+          "args"
+        ]
+      }
+    }
+  },
   "/wd/hub/session/:sessionId/screenshot/:elementId": {
+    "GET": {
+      "command": "getElementScreenshot"
+    }
+  },
+  "/wd/hub/session/:sessionId/element/:elementId/screenshot": {
     "GET": {
       "command": "getElementScreenshot"
     }
@@ -1240,6 +1291,11 @@
     },
     "POST": {
       "command": "setWindowRect"
+    }
+  },
+  "/wd/hub/session/:sessionId/window/maximize": {
+    "POST": {
+      "command": "maximizeWindow"
     }
   },
   "/wd/hub/session/:sessionId/window/minimize": {
