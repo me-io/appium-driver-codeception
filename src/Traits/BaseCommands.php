@@ -95,7 +95,7 @@ trait BaseCommands
     /**
     * getWindowHandle
     *
-    * get /wd/hub/session/:sessionid/window
+    * Retrieve the current window handle.
     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
     * @source route.json
     *
@@ -182,7 +182,7 @@ trait BaseCommands
     /**
      * execute
      *
-     * post /wd/hub/session/:sessionid/execute/sync
+     * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
      * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
      * @source route.json
      * @param array $data
@@ -513,7 +513,7 @@ trait BaseCommands
     /**
     * active
     *
-    * get /wd/hub/session/:sessionid/element/active
+    * Get the element on the page that currently has focus.
     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
     * @source route.json
     *
