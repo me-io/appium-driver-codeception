@@ -102,19 +102,18 @@ trait BaseCommands
     **/
     public function getWindowHandle()
     {
-            return $this->driverCommand(BaseConstants::$GET, '/window_handle');
+            return $this->driverCommand(BaseConstants::$GET, '/window');
     }
     /**
-    * getWindowHandles
-    *
-    * Retrieve the list of all window handles available to the session.
-    * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
-    * @source route.json
-    *
-    **/
-    public function getWindowHandles()
-    {
-            return $this->driverCommand(BaseConstants::$GET, '/window_handles');
+     * getWindowHandles
+     *
+     * get /wd/hub/session/:sessionid/window/handles
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     *
+     **/
+    public function getWindowHandles(){
+        return $this->driverCommand(BaseConstants::$GET, '/window/handles');
     }
     /**
     * getUrl
@@ -181,36 +180,35 @@ trait BaseCommands
             return $this->driverCommand(BaseConstants::$POST, '/refresh');
     }
     /**
-    * execute
-    *
-    * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
-    * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
-    * @source route.json
-    * @param array $data
-    * @options {"required":["script","args"]}
-    *
-    * @return mixed
-    *
-    **/
-    public function execute($data)
-    {
-            return $this->driverCommand(BaseConstants::$POST, '/execute', $data);
+     * execute
+     *
+     * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     * @param array $data
+     * @options {"required":["script","args"]}
+     *
+     * @return mixed
+     *
+     **/
+    public function execute($data){
+        return $this->driverCommand(BaseConstants::$POST, '/execute/sync', $data);
     }
     /**
-    * executeAsync
-    *
-    * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
-    * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
-    * @source route.json
-    * @param array $data
-    * @options {"required":["script","args"]}
-    *
-    * @return mixed
-    *
-    **/
+     * executeAsync
+     *
+     * post /wd/hub/session/:sessionid/execute/async
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     * @param array $data
+     * @options {"required":["script","args"]}
+     *
+     * @return mixed
+     *
+     **/
     public function executeAsync($data)
     {
-            return $this->driverCommand(BaseConstants::$POST, '/execute_async', $data);
+        return $this->driverCommand(BaseConstants::$POST, '/execute/async', $data);
     }
     /**
     * getScreenshot
@@ -522,7 +520,7 @@ trait BaseCommands
     **/
     public function active()
     {
-            return $this->driverCommand(BaseConstants::$POST, '/element/active');
+            return $this->driverCommand(BaseConstants::$GET, '/element/active');
     }
     /**
     * keys
