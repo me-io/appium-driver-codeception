@@ -472,22 +472,6 @@ trait BaseCommands
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
 
-    /**
-     * maximizeWindow
-     *
-     * Maximize the specified window if not already maximized.
-     *
-     * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
-     * @source route.json
-     *
-     **/
-    public function maximizeWindow($windowhandle)
-    {
-        $url = '/window/:windowhandle/maximize';
-        $url = str_ireplace(':windowhandle', $windowhandle, $url);
-
-        return $this->driverCommand(BaseConstants::$POST, $url);
-    }
 
     /**
      * getCookies
@@ -617,20 +601,6 @@ trait BaseCommands
     public function findElements($data)
     {
         return $this->driverCommand(BaseConstants::$POST, '/elements', $data);
-    }
-
-    /**
-     * active
-     *
-     * Get the element on the page that currently has focus.
-     *
-     * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
-     * @source route.json
-     *
-     **/
-    public function active()
-    {
-        return $this->driverCommand(BaseConstants::$GET, '/element/active');
     }
 
     /**
@@ -2003,6 +1973,20 @@ trait BaseCommands
     }
 
     /**
+     * active
+     *
+     * get /wd/hub/session/:sessionid/element/active
+     *
+     * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     *
+     **/
+    public function active()
+    {
+        return $this->driverCommand(BaseConstants::$GET, '/element/active');
+    }
+
+    /**
      * getElement
      *
      * get /wd/hub/session/:sessionid/element/:elementid
@@ -2587,7 +2571,7 @@ trait BaseCommands
     /**
      * queryAppState
      *
-     * post /wd/hub/session/:sessionid/appium/device/app_state
+     * get /wd/hub/session/:sessionid/appium/device/app_state
      *
      * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
      * @source route.json
@@ -2600,7 +2584,7 @@ trait BaseCommands
      **/
     public function queryAppState($data)
     {
-        return $this->driverCommand(BaseConstants::$POST, '/appium/device/app_state', $data);
+        return $this->driverCommand(BaseConstants::$GET, '/appium/device/app_state', $data);
     }
 
     /**
@@ -2864,9 +2848,52 @@ trait BaseCommands
     }
 
     /**
+     * execute
+     *
+     * post /wd/hub/session/:sessionid/execute/sync
+     *
+     * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
+     *
+     * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     *
+     * @param array $data
+     * @options {"required":["script","args"]}
+     *
+     * @return mixed
+     *
+     **/
+    public function execute($data)
+    {
+        return $this->driverCommand(BaseConstants::$POST, '/execute/sync', $data);
+    }
+
+    /**
+     * executeAsync
+     *
+     * post /wd/hub/session/:sessionid/execute/async
+     *
+     * Inject a snippet of JavaScript into the page for asynchronous execution in the context of the currently selected
+     * frame.
+     *
+     * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     *
+     * @param array $data
+     * @options {"required":["script","args"]}
+     *
+     * @return mixed
+     *
+     **/
+    public function executeAsync($data)
+    {
+        return $this->driverCommand(BaseConstants::$POST, '/execute/async', $data);
+    }
+
+    /**
      * getElementScreenshot
      *
-     * get /wd/hub/session/:sessionid/screenshot/:elementid
+     * get /wd/hub/session/:sessionid/element/:elementid/screenshot
      *
      * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
      * @source route.json
@@ -2874,7 +2901,7 @@ trait BaseCommands
      **/
     public function getElementScreenshot($elementid)
     {
-        $url = '/screenshot/:elementid';
+        $url = '/element/:elementid/screenshot';
         $url = str_ireplace(':elementid', $elementid, $url);
 
         return $this->driverCommand(BaseConstants::$GET, $url);
@@ -2906,6 +2933,23 @@ trait BaseCommands
     public function setWindowRect()
     {
         return $this->driverCommand(BaseConstants::$POST, '/window/rect');
+    }
+
+    /**
+     * maximizeWindow
+     *
+     * NOTE: Discard the duplicate function maximizeWindow($windowhandle) as that is legacy.
+     *
+     * Maximize the specified window if not already maximized.
+     * post /wd/hub/session/:sessionid/window/maximize
+     *
+     * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     *
+     **/
+    public function maximizeWindow()
+    {
+        return $this->driverCommand(BaseConstants::$POST, '/window/maximize');
     }
 
     /**
