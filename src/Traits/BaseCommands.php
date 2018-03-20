@@ -223,8 +223,6 @@ trait BaseCommands
     /**
      * execute
      *
-     * post /wd/hub/session/:sessionid/execute/sync
-     *
      * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
      *
      * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
@@ -243,8 +241,6 @@ trait BaseCommands
 
     /**
      * executeAsync
-     *
-     * post /wd/hub/session/:sessionid/execute/async
      *
      * Inject a snippet of JavaScript into the page for asynchronous execution in the context of the currently selected
      * frame.
@@ -2845,49 +2841,6 @@ trait BaseCommands
         $url = str_ireplace(':elementid', $elementid, $url);
 
         return $this->driverCommand(BaseConstants::$GET, $url);
-    }
-
-    /**
-     * execute
-     *
-     * post /wd/hub/session/:sessionid/execute/sync
-     *
-     * Inject a snippet of JavaScript into the page for execution in the context of the currently selected frame.
-     *
-     * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
-     * @source route.json
-     *
-     * @param array $data
-     * @options {"required":["script","args"]}
-     *
-     * @return mixed
-     *
-     **/
-    public function execute($data)
-    {
-        return $this->driverCommand(BaseConstants::$POST, '/execute/sync', $data);
-    }
-
-    /**
-     * executeAsync
-     *
-     * post /wd/hub/session/:sessionid/execute/async
-     *
-     * Inject a snippet of JavaScript into the page for asynchronous execution in the context of the currently selected
-     * frame.
-     *
-     * @link   https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
-     * @source route.json
-     *
-     * @param array $data
-     * @options {"required":["script","args"]}
-     *
-     * @return mixed
-     *
-     **/
-    public function executeAsync($data)
-    {
-        return $this->driverCommand(BaseConstants::$POST, '/execute/async', $data);
     }
 
     /**
