@@ -1316,9 +1316,14 @@
       "POST": {
         "command": "setClipboard",
         "payloadParams": {
-         
+          "required": [
+            "content"
+          ],
+          "optional": [
+            "contentType",
+            "label"
+          ]
         }
-
       }
 
     }
