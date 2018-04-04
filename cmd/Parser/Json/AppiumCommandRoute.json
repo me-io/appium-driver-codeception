@@ -1311,6 +1311,9 @@
   "/wd/hub/session/:sessionId/element/:elementId/property/:name": {
     "GET": {
       "command": "getProperty"
+    },
+    "/wd/hub/session/:sessionId/appium/device/set_clipboard": {
+
     }
   }
 }
