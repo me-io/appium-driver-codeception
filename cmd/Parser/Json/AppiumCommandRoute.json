@@ -1313,6 +1313,9 @@
       "command": "getProperty"
     },
     "/wd/hub/session/:sessionId/appium/device/set_clipboard": {
+      "POST": {
+        
+      }
 
     }
   }
