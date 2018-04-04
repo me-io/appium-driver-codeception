@@ -2954,10 +2954,14 @@ trait BaseCommands
     /**
      * setClipboard
      *
+     * post /wd/hub/session/:sessionid/appium/device/get_clipboard
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
      * @param array $data
      *
      *
      **/
     public function setClipboard($data){
+        return $this->driverCommand(BaseConstants::$POST, '/appium/device/_clipboard', $data);
     }
 }
