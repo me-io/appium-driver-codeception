@@ -2954,8 +2954,10 @@ trait BaseCommands
     /**
      * setClipboard
      *
+     * @param array $data
+     *
      *
      **/
-    public function setClipboard(){
+    public function setClipboard($data){
     }
 }
