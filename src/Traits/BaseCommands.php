@@ -2963,7 +2963,8 @@ trait BaseCommands
      * @return mixed
      *
      **/
-    public function setClipboard($data){
+    public function setClipboard($data)
+    {
         return $this->driverCommand(BaseConstants::$POST, '/appium/device/set_clipboard', $data);
     }
 }
