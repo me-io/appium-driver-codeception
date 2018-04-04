@@ -2950,4 +2950,12 @@ trait BaseCommands
 
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
+
+    /**
+     * setClipboard
+     *
+     *
+     **/
+    public function setClipboard(){
+    }
 }
