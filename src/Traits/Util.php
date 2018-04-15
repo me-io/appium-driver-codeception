@@ -13,9 +13,9 @@ trait Util
      *
      * @return string The screenshot in PNG format.
      */
-    public function takeScreenshot($save_as = null)
+    public function takeScreenshotAndSave($save_as = null)
     {
-        $data = $this->driverCommand(static::GET, BaseConstants::$SCREENSHOT);
+        $data = $this->driverCommand(static::GET, BaseConstants::$GETSCREENSHOT);
         $screenshot = base64_decode($data);
         if ($save_as) {
             file_put_contents($save_as, $screenshot);
