@@ -21,30 +21,30 @@
 
 1. PHP >= 7.0
 2. [Appium](http://appium.io/)
-3. [Setup Android SDK on Mac](https://gist.github.com/agrcrobles/165ac477a9ee51198f4a870c723cd441)
-4. [Inspect App with Appium Desktop](https://medium.com/@eliasnogueira/inspect-an-app-with-the-new-appium-desktop-8ce4dc9aa95c)
-
-## Optionnal
-
-1. ios-sim (usefull to run ios simulator on command line): 
-   	brew install ios-sim
-2. if you want test on IOS download xCode
-	https://developer.apple.com/xcode/ OR run xcode-select --install
-3. if you want test on IOS download xcuitest driver: 
-   	https://github.com/appium/appium/blob/master/docs/en/drivers/ios-xcuitest.md
-4. carthage: 
-   	brew install carthage
-
+3. [Inspect App with Appium Desktop](https://medium.com/@eliasnogueira/inspect-an-app-with-the-new-appium-desktop-8ce4dc9aa95c)
+4. Devices:
+   * **Android**
+      * [Setup Android SDK on Mac](https://gist.github.com/agrcrobles/165ac477a9ee51198f4a870c723cd441)
+   * **iOS**
+      * Install Xcode from the following [link](https://developer.apple.com/xcode/) or run the following command
+        inside your terminal:
+        ```bash
+        xcode-select --install
+        ```
+      * Install the Carthage dependency manager:
+        ```bash
+        brew install carthage
+        ```
 
 ## Table of Contents
 
 * [Install](#install)
 * [Tests](#tests)
   * [Writing tests for Android](#writing-tests-for-android)
-  * [Writing tests for Ios](#writing-tests-for-ios)
+  * [Writing tests for iOS](#writing-tests-for-ios)
   * [Generating Actor classes](#generating-actor-classes)
   * [Your First Android Test](#your-first-android-test)
-  * [Your First Ios Test](#your-first-ios-test)
+  * [Your First iOS Test](#your-first-ios-test)
   * [Running tests](#running-tests)
 
 ## Install
@@ -115,7 +115,7 @@ modules:
 > **Note**: `deviceName` should be set as `Android device` only for real device. For Android Emulator use the name of the virtual device.
 
 
-### Writing tests for Ios
+### Writing tests for iOS
 
 Now, lets create a new configuration file `ios.suite.yml` inside tests directory and put the following contents inside of it.
 
@@ -137,18 +137,26 @@ modules:
       resetAfterTest: false
       resetAfterStep: false
       capabilities:
+        # PATH OF YOUR APP (something like  /Users/username/Documents/ios.app)
+        app: ''
+        # xcideOrgId is Apple developer team identifier string.
+        xcodeOrgId: ''
+        # xcodeSigningId is a string representing a signing certificate. iPhone Developer by default.
+        xcodeSigningId: 'iPhone Developer'
         platformName: 'iOS'
-        platformVersion: "10.0"
-        deviceName: "iPhone 6"
-        app: "PATH OF YOUR APP" (something like  /Users/username/Documents/ios.app)
+        platformVersion: '11.2'
+        deviceName: 'iPhone8'
+        # Your device udid
+        udid: ''
+        useNewWDA: false
+        newCommandTimeout: 7200
         automationName: 'XCUITest'
+        autoAcceptAlerts: true
         fullReset: false
         noReset: true
-        newCommandTimeout: 7200
         nativeInstrumentsLib: true
         connection_timeout: 500
         request_timeout: 500
-        autoAcceptAlerts: true
         skipUnlock: true
         clearSystemFiles: true
         showIOSLog: true
@@ -156,7 +164,7 @@ modules:
 
 ### Generating Actor classes
 
-Now we need to generate actor class for the  `AndroidGuy` that we defined in `android.suite.yml`. To generate the actor class for `AndroidGuy` run the following command inside your terminal:
+Now we need to generate actor class for the  `AndroidGuy`/`IosGuy` that we defined in `android.suite.yml`/`ios.suite.yml`. To generate the actor class for `AndroidGuy`/`IosGuy` run the following command inside your terminal:
 
 ```bash
 codecept build
@@ -180,9 +188,9 @@ class FirstAndroidCest
 }
 ```
 
-### Your First Ios Test
+### Your First iOS Test
 
-To create your first ios test create a new directory `ios` inside `tests` folder. After creating the `android` folder create a new file `FirstIosCest.php` and put the following contents inside of it:
+To create your first iOS test create a new directory `ios` inside `tests` folder. After creating the `ios` directory create a new file `FirstIosCest.php` and put the following contents inside of it:
 
 ```php
 class FirstIosCest
@@ -206,16 +214,22 @@ Run the appium server by running the following command:
 ```bash
 appium
 ```
-- default ip and port for appium is 0.0.0.0:4723, you can run on other ip and port with:
- 		appium --address IP --port NUMBER
- 		
+> **NOTE:** If you want to change IP/Port run the appium command like this:
+```
+appium -a <IP Address> -p <Port>
+```
+
 After running the appium server now you need to start android emulator and install the application that you want to test. If you don't know how to start the emulator you can follow the following guide [Setup Genymotion Android Emulators on Mac OS
 ](https://shankargarg.wordpress.com/2016/02/25/setup-genymotion-android-emulators-on-mac-os/)
 
 Now run the following command inside your terminal to run the tests:
 
 ```bash
-codecept run android FirstAndroidCest.php--steps
+# For Android
+codecept run android FirstAndroidCest.php --steps
+
+# For iOS
+codecept run ios FirstIosCest.php --steps
 ```
 
 > **Note**: While following the steps that are mentioned here if you get `codecept command not found` error try to run `codecept` command like this `./vendor/bin/codecept`.
