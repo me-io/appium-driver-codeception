@@ -543,6 +543,4 @@ class BaseConstants
 
 	/** @var string */
 	public static $GETPROPERTY = '/element/:elementid/property/:name';
-
-    public static $SCREENSHOT;
 }
