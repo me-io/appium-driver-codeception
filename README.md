@@ -41,8 +41,10 @@
 * [Install](#install)
 * [Tests](#tests)
   * [Writing tests for Android](#writing-tests-for-android)
+  * [Writing tests for Ios](#writing-tests-for-ios)
   * [Generating Actor classes](#generating-actor-classes)
   * [Your First Android Test](#your-first-android-test)
+  * [Your First Ios Test](#your-first-ios-test)
   * [Running tests](#running-tests)
 
 ## Install
