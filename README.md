@@ -24,13 +24,27 @@
 3. [Setup Android SDK on Mac](https://gist.github.com/agrcrobles/165ac477a9ee51198f4a870c723cd441)
 4. [Inspect App with Appium Desktop](https://medium.com/@eliasnogueira/inspect-an-app-with-the-new-appium-desktop-8ce4dc9aa95c)
 
+## Optionnal
+
+1. ios-sim (usefull to run ios simulator on command line): 
+   	brew install ios-sim
+2. if you want test on IOS download xCode
+	https://developer.apple.com/xcode/ OR run xcode-select --install
+3. if you want test on IOS download xcuitest driver: 
+   	https://github.com/appium/appium/blob/master/docs/en/drivers/ios-xcuitest.md
+4. carthage: 
+   	brew install carthage
+
+
 ## Table of Contents
 
 * [Install](#install)
 * [Tests](#tests)
   * [Writing tests for Android](#writing-tests-for-android)
+  * [Writing tests for Ios](#writing-tests-for-ios)
   * [Generating Actor classes](#generating-actor-classes)
   * [Your First Android Test](#your-first-android-test)
+  * [Your First Ios Test](#your-first-ios-test)
   * [Running tests](#running-tests)
 
 ## Install
@@ -100,6 +114,46 @@ modules:
 
 > **Note**: `deviceName` should be set as `Android device` only for real device. For Android Emulator use the name of the virtual device.
 
+
+### Writing tests for Ios
+
+Now, lets create a new configuration file `ios.suite.yml` inside tests directory and put the following contents inside of it.
+
+```yml
+class_name: IosGuy
+modules:
+  enabled:
+    # Enable appium driver
+    - \Appium\AppiumDriver
+    -  Asserts
+  config:
+    # Configuration for appium driver
+    \Appium\AppiumDriver:
+      host: 0.0.0.0
+      port: 4723
+      dummyRemote: false
+      resetAfterSuite: true
+      resetAfterCest: false
+      resetAfterTest: false
+      resetAfterStep: false
+      capabilities:
+        platformName: 'iOS'
+        platformVersion: "10.0"
+        deviceName: "iPhone 6"
+        app: "PATH OF YOUR APP" (something like  /Users/username/Documents/ios.app)
+        automationName: 'XCUITest'
+        fullReset: false
+        noReset: true
+        newCommandTimeout: 7200
+        nativeInstrumentsLib: true
+        connection_timeout: 500
+        request_timeout: 500
+        autoAcceptAlerts: true
+        skipUnlock: true
+        clearSystemFiles: true
+        showIOSLog: true
+```
+
 ### Generating Actor classes
 
 Now we need to generate actor class for the  `AndroidGuy` that we defined in `android.suite.yml`. To generate the actor class for `AndroidGuy` run the following command inside your terminal:
@@ -126,6 +180,25 @@ class FirstAndroidCest
 }
 ```
 
+### Your First Ios Test
+
+To create your first ios test create a new directory `ios` inside `tests` folder. After creating the `android` folder create a new file `FirstIosCest.php` and put the following contents inside of it:
+
+```php
+class FirstIosCest
+{
+    public function lockPhone(Ios $I)
+    {
+        $I->implicitWait([
+            'ms' => 10000,
+        ]);
+        $I->assertEquals('Hello, World!', 'Hello, World!');
+        $I->amGoingTo("lock phone");
+        $I->lock([null]);
+    }
+}
+```
+
 ### Running tests
 
 Run the appium server by running the following command:
@@ -133,7 +206,9 @@ Run the appium server by running the following command:
 ```bash
 appium
 ```
-
+- default ip and port for appium is 0.0.0.0:4723, you can run on other ip and port with:
+ 		appium --address IP --port NUMBER
+ 		
 After running the appium server now you need to start android emulator and install the application that you want to test. If you don't know how to start the emulator you can follow the following guide [Setup Genymotion Android Emulators on Mac OS
 ](https://shankargarg.wordpress.com/2016/02/25/setup-genymotion-android-emulators-on-mac-os/)
 
