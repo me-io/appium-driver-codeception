@@ -543,4 +543,10 @@ class BaseConstants
 
 	/** @var string */
 	public static $GETPROPERTY = '/element/:elementid/property/:name';
+
+  /** @var string */
+  public static $SETCLIPBOARD = '/appium/device/set_clipboard';
+
+  /** @var string */
+  public static $GETCLIPBOARD = '/appium/device/get_clipboard';
 }

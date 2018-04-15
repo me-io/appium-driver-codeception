@@ -2950,4 +2950,21 @@ trait BaseCommands
 
         return $this->driverCommand(BaseConstants::$GET, $url);
     }
+
+    /**
+     * setClipboard
+     *
+     * post /wd/hub/session/:sessionid/appium/device/set_clipboard
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     * @param array $data
+     * options {"required":["content"],"optional":["contentType","label"]}
+     *
+     * @return mixed
+     *
+     **/
+    public function setClipboard($data)
+    {
+        return $this->driverCommand(BaseConstants::$POST, '/appium/device/set_clipboard', $data);
+    }
 }

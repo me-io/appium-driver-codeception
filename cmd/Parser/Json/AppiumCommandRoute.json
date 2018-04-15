@@ -1312,5 +1312,29 @@
     "GET": {
       "command": "getProperty"
     }
+  },
+  "/wd/hub/session/:sessionId/appium/device/set_clipboard": {
+    "POST": {
+      "command": "setClipboard",
+      "payloadParams": {
+        "required": [
+          "content"
+        ],
+        "optional": [
+          "contentType",
+          "label"
+          ]
+      }
+    }
+  },
+  "/wd/hub/session/:sessionId/appium/device/get_clipboard": {
+    "POST": {
+      "command": "getClipboard",
+      "payloadParams": {
+        "optional": [
+          "contentType"
+        ]
+      }
+    }
   }
 }
