@@ -3111,5 +3111,8 @@
     "post /wd/hub/session/:sessionid/appium/compare_images": {
         "url": "/appium/compare_images",
         "wdUrl": "/wd/hub/session/:sessionid/appium/compare_images",
+        "name": "compareImages",
+        "desc": "post /wd/hub/session/:sessionid/appium/compare_images",
+        
     }
 }
