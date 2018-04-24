@@ -548,7 +548,7 @@ class BaseConstants
     public static $SETCLIPBOARD = '/appium/device/set_clipboard';
 
     /** @var string */
-    public static $GETCLIPBOARD = '/appium/device/get_clipboard';
+    public static $GETCLIPBOARD = '/appium/device/_clipboard';
 
     /** @var string */
     public static $COMPAREIMAGES = '/appium/compare_images';
