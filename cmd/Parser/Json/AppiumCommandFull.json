@@ -3113,6 +3113,8 @@
         "wdUrl": "/wd/hub/session/:sessionid/appium/compare_images",
         "name": "compareImages",
         "desc": "post /wd/hub/session/:sessionid/appium/compare_images",
+        "http_method": "POST",
+        "uriParams": [],
         
     }
 }
