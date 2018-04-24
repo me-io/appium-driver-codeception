@@ -3115,6 +3115,16 @@
         "desc": "post /wd/hub/session/:sessionid/appium/compare_images",
         "http_method": "POST",
         "uriParams": [],
+        "payloadParams": {
+            "required": [
+                "mode",
+                "firstImage",
+                "secondImage"
+            ],
+            "optional": [
+                "options"
+            ]
+        },
         
     }
 }
