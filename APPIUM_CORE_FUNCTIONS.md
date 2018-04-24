@@ -192,5 +192,4 @@
 | getClipboard              | POST   | /appium/device/_clipboard<br>post /wd/hub/session/:sessionid/appium/device/get_clipboard                                                                                                                 | {"optional":["contentType"]}    
 | compareImages             | POST   | /appium/compare_images<br>post /wd/hub/session/:sessionid/appium/compare_images                                                                                                                          | {"required":["mode","firstImage","secondImage"],"optional":["options"]}                                                                                                                |
 
-
 [comment]: # (core-function-comment)
