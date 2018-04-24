@@ -3125,6 +3125,10 @@
                 "options"
             ]
         },
-        
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
     }
 }
