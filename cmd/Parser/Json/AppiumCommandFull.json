@@ -3092,6 +3092,15 @@
         "desc": "post /wd/hub/session/:sessionid/appium/device/set_clipboard",
         "http_method": "POST",
         "uriParams": [],
+        "payloadParams": {
+            "required": [
+                "content"
+            ],
+            "optional": [
+                "contentType",
+                "label"
+            ]
+        },
         "src": "route.json",
         "note": "",
         "link": [
