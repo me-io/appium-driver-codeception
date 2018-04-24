@@ -1336,5 +1336,12 @@
         ]
       }
     }
+  },
+  "/wd/hub/session/:sessionId/appium/compare_images": {
+    
   }
+
+
+
+
 }
