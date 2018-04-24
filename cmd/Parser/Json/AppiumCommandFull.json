@@ -3086,6 +3086,16 @@
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/set_clipboard": {
-       
+        "url": "/appium/device/set_clipboard",
+        "wdUrl": "/wd/hub/session/:sessionid/appium/device/set_clipboard",
+        "name": "setClipboard",
+        "desc": "post /wd/hub/session/:sessionid/appium/device/set_clipboard",
+        "http_method": "POST",
+        "uriParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
     }
 }
