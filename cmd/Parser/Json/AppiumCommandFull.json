@@ -3106,5 +3106,9 @@
         "link": [
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
+    },
+
+    "post /wd/hub/session/:sessionid/appium/compare_images": {
+        
     }
 }
