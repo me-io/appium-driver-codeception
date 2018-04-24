@@ -1323,7 +1323,7 @@
         "optional": [
           "contentType",
           "label"
-          ]
+        ]
       }
     }
   },
