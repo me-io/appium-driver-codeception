@@ -3108,6 +3108,10 @@
         ]
     },
     "post /wd/hub/session/:sessionid/appium/device/get_clipboard": {
+        "url": "/appium/device/_clipboard",
+        "wdUrl": "/wd/hub/session/:sessionid/appium/device/_clipboard",
+        "name": "getClipboard",
+        "desc": "post /wd/hub/session/:sessionid/appium/device/get_clipboard",
         
     },
     "post /wd/hub/session/:sessionid/appium/compare_images": {
