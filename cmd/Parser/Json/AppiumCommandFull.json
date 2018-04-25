@@ -3112,7 +3112,8 @@
         "wdUrl": "/wd/hub/session/:sessionid/appium/device/_clipboard",
         "name": "getClipboard",
         "desc": "post /wd/hub/session/:sessionid/appium/device/get_clipboard",
-        
+        "http_method": "POST",
+        "uriParams": [],
     },
     "post /wd/hub/session/:sessionid/appium/compare_images": {
         "url": "/appium/compare_images",
