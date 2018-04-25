@@ -3107,6 +3107,9 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "post /wd/hub/session/:sessionid/appium/device/get_clipboard": {
+        
+    },
     "post /wd/hub/session/:sessionid/appium/compare_images": {
         "url": "/appium/compare_images",
         "wdUrl": "/wd/hub/session/:sessionid/appium/compare_images",
