@@ -3084,5 +3084,68 @@
         "link": [
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
+    },
+    "post /wd/hub/session/:sessionid/appium/device/set_clipboard": {
+        "url": "/appium/device/set_clipboard",
+        "wdUrl": "/wd/hub/session/:sessionid/appium/device/set_clipboard",
+        "name": "setClipboard",
+        "desc": "post /wd/hub/session/:sessionid/appium/device/set_clipboard",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": {
+            "required": [
+                "content"
+            ],
+            "optional": [
+                "contentType",
+                "label"
+            ]
+        },
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "post /wd/hub/session/:sessionid/appium/device/get_clipboard": {
+        "url": "/appium/device/_clipboard",
+        "wdUrl": "/wd/hub/session/:sessionid/appium/device/_clipboard",
+        "name": "getClipboard",
+        "desc": "post /wd/hub/session/:sessionid/appium/device/get_clipboard",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": {
+            "optional": [
+                "contentType"
+            ]
+        },
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "post /wd/hub/session/:sessionid/appium/compare_images": {
+        "url": "/appium/compare_images",
+        "wdUrl": "/wd/hub/session/:sessionid/appium/compare_images",
+        "name": "compareImages",
+        "desc": "post /wd/hub/session/:sessionid/appium/compare_images",
+        "http_method": "POST",
+        "uriParams": [],
+        "payloadParams": {
+            "required": [
+                "mode",
+                "firstImage",
+                "secondImage"
+            ],
+            "optional": [
+                "options"
+            ]
+        },
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
     }
 }

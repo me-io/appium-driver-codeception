@@ -1323,7 +1323,7 @@
         "optional": [
           "contentType",
           "label"
-          ]
+        ]
       }
     }
   },
@@ -1333,6 +1333,21 @@
       "payloadParams": {
         "optional": [
           "contentType"
+        ]
+      }
+    }
+  },
+  "/wd/hub/session/:sessionId/appium/compare_images": {
+    "POST": {
+      "command": "compareImages",
+      "payloadParams": {
+        "required": [
+          "mode",
+          "firstImage",
+          "secondImage"
+        ],
+        "optional": [
+          "options"
         ]
       }
     }

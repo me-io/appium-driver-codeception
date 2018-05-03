@@ -2967,4 +2967,36 @@ trait BaseCommands
     {
         return $this->driverCommand(BaseConstants::$POST, '/appium/device/set_clipboard', $data);
     }
+
+    /**
+     * getClipboard
+     *
+     * post /wd/hub/session/:sessionid/appium/device/get_clipboard
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     * @param array $data
+     * @options {"optional":["contentType"]}
+     *
+     * @return mixed
+     *
+     **/
+    public function getClipboard($data){
+        return $this->driverCommand(BaseConstants::$POST, '/appium/device/_clipboard', $data);
+    }
+
+    /**
+     * compareImages
+     *
+     * post /wd/hub/session/:sessionid/appium/compare_images
+     * @link https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js
+     * @source route.json
+     * @param array $data
+     * @options {"required":["mode","firstImage","secondImage"],"optional":["options"]}
+     *
+     * @return mixed
+     *
+     **/
+    public function compareImages($data){
+        return $this->driverCommand(BaseConstants::$POST, '/appium/compare_images', $data);
+    }
 }
