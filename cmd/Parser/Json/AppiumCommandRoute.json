@@ -732,7 +732,8 @@
           "keycode"
         ],
         "optional": [
-          "metastate"
+          "metastate",
+          "flags"
         ]
       }
     }
@@ -745,7 +746,8 @@
           "keycode"
         ],
         "optional": [
-          "metastate"
+          "metastate",
+          "flags"
         ]
       }
     }
