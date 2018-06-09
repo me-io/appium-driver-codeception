@@ -314,7 +314,7 @@ class AppiumDriver extends CodeceptionModule implements
     public function _saveScreenshot($filename)
     {
         if ($this->AppiumSession !== null) {
-            $this->takeScreenshot($filename);
+            $this->takeScreenshotAndSave($filename);
         } else {
             codecept_debug('AppiumDriver::_saveScreenshot method has been called when AppiumDriver is not set');
             codecept_debug(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
