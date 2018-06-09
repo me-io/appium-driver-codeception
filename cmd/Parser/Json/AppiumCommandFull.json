@@ -1371,7 +1371,8 @@
                 "keycode"
             ],
             "optional": [
-                "metastate"
+                "metastate",
+                "flags"
             ]
         },
         "src": "route.json",
@@ -2563,7 +2564,8 @@
                 "keycode"
             ],
             "optional": [
-                "metastate"
+                "metastate",
+                "flags"
             ]
         },
         "src": "route.json",
