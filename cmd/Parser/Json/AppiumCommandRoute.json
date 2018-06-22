@@ -662,7 +662,12 @@
   },
   "/wd/hub/session/:sessionId/appium/device/system_time": {
     "GET": {
-      "command": "getDeviceTime"
+      "command": "getDeviceTime",
+      "payloadParams": {
+        "optional": [
+          "format"
+        ]
+      }
     }
   },
   "/wd/hub/session/:sessionId/appium/device/lock": {
