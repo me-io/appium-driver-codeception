@@ -2445,7 +2445,11 @@
         "desc": "get /wd/hub/session/:sessionid/appium/device/system_time",
         "http_method": "GET",
         "uriParams": [],
-        "payloadParams": [],
+        "payloadParams": {
+            "optional": [
+                "format"
+            ]
+        },
         "src": "route.json",
         "note": "",
         "link": [
