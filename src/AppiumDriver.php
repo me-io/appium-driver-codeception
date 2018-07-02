@@ -201,7 +201,8 @@ class AppiumDriver extends CodeceptionModule implements
         //$this->debugAppiumDriverLogs();
         $filename = preg_replace('~\W~', '.', Descriptor::getTestSignature($test));
         $outputDir = codecept_output_dir();
-        $this->_saveScreenshot($outputDir . mb_strcut($filename, 0, 245, 'utf-8') . '.fail.png');
+        $this->_saveScreenshot($report = $outputDir . mb_strcut($filename, 0, 245, 'utf-8') . '.fail.png');
+        $test->getMetadata()->addReport('png', $report);
         $this->debug("Screenshot is saved into '$outputDir' dir");
     }
 
