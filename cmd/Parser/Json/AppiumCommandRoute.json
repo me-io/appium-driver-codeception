@@ -181,8 +181,9 @@
     "POST": {
       "command": "setWindow",
       "payloadParams": {
-        "required": [
-          "name"
+        "optional": [
+          "name",
+          "handle"
         ]
       }
     },
