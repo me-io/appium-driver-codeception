@@ -387,8 +387,9 @@
         "http_method": "POST",
         "uriParams": [],
         "payloadParams": {
-            "required": [
-                "name"
+            "optional": [
+                "name",
+                "handle"
             ]
         },
         "src": "route.json",
