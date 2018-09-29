@@ -71,7 +71,17 @@
       "command": "getWindowHandle"
     }
   },
+  "/wd/hub/session/:sessionId/window/handle": {
+    "GET": {
+      "command": "getWindowHandle"
+    }
+  },
   "/wd/hub/session/:sessionId/window_handles": {
+    "GET": {
+      "command": "getWindowHandles"
+    }
+  },
+  "/wd/hub/session/:sessionId/window/handles": {
     "GET": {
       "command": "getWindowHandles"
     }
@@ -181,8 +191,9 @@
     "POST": {
       "command": "setWindow",
       "payloadParams": {
-        "required": [
-          "name"
+        "optional": [
+          "name",
+          "handle"
         ]
       }
     },
@@ -1234,7 +1245,8 @@
     "POST": {
       "command": "setAlertText",
       "payloadParams": {
-        "required": [
+        "optional": [
+          "value",
           "text"
         ]
       }
@@ -1253,11 +1265,6 @@
   "/wd/hub/session/:sessionId/element/:elementId/rect": {
     "GET": {
       "command": "getElementRect"
-    }
-  },
-  "/wd/hub/session/:sessionId/window/handles": {
-    "GET": {
-      "command": "getWindowHandles"
     }
   },
   "/wd/hub/session/:sessionId/execute/sync": {
