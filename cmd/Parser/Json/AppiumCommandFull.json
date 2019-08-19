@@ -1988,6 +1988,34 @@
             "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
         ]
     },
+    "get /wd/hub/session/:sessionid/window/handle": {
+        "url": "/window/handle",
+        "wdUrl": "/wd/hub/session/:sessionid/window/handle",
+        "name": "getWindowHandle",
+        "desc": "get /wd/hub/session/:sessionid/window/handle",
+        "http_method": "GET",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
+    "get /wd/hub/session/:sessionid/window/handles": {
+        "url": "/window/handles",
+        "wdUrl": "/wd/hub/session/:sessionid/window/handles",
+        "name": "getWindowHandles",
+        "desc": "get /wd/hub/session/:sessionid/window/handles",
+        "http_method": "GET",
+        "uriParams": [],
+        "payloadParams": [],
+        "src": "route.json",
+        "note": "",
+        "link": [
+            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
+        ]
+    },
     "post /wd/hub/session/:sessionid/frame/parent": {
         "url": "/frame/parent",
         "wdUrl": "/wd/hub/session/:sessionid/frame/parent",
@@ -2867,7 +2895,8 @@
         "http_method": "POST",
         "uriParams": [],
         "payloadParams": {
-            "required": [
+            "optional": [
+                "value",
                 "text"
             ]
         },
@@ -2914,20 +2943,6 @@
         "uriParams": [
             "elementid"
         ],
-        "payloadParams": [],
-        "src": "route.json",
-        "note": "",
-        "link": [
-            "https://github.com/appium/appium-base-driver/blob/master/lib/protocol/routes.js"
-        ]
-    },
-    "get /wd/hub/session/:sessionid/window/handles": {
-        "url": "/window/handles",
-        "wdUrl": "/wd/hub/session/:sessionid/window/handles",
-        "name": "getWindowHandles",
-        "desc": "get /wd/hub/session/:sessionid/window/handles",
-        "http_method": "GET",
-        "uriParams": [],
         "payloadParams": [],
         "src": "route.json",
         "note": "",
